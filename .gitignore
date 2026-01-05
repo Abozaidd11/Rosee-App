@@ -34,3 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Yarn v4
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/versions
+
+# Exclude SDK files (they're large and can be regenerated)
+.yarn/sdks
+.yarn/unplugged
