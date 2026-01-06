@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
       [null, {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@radix-ui/react-slot", "virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:1.2.4"],\
           ["@tanstack/react-query", "virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:5.90.16"],\
           ["@types/node", "npm:20.19.27"],\
           ["@types/react", "npm:18.3.27"],\
@@ -455,6 +456,51 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../../Users/mac/.yarn/berry/cache/@pkgjs-parseargs-npm-0.11.0-cd2a3fe948-10c0.zip/node_modules/@pkgjs/parseargs/",\
         "packageDependencies": [\
           ["@pkgjs/parseargs", "npm:0.11.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@radix-ui/react-compose-refs", [\
+      ["npm:1.1.2", {\
+        "packageLocation": "../../../../../Users/mac/.yarn/berry/cache/@radix-ui-react-compose-refs-npm-1.1.2-f0371f8267-10c0.zip/node_modules/@radix-ui/react-compose-refs/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-compose-refs", "npm:1.1.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:8693f40bc4505ae45120f8d336cb576b911306e32a6f28a67ccafe666b6f7c7bdad37975e93845a4851c60f014c88eb0cc166f0b4caf7547eecfd702ebc33c4c#npm:1.1.2", {\
+        "packageLocation": "./.yarn/__virtual__/@radix-ui-react-compose-refs-virtual-0cd381c881/6/Users/mac/.yarn/berry/cache/@radix-ui-react-compose-refs-npm-1.1.2-f0371f8267-10c0.zip/node_modules/@radix-ui/react-compose-refs/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-compose-refs", "virtual:8693f40bc4505ae45120f8d336cb576b911306e32a6f28a67ccafe666b6f7c7bdad37975e93845a4851c60f014c88eb0cc166f0b4caf7547eecfd702ebc33c4c#npm:1.1.2"],\
+          ["@types/react", "npm:18.3.27"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@radix-ui/react-slot", [\
+      ["npm:1.2.4", {\
+        "packageLocation": "../../../../../Users/mac/.yarn/berry/cache/@radix-ui-react-slot-npm-1.2.4-0035a0681c-10c0.zip/node_modules/@radix-ui/react-slot/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-slot", "npm:1.2.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:1.2.4", {\
+        "packageLocation": "./.yarn/__virtual__/@radix-ui-react-slot-virtual-8693f40bc4/6/Users/mac/.yarn/berry/cache/@radix-ui-react-slot-npm-1.2.4-0035a0681c-10c0.zip/node_modules/@radix-ui/react-slot/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-compose-refs", "virtual:8693f40bc4505ae45120f8d336cb576b911306e32a6f28a67ccafe666b6f7c7bdad37975e93845a4851c60f014c88eb0cc166f0b4caf7547eecfd702ebc33c4c#npm:1.1.2"],\
+          ["@radix-ui/react-slot", "virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:1.2.4"],\
+          ["@types/react", "npm:18.3.27"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4506,6 +4552,7 @@ const RAW_RUNTIME_STATE =
       ["workspace:.", {\
         "packageLocation": "./",\
         "packageDependencies": [\
+          ["@radix-ui/react-slot", "virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:1.2.4"],\
           ["@tanstack/react-query", "virtual:7483d66df31732bd5229ea1f807eb180ded998d7afdbf7b609870b6e74c4cd0bb10469fb823e3f9739b3780ccb9a4969301821a398be1f15a9f8a5213d4d7c53#npm:5.90.16"],\
           ["@types/node", "npm:20.19.27"],\
           ["@types/react", "npm:18.3.27"],\
