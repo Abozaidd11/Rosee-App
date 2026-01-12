@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-// English Font variants 
+// English Font variants
 const sarabunRegular = localFont({
   src: "./fonts/Sarabun-Regular.ttf",
   variable: "--font-sarabun-regular",
@@ -46,6 +46,13 @@ const tajawalExtraBold = localFont({
   weight: "800",
 });
 
+// Label fonts
+const inter = localFont({
+  src: "./fonts/Inter-VariableFont.ttf",
+  variable: "--font-inter",
+  weight: "300 400 500 600 700 800 900",
+});
+
 // Metadata
 export const metadata: Metadata = {
   title: "Rose App",
@@ -59,7 +66,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sarabunRegular.variable} ${sarabunMedium.variable} ${sarabunSemiBold.variable} ${sarabunBold.variable} antialiased`}>{children}</body>
+      <body
+        className={`${sarabunRegular.variable} ${sarabunMedium.variable} ${sarabunSemiBold.variable} ${sarabunBold.variable} ${inter.variable} antialiased dark`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

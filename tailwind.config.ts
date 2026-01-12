@@ -83,6 +83,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
+        inter: ["var(--font-inter)", "sans-serif"],
         sarabunRegular: ["var(--font-sarabun-regular)", "sans-serif"],
         sarabunMedium: ["var(--font-sarabun-medium)", "sans-serif"],
         sarabunSemiBold: ["var(--font-sarabun-semi-bold)", "sans-serif"],
