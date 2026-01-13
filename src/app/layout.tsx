@@ -67,7 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sarabunRegular.variable} ${sarabunMedium.variable} ${sarabunSemiBold.variable} ${sarabunBold.variable} ${inter.variable} antialiased dark`}
+        className={`${sarabunRegular.variable} ${sarabunMedium.variable} ${sarabunSemiBold.variable} ${sarabunBold.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>
