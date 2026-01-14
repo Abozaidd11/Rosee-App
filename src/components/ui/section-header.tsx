@@ -3,13 +3,13 @@ import { cn } from "@/lib/utils/tailwind-merge";
 import { cva, type VariantProps } from "class-variance-authority";
 
 const headingVariants = cva(
-  "text-4xl font-bold font-sarabun text-primary relative dark:text-secondary",
+  "relative font-sarabun font-bold text-primary dark:text-secondary text-4xl",
   {
     variants: {
       variant: {
         default: [
-          "before:h-4 before:bg-pink-100 before:absolute before:-bottom-0.5 before:-left-0.5 before:rounded-e-full before:-z-10 dark:before:bg-zinc-700",
-          "after:h-[0.125rem] after:bg-pink-600 after:absolute after:-bottom-0.5 after:-left-0.5 dark:after:bg-pink-500",
+          "before:h-4 before:bg-pink-100 before:absolute before:-bottom-0.5 before:-start-0.5 before:rounded-e-full before:-z-10 dark:before:bg-zinc-700",
+          "after:h-[0.125rem] after:bg-pink-600 after:absolute after:-bottom-0.5 after:-start-0.5 dark:after:bg-pink-500",
         ],
       },
       size: {
@@ -41,7 +41,7 @@ const SectionTitle = React.forwardRef<HTMLHeadingElement, React.ComponentProps<"
       <h1
         ref={ref}
         className={cn(
-          "text-secondary font-bold font-sarabun uppercase tracking-[0.3rem] dark:text-primary",
+          "font-sarabun font-bold text-secondary dark:text-primary uppercase tracking-[0.3rem]",
           className
         )}
         {...props}
