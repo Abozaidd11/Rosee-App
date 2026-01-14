@@ -23,7 +23,7 @@ export default function Footer() {
             </p>
           </div>
         </div>
-        {/* policies */}
+        {/* pages &policies */}
         <div className="flex flex-col gap-4 w-1/2 md:w-1/3 lg:w-1/2 p-3 md:p-0">
           <p className="text-softPink-300 text-lg">Discover our website</p>
           <ul className="flex flex-col gap-2">
