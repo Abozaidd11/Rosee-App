@@ -3,47 +3,27 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 // English Font variants
-const sarabunRegular = localFont({
-  src: "./fonts/Sarabun-Regular.ttf",
-  variable: "--font-sarabun-regular",
-  weight: "400",
-});
-const sarabunMedium = localFont({
-  src: "./fonts/Sarabun-Medium.ttf",
-  variable: "--font-sarabun-medium",
-  weight: "500",
-});
-const sarabunSemiBold = localFont({
-  src: "./fonts/Sarabun-SemiBold.ttf",
-  variable: "--font-sarabun-semi-bold",
-  weight: "600",
-});
-const sarabunBold = localFont({
-  src: "./fonts/Sarabun-Bold.ttf",
-  variable: "--font-sarabun-bold",
-  weight: "700",
+const sarabun = localFont({
+  src: [
+    { path: "./fonts/Sarabun-Regular.ttf", weight: "400" },
+    { path: "./fonts/Sarabun-Medium.ttf", weight: "500" },
+    { path: "./fonts/Sarabun-SemiBold.ttf", weight: "600" },
+    { path: "./fonts/Sarabun-Bold.ttf", weight: "700" },
+  ],
+  variable: "--font-sarabun",
+  display: "swap",
 });
 
 // Arabic Font variants
-const tajawalRegular = localFont({
-  src: "./fonts/Tajawal-Regular.ttf",
-  variable: "--font-tajawal-regular",
-  weight: "400",
-});
-const tajawalMedium = localFont({
-  src: "./fonts/Tajawal-Medium.ttf",
-  variable: "--font-tajawal-medium",
-  weight: "500",
-});
-const tajawalBold = localFont({
-  src: "./fonts/Tajawal-Bold.ttf",
-  variable: "--font-tajawal-bold",
-  weight: "700",
-});
-const tajawalExtraBold = localFont({
-  src: "./fonts/Tajawal-ExtraBold.ttf",
-  variable: "--font-tajawal-extra-bold",
-  weight: "800",
+const tajawal = localFont({
+  src: [
+    { path: "./fonts/Tajawal-Regular.ttf", weight: "400" },
+    { path: "./fonts/Tajawal-Medium.ttf", weight: "500" },
+    { path: "./fonts/Tajawal-Bold.ttf", weight: "700" },
+    { path: "./fonts/Tajawal-ExtraBold.ttf", weight: "800" },
+  ],
+  variable: "--font-tajawal",
+  display: "swap",
 });
 
 // Label fonts
@@ -67,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sarabunRegular.variable} ${sarabunMedium.variable} ${sarabunSemiBold.variable} ${sarabunBold.variable} ${inter.variable} antialiased`}
+        className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>
