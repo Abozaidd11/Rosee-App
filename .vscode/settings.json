@@ -3,18 +3,13 @@
     "**/.yarn": true,
     "**/.pnp.*": true
   },
-
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-
   "files.autoSave": "off",
-
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
-
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -27,6 +22,6 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
 }
