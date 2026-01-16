@@ -15,8 +15,10 @@ const ErrorBoundary = React.forwardRef<HTMLDivElement, ErrorBoundaryProps>(
         className={cn("w-full flex flex-col items-center justify-center gap-4", className)}
         {...props}
       >
+        {/* Error message  */}
         <p className="text-zinc-500">{error?.message ?? "Something went wrong"}</p>
 
+        {/* Try again button  */}
         <Button
           variant={"destructive"}
           onClick={onRetry}

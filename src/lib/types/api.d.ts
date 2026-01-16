@@ -1,6 +1,7 @@
 declare type SuccessfulResponse<T> = {
   message: string;
 } & T;
+
 declare type PaginatedData<T> = {
   metadata: {
     currentPage: number;

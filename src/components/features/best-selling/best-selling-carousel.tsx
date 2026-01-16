@@ -35,9 +35,11 @@ export default function BestSellingCarousel({ products }: BestSellingCarouselPro
           </CarouselItem>
         ))}
       </CarouselContent>
+
       {/* Prev */}
       {/* text-maroon-50 - bg-maroon-500  */}
       <CarouselPrevious className="size-10 rounded-3xl bg-maroon-500 bg-[#A6252A] text-maroon-50 text-[#FBEAEA] -left-5" />
+
       {/* Next */}
       <CarouselNext className="size-10 rounded-3xl bg-maroon-500 bg-[#A6252A] text-maroon-50 text-[#FBEAEA] -right-5" />
     </Carousel>

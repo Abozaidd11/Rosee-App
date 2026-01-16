@@ -8,6 +8,7 @@ export default function Home() {
       <section className="flex flex-col container mx-auto">
         {/* Best Selling */}
         <BestSellingSection />
+
         {/* Popular Products */}
         <MostPopularSection />
       </section>

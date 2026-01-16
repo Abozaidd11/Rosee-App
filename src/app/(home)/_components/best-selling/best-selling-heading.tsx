@@ -11,6 +11,7 @@ export default function BestSellingHeading() {
         <p className="font-bold uppercase text-pink-500 tracking-[.25em] dark:text-maroon-500 dark:text-[#D75458]">
           best Selling
         </p>
+
         {/* soft-pink-500 */}
         <div className="text-3xl leading-none font-bold  dark:text-soft-pink-200 dark:text-[#FFC2D0] ">
           <span className=" text-soft-pink-500 text-pink-500 dark:text-maroon-500 dark:text-[#D75458]">
@@ -22,6 +23,7 @@ export default function BestSellingHeading() {
           </span>
           Right Now
         </div>
+
         <p className="text-zinc-500 leading-tight pb-16 dark:text-zinc-400">
           Not sure what to choose? <br />
           Start with our best sellers, these are the gifts our customers keep coming back for.
@@ -29,6 +31,7 @@ export default function BestSellingHeading() {
           guaranteed to leave a lasting impression.
         </p>
       </div>
+
       {/* Button  */}
       {/* text-maroon-600 - bg-soft-pink-200 - design system button */}
       <Link

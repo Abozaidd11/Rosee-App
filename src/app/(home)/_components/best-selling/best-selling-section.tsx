@@ -12,6 +12,7 @@ export default function BestSellingSection() {
     <section className="flex gap-9">
       {/* Text  */}
       <BestSellingHeading />
+
       {/* Products  */}
       <Suspense fallback={<CarouselFallback />}>
         <BestSellingCarousel products={products} />

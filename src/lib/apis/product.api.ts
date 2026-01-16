@@ -10,6 +10,7 @@ export async function getBestSellingProducts() {
   if ("error" in payload) {
     throw new Error(`${payload.error}`);
   }
+
   return payload;
 }
 export async function getOccasionProducts(id?: string) {
@@ -17,9 +18,11 @@ export async function getOccasionProducts(id?: string) {
     limit: "12",
     fields: "imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity",
   });
+
   if (id) {
     params.append("occasion", id);
   }
+
   const response = await fetch(`${process.env.NEXT_PUBLIC_API}/products?${params.toString()}`);
 
   if (!response.ok) {

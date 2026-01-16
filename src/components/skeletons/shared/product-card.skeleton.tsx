@@ -19,10 +19,7 @@ export default function ProductCardSkeleton() {
           <div className="flex flex-col gap-1">
             <div className="flex gap-1">
               {Array.from({ length: 5 }).map((_, idx) => (
-                <Skeleton
-                  key={idx}
-                  className="h-4 w-4 rounded-full bg-zinc-300 dark:bg-zinc-600"
-                />
+                <Skeleton key={idx} className="h-4 w-4 rounded-full bg-zinc-300 dark:bg-zinc-600" />
               ))}
             </div>
             <Skeleton className="h-4 w-20 rounded bg-zinc-300 dark:bg-zinc-600" />

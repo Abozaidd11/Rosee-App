@@ -1,3 +1,1 @@
-export async function middleware(){
-    
-}
+export async function middleware() {}

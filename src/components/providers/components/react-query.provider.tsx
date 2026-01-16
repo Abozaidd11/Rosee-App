@@ -31,9 +31,11 @@ function getQueryClient() {
     return browserQueryClient;
   }
 }
+
 type ReactQueryProviderProps = {
   children: React.ReactNode;
 };
+
 export default function ReactQueryProvider({ children }: ReactQueryProviderProps) {
   // NOTE: Avoid useState when initializing the query client if you don't
   //       have a suspense boundary between this and the code that may

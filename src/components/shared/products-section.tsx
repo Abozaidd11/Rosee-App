@@ -21,12 +21,14 @@ export default function ProductsSection() {
       <div className="grid grid-cols-4 gap-6">
         {/* Loading  */}
         {isPending && Array.from({ length: 4 }).map((_, idx) => <ProductCardSkeleton key={idx} />)}
+
         {/* Data  */}
         {payload?.products.map((product) => (
           <Link key={product._id} href={`products/${product._id}`}>
             <ProductCard product={product} />
           </Link>
         ))}
+
         {/* No data to display.  */}
         {!isPending && !payload?.products.length && (
           <div className="flex flex-col gap-3 items-center font-medium text-zinc-500 text-sm leading-none py-20 col-span-4">
@@ -35,7 +37,8 @@ export default function ProductsSection() {
           </div>
         )}
       </div>
-      {/* View More  */}
+
+      {/* View more link   */}
       {payload?.products && payload?.products.length >= 12 ? (
         <Link
           href={`/products?occasionId=${occasionId}`}

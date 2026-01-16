@@ -19,7 +19,8 @@ export default function OccasionsFilterLinks({ occasions }: OccasionsFilterProps
         const isActive = activeOccasionId === _id;
 
         return (
-          // text-maroon-600 -text-soft-pink-200
+          // Occasions link
+          // text-maroon-600 - text-soft-pink-200
           <li
             key={_id}
             className={cn(
