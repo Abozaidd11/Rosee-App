@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Carousel,
   CarouselContent,
@@ -8,15 +6,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/shared/product-card";
-import { TProductCard } from "@/lib/types/product";
-import { use } from "react";
 import Link from "next/link";
+import { getBestSellingProducts } from "@/lib/services/product.service";
 
-type BestSellingCarouselProps = { products: Promise<TProductCard[]> };
-
-export default function BestSellingCarousel({ products }: BestSellingCarouselProps) {
+export default async function BestSellingCarousel() {
   // Hooks
-  const allProducts = use(products);
+  const { products } = await getBestSellingProducts();
 
   return (
     <Carousel
@@ -27,7 +22,7 @@ export default function BestSellingCarousel({ products }: BestSellingCarouselPro
     >
       <CarouselContent>
         {/* Products  */}
-        {allProducts.map((product) => (
+        {products.map((product) => (
           <CarouselItem key={product._id} className="sm:basis-1/2 lg:basis-1/3 ">
             <Link key={product._id} href={`products/${product._id}`}>
               <ProductCard product={product} />
