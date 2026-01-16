@@ -8,9 +8,12 @@ import ErrorBoundary from "./error-boundary";
 import { MoveRight, Rose } from "lucide-react";
 import Link from "next/link";
 
-export default function ProductsSection() {
+type ProductsSectionProps = {
+  defaultOccasionId: string;
+};
+export default function ProductsSection({ defaultOccasionId }: ProductsSectionProps) {
   //Hooks
-  const occasionId = useSearchParams().get("occasionId") ?? undefined;
+  const occasionId = useSearchParams().get("occasionId") ?? defaultOccasionId;
   const { isPending, data: payload, error, refetch } = useOccasionProducts(occasionId);
 
   if (error) return <ErrorBoundary onRetry={refetch} error={error} />;

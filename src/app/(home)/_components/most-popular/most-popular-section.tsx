@@ -1,15 +1,13 @@
 import ProductsSection from "@/components/shared/products-section";
 import OccasionsFilterLinks from "./occasions-filter-links";
-import { TOccasion } from "@/lib/types/occasion";
+import { getOccasions } from "@/lib/services/occasion.service";
 
-const occasions: TOccasion[] = [
-  { name: "Wedding", _id: "673b34c21159920171827ae0" },
-  { name: "Anniversary", _id: "673b35c01159920171827aed" },
-  { name: "Birthday", _id: "673b354b1159920171827ae8" },
-  { name: "Engagement", _id: "673b38641159920171827b1d" },
-];
+export default async function MostPopularSection() {
+  // Functions
+  const { occasions } = await getOccasions();
 
-export default function MostPopularSection() {
+  // Variables
+  const defaultOccasionId = occasions[0]._id;
   return (
     <section className="flex flex-col gap-10">
       {/* Header */}
@@ -26,7 +24,7 @@ export default function MostPopularSection() {
       </header>
 
       {/* Products */}
-      <ProductsSection />
+      <ProductsSection defaultOccasionId={defaultOccasionId} />
     </section>
   );
 }

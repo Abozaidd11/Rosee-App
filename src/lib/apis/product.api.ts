@@ -1,14 +1,11 @@
 import { TProductCard } from "../types/product";
 
-export async function getOccasionProducts(id?: string) {
+export async function getOccasionProducts(id: string) {
   const params = new URLSearchParams({
     limit: "12",
     fields: "imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity",
+    occasion: id,
   });
-
-  if (id) {
-    params.append("occasion", id);
-  }
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API}/products?${params.toString()}`);
 
