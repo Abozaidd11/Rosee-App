@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="dark:bg-zinc-800">
       {/* Container  */}
-      <section className="flex flex-col container mx-auto">
+      <section className="flex flex-col container mx-auto gap-32">
         {/* Best Selling */}
         <BestSellingSection />
 
