@@ -94,14 +94,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
 
-          {/* Add to cart  */}
-          {/* text-maroon-50 - bg-maroon-600 */}
-          <button className="rounded-full bg-maroon-600 bg-[#A6252A] bg-maroon-500 dark:bg-[#CD2E33] size-10 dark:bg-maroon-500">
-            <ShoppingCart
-              className="size-6 text-marron-50 mx-auto text-[#FBEAEA] a"
-              strokeWidth={1.48}
-            />
-          </button>
+          {/* Add to cart */}
+          {/* text-maroon-50 - maroon-500 - bg-maroon-600 - button variant */}
+          <Button className="size-10 rounded-full bg-maroon-600 bg-[#A6252A] dark:bg-maroon-500 dark:bg-[#CD2E33]">
+            <ShoppingCart className="size-6 text-marron-50 text-[#FBEAEA]" strokeWidth={1.48} />
+          </Button>
         </div>
       </footer>
     </section>
