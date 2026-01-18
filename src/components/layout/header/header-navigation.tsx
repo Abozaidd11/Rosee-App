@@ -1,16 +1,20 @@
 "use client";
+
 import { HEADER_NAV } from "@/lib/constants/header-nav.constant";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 export default function HeaderNavigation() {
-  const pathname = usePathname();
+  const pathname = usePathname(); // get the current pathname
+
   return (
     <nav className="block sm:flex items-center justify-center md:gap-4">
       {HEADER_NAV.map((item) => {
         const isActive = pathname === item.href;
+
         return (
+          // header navigation link you can edit them inside the header-nav.constant.ts file
           <Link
             href={item.href}
             key={item.label}

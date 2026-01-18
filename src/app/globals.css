@@ -72,8 +72,7 @@
     @apply bg-background text-foreground font-en;
   }
   /* Arabic */
-html[lang="ar"] body{
-  @apply font-ar;
-}
-
+  html[lang="ar"] body {
+    @apply font-ar;
+  }
 }

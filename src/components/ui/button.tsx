@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-
 import { cn } from "@/lib/utils/tailwind-merge";
 
 const buttonVariants = cva(
@@ -19,6 +18,8 @@ const buttonVariants = cva(
           "bg-maroon-50 text-maroon-600 hover:bg-maroon-100 dark:bg-zinc-700 dark:text-softPink-300 dark:hover:bg-zinc-600",
         ghost:
           "text-zinc-800 bg-background hover:bg-zinc-100 dark:text-zinc-50 dark:hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+        pagination:
+          "text-zinc-800 bg-background border border-zinc-100 dark:border-zinc-700 hover:bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-700 dark:hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
         subtle:
           "text-zinc-800 bg-zinc-50 border border-zinc-400 hover:bg-zinc-100 dark:text-zinc-50 dark:bg-zinc-800 dark:border-zinc-500 dark:hover:bg-zinc-700",
         link: "text-primary underline-offset-4 hover:underline",

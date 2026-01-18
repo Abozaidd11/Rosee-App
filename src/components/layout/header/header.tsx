@@ -64,9 +64,9 @@ export default function Header() {
               </div>
             )} */}
 
-              <div className="hidden sm:block">
-                <LoginIcon />
-              </div>
+            <div className="hidden sm:block">
+              <LoginIcon />
+            </div>
 
             {/* mobile toggle */}
             <MobileNavigation />
