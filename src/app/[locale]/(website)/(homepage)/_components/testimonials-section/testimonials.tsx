@@ -1,8 +1,6 @@
-import { Suspense } from "react";
 import { testimonialsServices } from "../../_services/testimonials.service";
 import TestimonialHeader from "./testimonial-header";
 import TestimonialsCarousel from "./testimonials-carousel";
-import { TestimonialCardSkeleton } from "@/components/skeletons/testimonials-card-skeleton";
 
 export default async function Testimonials() {
   // variables
@@ -14,9 +12,7 @@ export default async function Testimonials() {
       <TestimonialHeader />
 
       {/* Section content */}
-      <Suspense fallback={<TestimonialCardSkeleton />}>
-        <TestimonialsCarousel userReviews={testimonials.testimonials} />
-      </Suspense>
+      <TestimonialsCarousel userReviews={testimonials.testimonials} />
     </section>
   );
 }
