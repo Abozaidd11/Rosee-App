@@ -1,0 +1,11 @@
+{
+  "Metadata": {
+    "app-title": "Rose App"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "description": "Real Words from Happy Customers",
+    "testimonials-card-content": "{content}",
+    "testimonial-user-name": "{name}"
+  }
+}
