@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+
 import { testimonialsServices } from "../../_services/testimonials.service";
 import TestimonialHeader from "./testimonial-header";
 import TestimonialsCarousel from "./testimonials-carousel";
@@ -14,9 +14,7 @@ export default async function Testimonials() {
       <TestimonialHeader />
 
       {/* Section content */}
-      <Suspense fallback={<TestimonialCardSkeleton />}>
         <TestimonialsCarousel userReviews={testimonials.testimonials} />
-      </Suspense>
     </section>
   );
 }

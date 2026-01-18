@@ -11,7 +11,7 @@ type PageProps = {
 };
 
 export default function TestimonialsCarousel({ userReviews }: PageProps) {
-  // variables
+  // Variables
   // this variable for increasing the length for testimonials array to make the carousel autoplay work
   const testimonials = [...userReviews, ...userReviews];
 
@@ -35,8 +35,8 @@ export default function TestimonialsCarousel({ userReviews }: PageProps) {
       }}
     >
       <CarouselContent className="items-center pt-20 h-[27.06rem]">
-        {testimonials.map((item, index) => (
-          <TestimonialCard key={index} item={item} />
+        {testimonials.map((item) => (
+          <TestimonialCard key={item._id} item={item} />
         ))}
       </CarouselContent>
     </Carousel>
