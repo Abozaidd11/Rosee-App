@@ -29,8 +29,8 @@ export default function TestimonialCard({ item }: TPageProps) {
   };
 
   return (
-    <CarouselItem className="flex justify-center items-center lg:basis-1/3 md:basis-1/2">
-      <Card className="relative flex flex-col justify-center items-center gap-3 p-5 pt-14 rounded-3xl w-[21.9rem] h-[17rem]">
+    <CarouselItem className="flex justify-center items-center px-7 lg:basis-1/3 md:basis-1/2">
+      <Card className="relative flex flex-col justify-center items-center gap-3 m-w-[21.9rem] p-5 pt-14 rounded-3xl w-full h-[17rem]">
         <Avatar className="bottom-56 absolute border-4 border-white w-[7.5rem] h-[7.5rem]">
           <AvatarImage src={item?.user?.photo} className="object-cover" />
           <AvatarFallback>CN</AvatarFallback>
