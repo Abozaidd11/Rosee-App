@@ -1,5 +1,5 @@
-import { FeatureHeroSectionData } from '@/lib/constants/features-hero-section.costants'
-import React from 'react'
+import { FeatureHeroSectionData } from "@/lib/constants/features-hero-section.costants";
+import React from "react";
 
 /**
  * Features Component
@@ -11,34 +11,27 @@ import React from 'react'
  * - Design System:
  *    - Confirm background color: #FBEAEA
  *    - Confirm primary accent color: #A6252A
- * 
- * - Font usage
  * - Translation
  */
 export default function Features() {
-    return (
-        <section className="flex w-full flex-wrap justify-between gap-2 rounded-2xl bg-[#FBEAEA] p-10">
-            {FeatureHeroSectionData.map((item, index) => {
-                return (
-                    <div key={index} className="flex items-center gap-4">
-                        {/* Feature icon */}
-                        <item.icon
-                            strokeWidth={""}
-                            className="h-16 w-16 rounded-full bg-[#A6252A] px-3 py-4 text-white"
-                        />
-
-                        {/* Feature text */}
-                        <span>
-                            <p className="text-xl font-semibold text-[#A6252A]">
-                                {item.title}
-                            </p>
-                            <p className="text-sm text-[#71717A]">
-                                {item.description}
-                            </p>
-                        </span>
-                    </div>
-                )
-            })}
-        </section>
-    )
+  return (
+    <section className="flex flex-wrap justify-between gap-2 bg-[#FBEAEA] p-10 rounded-2xl w-full">
+      {FeatureHeroSectionData.map((item, index) => {
+        return (
+          <div key={index} className="flex items-center gap-4">
+            {/* Feature icon */}
+            <item.icon
+              strokeWidth={""}
+              className="bg-[#A6252A] px-3 py-4 rounded-full w-16 h-16 text-white"
+            />
+            {/* Feature text */}
+            <span>
+              <p className="font-semibold text-[#A6252A] text-xl">{item.title}</p>
+              <p className="text-[#71717A] text-sm">{item.description}</p>
+            </span>
+          </div>
+        );
+      })}
+    </section>
+  );
 }
