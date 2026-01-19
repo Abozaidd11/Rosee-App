@@ -63,7 +63,7 @@ export default function LocaleLayout({ children, params: { locale } }: LocalePro
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"} className="dark">
+    <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} antialiased`}>
         <Providers>
           {children}

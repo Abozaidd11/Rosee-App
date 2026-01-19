@@ -21,14 +21,13 @@ export default function Header() {
   // All the commented code is waiting for the authentication to be implemented
 
   return (
-    <header>
+    <header className="w-full">
       <div className="mx-auto lg:px-5 xl:px-9 py-4 font-sarabunMedium">
-        <div className="flex items-center justify-between px-2 lg:px-0">
+        <div className="flex justify-between items-center px-2 lg:px-0">
           {/* logo */}
-          <Link href="/" className="cursor-pointer w-1/4 md:w-auto">
+          <Link href="/" className="w-1/4 md:w-auto cursor-pointer">
             <Image src="/assets/logo.png" alt="Logo" width={85} height={80} />
           </Link>
-
           {/* delivery location */}
           {/* {isLoggedIn && (
             <div className="hidden sm:flex flex-col gap-2">
@@ -51,7 +50,7 @@ export default function Header() {
           </div>
 
           {/* icons */}
-          <div className="flex items-stretch justify-end w-3/4 sm:w-auto">
+          <div className="flex justify-end items-stretch w-3/4 sm:w-auto">
             {/* login */}
             {/* {isLoggedIn ? (
               <div className="hidden sm:flex flex-col gap-2">
@@ -71,31 +70,31 @@ export default function Header() {
             {/* mobile toggle */}
             <MobileNavigation />
             {/* icon group */}
-            <div className="flex items-center gap-3 border border-zinc-200 dark:border-zinc-700 border-t-0 border-b-0 p-2 sm:p-4">
+            <div className="flex items-center gap-3 p-2 sm:p-4 border border-zinc-200 dark:border-zinc-700 border-t-0 border-b-0">
               {/* wishlist */}
-              <Link href="/wishlist" className="cursor-pointer text-zinc-700 dark:text-zinc-50">
-                <Heart className="sm:w-6 sm:h-6 w-5 h-5" />
+              <Link href="/wishlist" className="text-zinc-700 dark:text-zinc-50 cursor-pointer">
+                <Heart className="w-5 sm:w-6 h-5 sm:h-6" />
               </Link>
               {/* cart */}
-              <Link href="/cart" className="cursor-pointer text-zinc-700 dark:text-zinc-50">
-                <ShoppingCart className="sm:w-6 sm:h-6 w-5 h-5" />
+              <Link href="/cart" className="text-zinc-700 dark:text-zinc-50 cursor-pointer">
+                <ShoppingCart className="w-5 sm:w-6 h-5 sm:h-6" />
               </Link>
               {/* notifications */}
-              <Link href="#" className="cursor-pointer text-zinc-700 dark:text-zinc-50">
-                <Bell className="sm:w-6 sm:h-6 w-5 h-5" />
+              <Link href="#" className="text-zinc-700 dark:text-zinc-50 cursor-pointer">
+                <Bell className="w-5 sm:w-6 h-5 sm:h-6" />
               </Link>
             </div>
             {/* language switcher */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="cursor-pointer text-zinc-700 dark:text-zinc-50 p-4">
-                <Globe className="sm:w-6 sm:h-6 w-5 h-5" />
+              <DropdownMenuTrigger className="p-4 text-zinc-700 dark:text-zinc-50 cursor-pointer">
+                <Globe className="w-5 sm:w-6 h-5 sm:h-6" />
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <Link href="/">
                   <DropdownMenuItem>English</DropdownMenuItem>
                 </Link>
                 <Link href="/ar">
-                  <DropdownMenuItem className="text-right font-tajawalMedium">
+                  <DropdownMenuItem className="font-tajawalMedium text-right">
                     العربية
                   </DropdownMenuItem>
                 </Link>
@@ -105,7 +104,7 @@ export default function Header() {
         </div>
       </div>
       {/* header nav */}
-      <div className="mx-auto bg-primary hidden sm:block">
+      <div className="hidden sm:block bg-primary mx-auto">
         <HeaderNavigation />
       </div>
     </header>

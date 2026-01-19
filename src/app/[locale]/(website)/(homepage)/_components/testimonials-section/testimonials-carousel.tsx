@@ -35,8 +35,8 @@ export default function TestimonialsCarousel({ userReviews }: PageProps) {
       }}
     >
       <CarouselContent className="items-center pt-20 h-[27.06rem]">
-        {testimonials.map((item) => (
-          <TestimonialCard key={item._id} item={item} />
+        {testimonials.map((item, idx) => (
+          <TestimonialCard key={idx} item={item} />
         ))}
       </CarouselContent>
     </Carousel>
