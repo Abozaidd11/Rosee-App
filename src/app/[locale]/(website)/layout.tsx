@@ -7,10 +7,10 @@ type LocaleProps = {
 
 export default function LocaleLayout({ children }: LocaleProps) {
   return (
-    <div className="flex flex-col items-center gap-2 pt-5">
+    <div className="max-w-screen overflow-x-hidden">
       <Header />
-      {/* <LanguageSwitcher /> */}
 
+      {/* <LanguageSwitcher /> */}
       {children}
 
       <Footer />

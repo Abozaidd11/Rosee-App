@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Input } from "../../ui/input";
-import { Bell, Globe, Heart, LocationEdit, ShoppingCart } from "lucide-react";
+import { Bell, Globe, Heart, ShoppingCart } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +21,7 @@ export default function Header() {
   // All the commented code is waiting for the authentication to be implemented
 
   return (
-    <header className="w-full">
+    <header>
       <div className="mx-auto lg:px-5 xl:px-9 py-4 font-sarabunMedium">
         <div className="flex justify-between items-center px-2 lg:px-0">
           {/* logo */}
