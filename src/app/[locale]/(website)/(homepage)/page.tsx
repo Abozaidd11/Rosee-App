@@ -5,7 +5,7 @@ export default function Home() {
     <main>
       <div className="mx-auto container"></div>
       <Testimonials />
-      <div className="mx-auto container"></div>
+      {/* <div className="mx-auto container"></div> */}
     </main>
   );
 }
