@@ -8,7 +8,7 @@ export default function LanguageSwitcher() {
   const pathName = usePathname();
 
   return (
-    <Link href={pathName} locale={locale === "ar" ? "en" : "ar"}>
+    <Link href={pathName} locale={locale === "ar" ? "en" : "ar"} className="p-2 sm:p-4 ltr:font-ar rtl:font-en">
       {locale === "ar" ? "English" : "العربيه"}
     </Link>
   );

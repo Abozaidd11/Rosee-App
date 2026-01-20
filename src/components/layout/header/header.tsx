@@ -11,6 +11,7 @@ import {
 import HeaderNavigation from "./header-navigation";
 import MobileNavigation from "./mobile-navigation";
 import LoginIcon from "./login-icon";
+import LanguageSwitcher from "@/components/ui/language-switcher";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/auth";
 
@@ -84,8 +85,8 @@ export default function Header() {
                 <Bell className="w-5 sm:w-6 h-5 sm:h-6" />
               </Link>
             </div>
-            {/* language switcher */}
-            <DropdownMenu>
+            {/* language switcher old for me*/}
+            {/* <DropdownMenu>
               <DropdownMenuTrigger className="p-4 text-zinc-700 dark:text-zinc-50 cursor-pointer">
                 <Globe className="w-5 sm:w-6 h-5 sm:h-6" />
               </DropdownMenuTrigger>
@@ -99,7 +100,8 @@ export default function Header() {
                   </DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */} 
+            <LanguageSwitcher />
           </div>
         </div>
       </div>
