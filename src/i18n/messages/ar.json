@@ -1,0 +1,11 @@
+{
+  "Metadata": {
+    "app-title": "محل الورد"
+  },
+  "testimonials": {
+    "title": "التعليقات",
+    "description": "كلمات حقيقية من عملاء سعداء",
+    "testimonials-card-content": "{content}",
+    "testimonial-user-name": "{name}"
+  }
+}

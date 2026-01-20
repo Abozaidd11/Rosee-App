@@ -23,5 +23,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "prettier.requireConfig": true,
-  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs"
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.cjs",
+  "i18n-ally.localesPaths": ["src/i18n", "src/i18n/messages"],
+  "i18n-ally.keystyle": "nested"
 }
