@@ -20,14 +20,13 @@ export default function OccasionsFilterLinks({ occasions }: OccasionsFilterProps
 
         return (
           // Occasions link
-          // text-maroon-600 - text-soft-pink-200
           <li
             key={_id}
             className={cn(
               "font-medium capitalize transition-colors cursor-pointer",
               isActive
-                ? "text-[#A6252A] dark:text-[#FFC2D0]"
-                : "text-zinc-700 dark:text-zinc-400 hover:text-[#A6252A]"
+                ? "text-maroon-600 dark:text-softPink-200"
+                : "text-zinc-700 dark:text-zinc-400 hover:text-maroon-600"
             )}
           >
             <Link href={`?occasionId=${_id}`} className="text-inherit">
