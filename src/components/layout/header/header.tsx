@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Input } from "../../ui/input";
-import { Bell, Globe, Heart, ShoppingCart } from "lucide-react";
+import { Globe, Heart, ShoppingCart } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +12,7 @@ import HeaderNavigation from "./header-navigation";
 import MobileNavigation from "./mobile-navigation";
 import LoginIcon from "./login-icon";
 import LanguageSwitcher from "@/components/ui/language-switcher";
+import Notifications from "@/app/[locale]/(website)/_components/notifications/notifications";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/auth";
 
@@ -82,7 +83,7 @@ export default function Header() {
               </Link>
               {/* notifications */}
               <Link href="#" className="text-zinc-700 dark:text-zinc-50 cursor-pointer">
-                <Bell className="w-5 sm:w-6 h-5 sm:h-6" />
+                <Notifications />
               </Link>
             </div>
             {/* language switcher old for me*/}
@@ -100,7 +101,7 @@ export default function Header() {
                   </DropdownMenuItem>
                 </Link>
               </DropdownMenuContent>
-            </DropdownMenu> */} 
+            </DropdownMenu> */}
             <LanguageSwitcher />
           </div>
         </div>

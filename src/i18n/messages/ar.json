@@ -8,6 +8,14 @@
     "testimonials-card-content": "{content}",
     "testimonial-user-name": "{name}"
   },
+  "notifications": {
+    "title": "الإشعارات",
+    "clear-all-notifications": "مسح كل الإشعارات",
+    "mark-all-as-read": "علم كلها كمقروءة",
+    "mark-as-read": "علم كمقروءة",
+    "delete-notification": "حذف الإشعار",
+    "no-notifications": "لا يوجد إشعارات لعرضها."
+  },
   "best-selling": {
     "header": "الأكثر مبيعًا",
     "title": {
