@@ -5,6 +5,7 @@ import Hero from "./_components/hero/hero";
 export default function Home() {
   return (
     <main className="flex flex-col items-center gap-36 mx-auto mt-10 container">
+      <Hero />
       {/* Best Selling */}
       <BestSellingSection />
 
