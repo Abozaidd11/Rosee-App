@@ -52,8 +52,8 @@ export default function NewPasswordStep({ email }: NewPasswordProps) {
     <>
       {/* Header */}
       <header className="mb-5 pb-3 border-zinc-200 border-b w-full">
-        <h1 className="font-semibold text-zinc-800 text-2xl">{t("new-password-title")}</h1>
-        <p className="text-zinc-800">{t("new-password-desc")}</p>
+        <h1 className="font-semibold text-zinc-800 dark:text-zinc-50 text-2xl">{t("new-password-title")}</h1>
+        <p className="text-zinc-800 dark:text-zinc-50">{t("new-password-desc")}</p>
       </header>
 
       {/* Form */}
@@ -119,10 +119,10 @@ export default function NewPasswordStep({ email }: NewPasswordProps) {
 
       {/* Footer */}
       <footer className="mt-9 pt-5 border-zinc-200 border-t w-full">
-        <p className="font-medium text-zinc-800 text-sm text-center">
+        <p className="font-medium text-zinc-800 dark:text-zinc-50 text-sm text-center">
           {t.rich("new-password-footer", {
             a: (chunk) => (
-              <Link href={"/login"} className="font-bold text-maroon-700">
+              <Link href={"/login"} className="font-bold text-maroon-700 dark:text-pink-300">
                 {chunk}
               </Link>
             ),
