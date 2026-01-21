@@ -16,7 +16,7 @@ export default function AuthLayout({ children }: AuthProps) {
   return (
     <div className="grid grid-cols-2 h-screen">
       {/* Body */}
-      <section className="flex flex-col gap-10 m-auto min-w-[50%]">
+      <section className="flex flex-col gap-10 m-auto min-w-[70%]">
         {/* Header  */}
         <LanguageSwitcher />
 
