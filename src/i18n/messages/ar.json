@@ -7,5 +7,15 @@
     "description": "كلمات حقيقية من عملاء سعداء",
     "testimonials-card-content": "{content}",
     "testimonial-user-name": "{name}"
+  },
+  "promoCardheroSection": {
+    "badge": "ابتداءً من 10.99 ج.م",
+    "title": "هدايا مميزة للأشخاص الذين تحبهم",
+    "button": "تسوق الآن"
+  },
+  "carouselheroSection": {
+    "heading": "قلها بالزهور",
+    "subheading": "هدايا أنيقة لكل لحظة خاصة.",
+    "cta": "اشتري الآن!"
   }
 }

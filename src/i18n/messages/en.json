@@ -7,5 +7,15 @@
     "description": "Real Words from Happy Customers",
     "testimonials-card-content": "{content}",
     "testimonial-user-name": "{name}"
+  },
+  "promoCardheroSection": {
+    "badge": "Starting from 10.99 EGP",
+    "title": "Special Gifts For The People You Love",
+    "button": "Shop Now"
+  },
+  "carouselheroSection": {
+    "heading": "Say It with Flowers",
+    "subheading": "Elegant gifts for every special moment.",
+    "cta": "I’m buying!"
   }
 }
