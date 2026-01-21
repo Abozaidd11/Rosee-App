@@ -3,6 +3,7 @@
 # Yarn v4 / PnP (avoid OS-specific conflicts)
 .pnp.cjs 
 .pnp.loader.mjs
+yarn.lock
 
 # dependencies
 /node_modules
