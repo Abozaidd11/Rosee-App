@@ -1,0 +1,18 @@
+import { getNotifications } from "@/lib/services/notifications-services/notifications.service";
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+export default function useNotifications() {
+  return useInfiniteQuery({
+    queryKey: ["notifications"],
+    queryFn: ({ pageParam = 1 }) => getNotifications({ pageParam }),
+    initialPageParam: 1,
+
+    getNextPageParam: (lastPage) => {
+      if (lastPage.metadata.currentPage < lastPage.metadata.totalPages) {
+        return lastPage.metadata.currentPage + 1;
+      }
+
+      return undefined;
+    },
+  });
+}
