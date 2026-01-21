@@ -14,6 +14,7 @@ export default function TestimonialsCarousel({ userReviews }: PageProps) {
   // Variables
   // this variable for increasing the length for testimonials array to make the carousel autoplay work
   const testimonials = [...userReviews, ...userReviews];
+  const direction = typeof document !== "undefined" && document.documentElement.dir === "rtl" ? "rtl" : "ltr";
 
   return (
     <Carousel
@@ -30,11 +31,10 @@ export default function TestimonialsCarousel({ userReviews }: PageProps) {
       opts={{
         loop: true,
         dragFree: true,
-        direction:
-          typeof document !== "undefined" && document.documentElement.dir === "rtl" ? "ltr" : "rtl",
+        direction: direction,
       }}
     >
-      <CarouselContent className="items-center pt-20 h-[27.06rem]">
+      <CarouselContent className="items-center pt-20 h-[27.06rem]" dir={direction}>
         {testimonials.map((item, idx) => (
           <TestimonialCard key={idx} item={item} />
         ))}

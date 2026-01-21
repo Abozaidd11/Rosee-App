@@ -8,6 +8,20 @@
     "testimonials-card-content": "{content}",
     "testimonial-user-name": "{name}"
   },
+  "best-selling": {
+    "header": "best selling",
+    "title": {
+      "check-out": "check out",
+      "what-everyone": "what everyone’s",
+      "buying": "buying",
+      "right-now": "right now"
+    },
+    "description": "Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for. Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.",
+    "link": "explore gifts"
+  },
+  "most-popular": {
+    "heading": "most popular"
+  },
   "promoCardheroSection": {
     "badge": "Starting from 10.99 EGP",
     "title": "Special Gifts For The People You Love",

@@ -1,13 +1,18 @@
+import BestSellingSection from "../_components/best-selling/best-selling-section";
+import MostPopularSection from "../_components/most-popular/most-popular-section";
 import Testimonials from "./_components/testimonials-section/testimonials";
 import Hero from "./_components/hero/hero";
 export default function Home() {
   return (
-    <main>
-      <div className="mx-auto container">
-        <Hero />
-      </div>
+    <main className="flex flex-col items-center gap-36 mx-auto mt-10 container">
+      {/* Best Selling */}
+      <BestSellingSection />
+
+      {/* Popular Products */}
+      <MostPopularSection />
+
+      {/* Testimonials */}
       <Testimonials />
-      {/* <div className="mx-auto container"></div> */}
     </main>
   );
 }
