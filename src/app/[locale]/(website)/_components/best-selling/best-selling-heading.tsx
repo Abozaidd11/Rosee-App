@@ -15,23 +15,22 @@ export default function BestSellingHeading() {
           {t("header")}
         </p>
         {/* Headline  */}
-        <div className="font-bold dark:text-softPink-200 text-3xl ltr:capitalize leading-none">
-          <span className="text-softPink-500 dark:text-maroon-500">{t("title.check-out")}</span>
-          <br />
+        <div className="font-bold text-maroon-700 dark:text-softPink-200 text-3xl ltr:capitalize leading-none">
+          <span className="text-softPink-500 dark:text-maroon-500">{t("title.check-out")}</span>{" "}
           {t("title.what-everyone")}{" "}
-          <span className="text-softPink-500 dark:text-maroon-500">{t("title.buying")}</span>{" "}
+          <span className="text-softPink-500 dark:text-maroon-500">{t("title.buying")}</span> <br />
           {t("title.right-now")}
         </div>
 
-        <p className="pb-16 text-zinc-500 dark:text-zinc-400 leading-tight">{t("description")}</p>
+        <p className="text-zinc-500 dark:text-zinc-400 leading-tight">{t("description")}</p>
       </div>
 
       {/* Button  */}
       <Link
         href="/products"
-        className="flex items-center gap-3 bg-maroon-600 dark:bg-softPink-200 px-4 py-2 rounded-xl w-fit text-white dark:text-zinc-800"
+        className="flex items-center gap-3 bg-maroon-600 dark:bg-softPink-200 px-4 py-2 rounded-xl w-fit text-white dark:text-zinc-800 ltr:capitalize"
       >
-        Explore gifts <ArrowRight className="size-4" strokeWidth={1.46} />
+        {t("link")} <ArrowRight className="size-4 rtl:rotate-180" strokeWidth={1.46} />
       </Link>
     </section>
   );

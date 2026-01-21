@@ -17,18 +17,17 @@ export default function CarouselFallback() {
     >
       <CarouselContent>
         {Array.from({ length: 3 }).map((_, idx) => (
-          <CarouselItem key={idx} className="basis-1/3 ">
+          <CarouselItem key={idx} className="basis-1/3">
             <ProductCardSkeleton />
           </CarouselItem>
         ))}
       </CarouselContent>
 
       {/* Prev button */}
-      {/* bg-maroon-500 - text-maroon-50  */}
-      <CarouselPrevious className="size-10 rounded-3xl bg-maroon-500 bg-[#A6252A] text-maroon-50 text-[#FBEAEA] -left-5" />
+      <CarouselPrevious className="-left-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50" />
 
       {/* Next button */}
-      <CarouselNext className="size-10 rounded-3xl bg-maroon-500 bg-[#A6252A] text-maroon-50 text-[#FBEAEA] -right-5" />
+      <CarouselNext className="-right-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50" />
     </Carousel>
   );
 }

@@ -23,7 +23,7 @@ export default async function BestSellingCarousel() {
       <CarouselContent>
         {/* Products  */}
         {products.map((product) => (
-          <CarouselItem key={product._id} className="sm:basis-1/2 lg:basis-1/3">
+          <CarouselItem key={product._id} className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3">
             <Link key={product._id} href={`products/${product._id}`}>
               <ProductCard product={product} />
             </Link>
@@ -34,13 +34,13 @@ export default async function BestSellingCarousel() {
       {/* Prev */}
       <CarouselPrevious
         variant={"destructive"}
-        className="-left-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50"
+        className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
       />
 
       {/* Next */}
       <CarouselNext
         variant={"destructive"}
-        className="-right-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50"
+        className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
       />
     </Carousel>
   );

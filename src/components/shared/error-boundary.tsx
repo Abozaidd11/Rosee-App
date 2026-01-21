@@ -12,7 +12,7 @@ const ErrorBoundary = React.forwardRef<HTMLDivElement, ErrorBoundaryProps>(
     return (
       <div
         ref={ref}
-        className={cn("w-full flex flex-col items-center justify-center gap-4", className)}
+        className={cn("flex flex-col justify-center items-center gap-4 w-full", className)}
         {...props}
       >
         {/* Error message  */}
@@ -22,7 +22,7 @@ const ErrorBoundary = React.forwardRef<HTMLDivElement, ErrorBoundaryProps>(
         <Button
           variant={"destructive"}
           onClick={onRetry}
-          className=" bg-[#A6252A] px-5 py-2 text-sm font-medium text-white hover:opacity-90"
+          className="bg-maroon-600 hover:opacity-90 px-5 py-2 font-medium text-white text-sm"
         >
           Try again
         </Button>

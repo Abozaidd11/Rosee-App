@@ -2,8 +2,12 @@ import ProductsSection from "@/components/shared/products-section";
 import OccasionsFilterLinks from "./occasions-filter-links";
 import { getOccasions } from "@/lib/services/occasion.service";
 import { SectionHead } from "@/components/ui/section-header";
+import { getTranslations } from "next-intl/server";
 
 export default async function MostPopularSection() {
+  // Translations
+  const t = await getTranslations("most-popular");
+
   // Functions
   const { occasions } = await getOccasions();
 
@@ -14,7 +18,9 @@ export default async function MostPopularSection() {
       {/* Header */}
       <header className="flex justify-between items-center">
         {/* Heading */}
-        <SectionHead size={"sm"}>Most Popular</SectionHead>
+        <SectionHead size={"sm"} className="ltr:capitalize">
+          {t("heading")}
+        </SectionHead>
 
         {/* Occasions Filter */}
         <OccasionsFilterLinks occasions={occasions} />

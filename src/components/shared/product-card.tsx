@@ -15,35 +15,35 @@ export default function ProductCard({ product }: ProductCardProps) {
   const isNewProduct = productLifeTime < 7;
   const isHotProduct = sold > 150;
   return (
-    <section className="h-[22.75rem] flex flex-col justify-between">
+    <section className="flex flex-col justify-between h-[22.75rem]">
       {/* Cover  */}
-      <section className="relative h-[17rem] group ">
+      <section className="group relative h-[17rem]">
         {/* Header  */}
         {/* text-maroon-600 */}
 
-        <header className="absolute w-full flex justify-between top-3 z-10 px-3">
+        <header className="top-3 z-10 absolute flex justify-between px-3 w-full">
           {/* Add to wishlist */}
-          <Button className="opacity-0 group-hover:opacity-100 size-8 bg-white dark:bg-zinc-800 text-maroon-600 text-[#A6252A] dark:text-white font-medium text-xs leading-none p-0 rounded-full">
-            <HeartPlus className="text-inherit size-5" strokeWidth={1.48} />
+          <Button className="bg-white dark:bg-zinc-800 opacity-0 group-hover:opacity-100 p-0 rounded-full size-8 font-medium text-maroon-600 dark:text-white text-xs leading-none">
+            <HeartPlus className="size-5 text-inherit" strokeWidth={1.48} />
           </Button>
 
           {/* New  badge */}
           {isNewProduct && (
-            <Badge className="h-4 px-3 bg-zinc-100 uppercase font-medium text-sm text-zinc-700 rounded-full ">
+            <Badge className="bg-zinc-100 px-3 rounded-full h-4 font-medium text-zinc-700 text-sm uppercase">
               new
             </Badge>
           )}
 
           {/* Sold out badge */}
           {!quantity && (
-            <Badge className="h-4 px-3 bg-red-600 uppercase font-medium text-sm text-[#FFF1F5] rounded-full">
+            <Badge className="bg-red-600 px-3 rounded-full h-4 font-medium text-[#FFF1F5] text-sm uppercase">
               out of stock
             </Badge>
           )}
 
           {/* Hot badge - variant=secondary */}
           {isHotProduct && (
-            <Badge className="h-4 px-3 bg-[#FBEAEA] uppercase font-medium text-sm text-[#A6252A] rounded-full">
+            <Badge className="bg-softPink-50 px-3 rounded-full h-4 font-medium text-maroon-600 text-sm uppercase">
               hot
             </Badge>
           )}
@@ -65,13 +65,13 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* Details */}
       {/* text-maroon-700 - text-soft-pink-200*/}
-      <footer className="text-maroon-700 text-[#741C21] font-semibold text-lg leading-none  dark:text-soft-pink-200 dark:text-[#FFC2D0] ">
+      <footer className="font-semibold text-[#741C21] text-maroon-700 dark:text-[#FFC2D0] dark:text-soft-pink-200 text-lg leading-none">
         {title}
         {/* Frame 328  */}
         <div className="flex justify-between items-center pt-3">
           {/* Frame 329 */}
           {/* dark:text-soft-pink-200 */}
-          <div className="dark:text-soft-pink-200 dark:text-[#FFC2D0]">
+          <div className="dark:text-[#FFC2D0] dark:text-soft-pink-200">
             {/* Rating */}
             <div className="flex gap-1 pb-3">
               {Array.from({ length: 5 }).map((_, idx) => (
@@ -88,16 +88,15 @@ export default function ProductCard({ product }: ProductCardProps) {
 
             {`${priceAfterDiscount?.toFixed(2)} EGP`}
             {price && (
-              <span className="text-zinc-400 font-medium line-through pl-1 dark:text-zinc-400">
+              <span className="pl-1 font-medium text-zinc-400 dark:text-zinc-400 line-through">
                 {`${price?.toFixed(2)} EGP`}
               </span>
             )}
           </div>
 
           {/* Add to cart */}
-          {/* text-maroon-50 - maroon-500 - bg-maroon-600 - button variant */}
-          <Button className="size-10 rounded-full bg-maroon-600 bg-[#A6252A] dark:bg-maroon-500 dark:bg-[#CD2E33]">
-            <ShoppingCart className="size-6 text-marron-50 text-[#FBEAEA]" strokeWidth={1.48} />
+          <Button className="bg-maroon-600 dark:bg-maroon-500 rounded-full size-10">
+            <ShoppingCart className="size-6 text-marron-50" strokeWidth={1.48} />
           </Button>
         </div>
       </footer>
