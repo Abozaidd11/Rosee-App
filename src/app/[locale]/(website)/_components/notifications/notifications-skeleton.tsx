@@ -5,7 +5,10 @@ export default function NotificationsSkeleton() {
   return (
     <>
       {Array.from({ length: 8 }).map((_, index) => (
-        <li key={index} className="p-4 border-t border-zinc-300 dark:border-zinc-600 font-semibold animate-pulse">
+        <li
+          key={index}
+          className="p-4 border-t border-zinc-300 dark:border-zinc-600 font-semibold animate-pulse"
+        >
           <div className="flex items-start justify-between">
             {/* Title skeleton */}
             <div className="h-4 w-3/5 bg-zinc-400 dark:bg-zinc-500 rounded mb-2"></div>
