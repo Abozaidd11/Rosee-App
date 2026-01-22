@@ -1,3 +1,5 @@
+import RegisterForm from "./_components/register-form";
+
 export default function RegisterPage() {
-  return <div className="text-center">Register Page</div>;
+  return <RegisterForm />;
 }

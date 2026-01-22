@@ -21,5 +21,85 @@
   },
   "most-popular": {
     "heading": "most popular"
+  },
+  "auth": {
+    "register": {
+      "header": "Become part of our family!",
+      "name": {
+        "first": {
+          "title": "first name",
+          "placeholder": "Abdulrahman"
+        },
+        "last": {
+          "title": "last name",
+          "placeholder": "Shams"
+        }
+      },
+      "email": {
+        "title": "email",
+        "placeholder": "user@example.com"
+      },
+      "phone": {
+        "title": "phone",
+        "placeholder": "1012345678"
+      },
+      "gender": {
+        "title": "gender",
+        "placeholder": "Select gender",
+        "options": {
+          "male": "male",
+          "female": "female"
+        }
+      },
+      "password": {
+        "title": "password",
+        "placeholder": "Password@12345"
+      },
+      "confirm-password": {
+        "title": "confirm password",
+        "placeholder": "********"
+      },
+      "button": "create account",
+      "user-question": "Already have an account?",
+      "link": "login"
+    },
+    "validation": {
+      "firstName": {
+        "required": "First name is required",
+        "min": "First name must be at least {min} characters",
+        "max": "First name must be at most {max} characters"
+      },
+      "lastName": {
+        "required": "Last name is required",
+        "min": "Last name must be at least {min} characters",
+        "max": "Last name must be at most {max} characters"
+      },
+      "email": {
+        "required": "Email is required",
+        "invalid": "Please enter a valid email",
+        "tooShort": "Email is too short!",
+        "tooLong": "Email is too long!"
+      },
+      "phone": {
+        "required": "Phone number is required",
+        "invalid": "Please enter a valid phone number"
+      },
+      "password": {
+        "required": "Password is required",
+        "min": "Password must be at least {min} characters",
+        "max": "Password must be at most {max} characters",
+        "upper": "Password must contain at least one uppercase letter",
+        "lower": "Password must contain at least one lowercase letter",
+        "number": "Password must contain at least one number",
+        "special": "Password must contain at least one special character",
+        "mismatch": "Passwords do not match"
+      },
+      "rePassword": {
+        "required": "Confirm password is required"
+      },
+      "gender": {
+        "required": "Gender is required"
+      }
+    }
   }
 }

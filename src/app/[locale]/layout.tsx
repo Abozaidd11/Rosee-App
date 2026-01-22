@@ -5,6 +5,14 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local";
+import { Great_Vibes } from "next/font/google";
+
+// Auth layout font
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  variable: "--font-greatVibes",
+  weight: "400",
+});
 
 type LocaleProps = {
   children: React.ReactNode;
@@ -65,7 +73,9 @@ export default function LocaleLayout({ children, params: { locale } }: LocalePro
 
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-      <body className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} antialiased`}>
+      <body
+        className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} ${greatVibes.variable} antialiased`}
+      >
         <Providers>
           {children}
           <Toaster />
