@@ -161,6 +161,7 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
+        edwardianscriptitc: ["var(--font-edwardianscriptitc)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
         en: ["var(--font-sarabun)", "sans-serif"],
         ar: ["var(--font-tajawal)", "sans-serif"],

@@ -39,5 +39,24 @@
     "heading": "Say It with Flowers",
     "subheading": "Elegant gifts for every special moment.",
     "cta": "I’m buying!"
+  },
+  "login": {
+    "email": {
+      "label": "Email"
+    },
+
+    "password": {
+      "label": "Password"
+    },
+
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Login",
+
+    "noAccount": "Don’t have an account yet?",
+    "createAccount": "Create one now!",
+
+    "email-invalid": "Invalid email address.",
+    "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   }
 }
