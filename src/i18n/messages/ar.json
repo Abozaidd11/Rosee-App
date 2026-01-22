@@ -29,5 +29,16 @@
   },
   "most-popular": {
     "heading": "الأكثر شعبية"
+  },
+  "forgot-password": {
+    "otp-title": "أدخل رمز التحقق",
+    "otp-description": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى {email} <a>تعديل</a>",
+    "otp-verify": "تأكيد OTP",
+    "otp-time-left": "يمكنك طلب رمز آخر خلال: <span>{time}</span>",
+    "otp-resend": "إرسال رمز جديد",
+    "verify-otp": "تأكيد رمز التحقق",
+    "verifying-otp": "جارى تأكيد رمز التحقق",
+    "otp-need-help": "هل تحتاج مساعدة؟ <a>تواصل معنا</a>",
+    "otp-required": "يرجى إدخال رمز التحقق الصحيح (6 أرقام)"
   }
 }

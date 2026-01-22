@@ -29,5 +29,16 @@
   },
   "most-popular": {
     "heading": "most popular"
+  },
+  "forgot-password": {
+    "otp-title": "Enter the OTP Code",
+    "otp-description": "We have sent a 6-digit code to {email} <a>edit</a>",
+    "otp-verify": "Verify OTP",
+    "otp-time-left": "You can request another code in: <span>{time}</span>",
+    "otp-resend": "Send a new code",
+    "verify-otp": "Verify OTP",
+    "verifying-otp": "Verifying OTP",
+    "otp-need-help": "Need help? <a>Contact us</a>",
+    "otp-required": "Please enter a valid otp (6 digits)"
   }
 }
