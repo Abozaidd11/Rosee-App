@@ -14,7 +14,7 @@ export function generateStaticParams() {
 
 export default function AuthLayout({ children }: AuthProps) {
   return (
-    <div className="grid grid-cols-2 h-screen overflow-y-hidden">
+    <div className="grid grid-cols-2 dark:bg-zinc-800 h-screen overflow-y-hidden">
       {/* Body */}
       <section className="flex flex-col justify-between m-auto min-w-[57%]">
         {/* Header  */}

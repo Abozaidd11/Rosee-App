@@ -59,7 +59,7 @@ export default function RegisterForm() {
     // Form
     <section className="flex flex-col gap-5">
       {/* Header  */}
-      <header className="pb-4 border-b border-b-zinc-200 font-greatVibes text-maroon-700 text-5xl text-center">
+      <header className="pb-4 border-b border-b-zinc-200 font-greatVibes text-maroon-700 dark:text-softPink-300 text-5xl text-center">
         {t("header")}
       </header>
 
@@ -285,9 +285,12 @@ export default function RegisterForm() {
         </footer>
 
         {/* Create account */}
-        <p className="pt-5 border-t border-t-zinc-200 font-medium text-zinc-800 text-sm text-center">
-          {`${t("user-question")} `}
-          <Link href={"/login"} className="font-bold text-maroon-700 text-sm capitalize">
+        <p className="pt-5 border-t border-t-zinc-200 font-medium text-zinc-800 dark:text-zinc-50 text-sm text-center">
+          {t("user-question")}{" "}
+          <Link
+            href={"/login"}
+            className="font-bold text-maroon-700 dark:text-softPink-300 text-sm capitalize"
+          >
             {t("link")}
           </Link>
         </p>
