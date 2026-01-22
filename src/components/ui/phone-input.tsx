@@ -56,7 +56,7 @@ const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"
     <Input
       className={cn(
         "border-s-0 rounded-e-lg rounded-s-none",
-        "rtl:border-e-0 rtl:rounded-s-lg rtl:rounded-e-none",
+        "rtl:border-e-0 rtl:rounded-s-lg rtl:border-s rtl:rounded-e-none",
         className
       )}
       {...props}
