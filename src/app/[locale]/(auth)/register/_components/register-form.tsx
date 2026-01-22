@@ -32,6 +32,7 @@ import { useTranslations } from "next-intl";
 export default function RegisterForm() {
   // Translation
   const t = useTranslations("auth.register");
+  const tZod = useTranslations("auth.validation");
 
   // Mutation
   const { isPending, error, register } = useRegister();
@@ -47,7 +48,7 @@ export default function RegisterForm() {
       phone: "",
       gender: "",
     },
-    resolver: zodResolver(registerSchema),
+    resolver: zodResolver(registerSchema(tZod)),
   });
 
   // Functions
@@ -203,7 +204,7 @@ export default function RegisterForm() {
                   aria-invalid={!!form.formState.errors.gender}
                 >
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="capitalize">
                       <SelectValue placeholder={t("gender.placeholder")} />
                     </SelectTrigger>
                   </FormControl>

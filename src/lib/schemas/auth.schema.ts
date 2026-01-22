@@ -1,72 +1,62 @@
-import {
-  // isPossiblePhoneNumber,
-  isValidPhoneNumber,
-} from "react-phone-number-input";
+import { isValidPhoneNumber } from "react-phone-number-input";
 import * as z from "zod";
+import { Translation } from "../types/global";
 
-export const registerSchema = z
-  .object({
-    // First nam
-    firstName: z
-      .string()
-      .nonempty({ message: "First name is required" })
-      .trim()
-      .min(2, { message: "First name must be at least 2 characters long" })
-      .max(20, { message: "First name must be at most 20 characters long" }),
+export const registerSchema = (t: Translation) =>
+  z
+    .object({
+      // First name
+      firstName: z
+        .string()
+        .nonempty({ message: t("firstName.required") })
+        .trim()
+        .min(2, { message: t("firstName.min", { min: 2 }) })
+        .max(20, { message: t("firstName.max", { max: 20 }) }),
 
-    // Last name
-    lastName: z
-      .string()
-      .nonempty({ message: "Last name is required" })
-      .trim()
-      .min(2, { message: "Last name must be at least 2 characters long" })
-      .max(20, { message: "Last name must be at most 20 characters long" }),
+      // Last name
+      lastName: z
+        .string()
+        .nonempty({ message: t("lastName.required") })
+        .trim()
+        .min(2, { message: t("lastName.min", { min: 2 }) })
+        .max(20, { message: t("lastName.max", { max: 20 }) }),
 
-    // Email
-    email: z
-      .string()
-      .trim()
-      .toLowerCase()
-      .nonempty({ message: "Email is required" })
-      .and(
-        z
-          .email({
-            message: "Please enter a valid email",
-          })
-          .min(5, "Email is too short !")
-          .max(128, "Email is too long !")
-      ),
+      // Email
+      email: z
+        .string()
+        .nonempty({ message: t("email.required") })
+        .trim()
+        .email({ message: t("email.invalid") })
+        .min(5, { message: t("email.tooShort") })
+        .max(128, { message: t("email.tooLong") }),
 
-    // Phone
-    phone: z.string().nonempty({ message: "Phone number is required" }).refine(isValidPhoneNumber, {
-      message: "Please enter a valid phone number",
-    }),
-    // .transform((val) => Number(val.replace(/\D+/g, "")))
-    // Gender
-    gender: z.enum(["male", "female"]),
+      // Phone
+      phone: z
+        .string()
+        .nonempty({ message: t("phone.required") })
+        .refine(isValidPhoneNumber, { message: t("phone.invalid") }),
 
-    // Password
-    password: z
-      .string()
-      .nonempty({ message: "Password is required" })
-      .trim()
-      .min(8, { message: "Password must be at least 8 characters long" })
-      .max(20, { message: "Password must be at most 20 characters long" })
-      .regex(/[A-Z]/, {
-        message: "Password must contain at least one uppercase letter",
-      })
-      .regex(/[a-z]/, {
-        message: "Password must contain at least one lowercase letter",
-      })
-      .regex(/[0-9]/, { message: "Password must contain at least one number" })
-      .regex(/[!@#$%^&*()_\-+={[}\]|:;"'<,>.?]/, {
-        message: "Password must contain at least one special character",
+      // Gender
+      gender: z.enum(["male", "female"], {
+        message: t("gender.required"),
       }),
 
-    // Confirm password
-    rePassword: z.string().nonempty({ message: "Confirm password is required" }),
-  })
-  .refine((data) => data.password === data.rePassword, {
-    message: "Passwords do not match",
-    path: ["rePassword"],
-  });
+      // Password
+      password: z
+        .string()
+        .nonempty({ message: t("password.required") })
+        .trim()
+        .min(8, { message: t("password.min", { min: 8 }) })
+        .max(20, { message: t("password.max", { max: 20 }) })
+        .regex(/[A-Z]/, { message: t("password.upper") })
+        .regex(/[a-z]/, { message: t("password.lower") })
+        .regex(/[0-9]/, { message: t("password.number") })
+        .regex(/[!@#$%^&*()_\-+={[}\]|:;"'<,>.?]/, { message: t("password.special") }),
+
+      // Confirm password
+      rePassword: z.string().nonempty({ message: t("rePassword.required") }),
+    })
+    .refine((data) => data.password === data.rePassword, {
+      message: t("password.mismatch"),
+      path: ["rePassword"],
+    });
