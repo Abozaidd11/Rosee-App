@@ -162,6 +162,7 @@ const config: Config = {
       },
       fontFamily: {
         edwardianscriptitc: ["var(--font-edwardianscriptitc)", "sans-serif"],
+        cairo: ["var(--font-CairoRegular)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
         en: ["var(--font-sarabun)", "sans-serif"],
         ar: ["var(--font-tajawal)", "sans-serif"],

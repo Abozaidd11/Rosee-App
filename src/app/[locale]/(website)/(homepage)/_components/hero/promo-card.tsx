@@ -13,7 +13,7 @@ import { useTranslations } from "next-intl";
 export default function PromoCard() {
   const t = useTranslations("promoCardheroSection");
   return (
-    <div className="relative  w-full  max-w-[18.8125rem] aspect-[301/439] rounded-2xl overflow-hidden bg-black/10 ">
+    <div className="relative  w-full h-[27.5rem] max-w-[18.8125rem] aspect-[301/439] rounded-2xl overflow-hidden bg-black/10 ">
       {/* Image Background */}
       <Image
         className="object-cover"

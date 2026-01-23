@@ -41,6 +41,7 @@
     "cta": "I’m buying!"
   },
   "login": {
+    "title": "Welcome back!",
     "email": {
       "label": "Email"
     },

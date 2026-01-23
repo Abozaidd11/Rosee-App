@@ -1,60 +1,64 @@
+import { withAuth } from "next-auth/middleware";
 import createMiddleware from "next-intl/middleware";
-import { routing } from "./i18n/routing";
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { routing } from "./i18n/routing";
 
-const publicPages = ["/", "/login"];
-const privatePage = ["/product"];
+const authPages = ["/login", "/register"];
+const publicPages = ["/"];
 
-export default async function middleware(request: NextRequest) {
-  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
+const handleI18nRouting = createMiddleware(routing);
+
+const authMiddleware = withAuth(
+  function onSuccess(req) {
+    return handleI18nRouting(req);
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => token != null,
+    },
+    pages: {
+      signIn: "/login",
+    },
+  }
+);
+
+export default function middleware(req: NextRequest) {
   const { locales } = routing;
+  const pathname = req.nextUrl.pathname;
 
-  const publicPathnameRegex = RegExp(
-    `^(/(${locales.join("|")}))?(${publicPages
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
+  const buildRegex = (pages: string[]) =>
+   RegExp(
+    `^(/(${locales.join('|')}))?(${pages
+      .flatMap((p) => (p === '/' ? ['', '/'] : p))
+      .join('|')})/?$`,
+    'i'
   );
 
-  const privatePathnameRegex = RegExp(
-    `^(/(${locales.join("|")}))?(${privatePage
-      .flatMap((p) => (p === "/" ? ["", "/"] : p))
-      .join("|")})/?$`,
-    "i"
-  );
+  const isPublicPage = buildRegex(publicPages).test(pathname);
+  const isAuthPage = buildRegex(authPages).test(pathname);
+  console.log({ isPublicPage, isAuthPage });
+  const token =
+    req.cookies.get("next-auth.session-token")?.value ||
+    req.cookies.get("__Secure-next-auth.session-token")?.value;
 
-  const isPublicPage = publicPathnameRegex.test(request.nextUrl.pathname);
-  const isPrivatePage = privatePathnameRegex.test(request.nextUrl.pathname);
-
-  if (isPublicPage && token) {
-    return NextResponse.redirect(new URL(`product`, request.nextUrl.origin));
+  if (token && isAuthPage) {
+    const url = req.nextUrl.clone();
+    url.pathname = `/product`;
+    return NextResponse.redirect(url);
   }
 
-  // isPrivatePage
-  if (isPrivatePage && !token) {
-    return NextResponse.redirect(new URL(`login`, request.nextUrl.origin));
+  if (isPublicPage) {
+    return handleI18nRouting(req);
   }
 
-  // isPublicPage
-  if (isPublicPage || privatePage) {
-    const response = createMiddleware(routing)(request);
-
-    return response;
+  if (isAuthPage) {
+    return handleI18nRouting(req);
   }
 
-  return NextResponse.next();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return (authMiddleware as any)(req);
 }
 
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    "/((?!api|_next/static|_next/image|favicon.ico|trpc|_next|_vercel|.*\\..*).*)",
-  ],
+  matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
