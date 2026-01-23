@@ -8,22 +8,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
 import { Form } from "@/components/ui/form";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
-import { getOtpTimeLeft } from "../_utils/otp-timer-presisted";
+import { getOtpTimeLeft, startOtpTimer } from "../../_utils/otp-timer-presisted";
 import { useEffect, useState } from "react";
 import { verifyOtpSchema } from "@/lib/schemes/auth.schemes";
 import { Link } from "@/i18n/navigation";
 import ErrorAlert from "../../_components/error-alert";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { useTranslations } from "next-intl";
+import useSendOTP from "../_hooks/af-task/use-send-otp";
 
-// todo : otp step navigation, timer and email
-// type StepOtpProps = {
-//   email: string;
-//   onNext: () => void;
-//   onBack: () => void;
-// };
+type StepOtpProps = {
+  email: string;
+  onNext: () => void;
+  onBack: () => void;
+};
 
-export default function OtpStep() {
+export default function OtpStep({ email, onNext, onBack }: StepOtpProps) {
   //state
   const [timer, setTimer] = useState(getOtpTimeLeft || 0);
 
@@ -31,7 +31,8 @@ export default function OtpStep() {
   const t = useTranslations("forgot-password");
 
   // hooks
-  const { verifyOtp, isPending, error } = useVerifyOtp();
+  const { verifyOtp, isVerifyPending, verifyError } = useVerifyOtp();
+  const { isPending, error, sendOTP } = useSendOTP();
 
   // react hook form
   const form = useForm<VerifyOtpFields>({
@@ -47,7 +48,7 @@ export default function OtpStep() {
     verifyOtp(data, {
       onSuccess: () => {
         localStorage.removeItem("otp_time");
-        // onNext();
+        onNext();
       },
       onError: (err) => {
         form.setError("resetCode", { message: err.message });
@@ -74,10 +75,21 @@ export default function OtpStep() {
     }
   }, [otpValue]);
 
-  // todo resend
-  // const handleResend = () => {};
+  // resend otp
+  const handleResend = () => {
+    if (!email) return;
+    sendOTP(
+      { email },
+      {
+        onSuccess: () => {
+          startOtpTimer();
+          setTimer(getOtpTimeLeft());
+        },
+      }
+    );
+  };
 
-  // timer
+  // timer count down
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer(getOtpTimeLeft());
@@ -96,17 +108,14 @@ export default function OtpStep() {
             <div className="flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-700 pb-4">
               <p className="leading-none">
                 {t.rich("otp-description", {
-                  // todo: put email from props
-                  email: "user@example.com.",
-                  // email: email ? email : "user@example.com.",
-                  a: (chunk) => (
-                    <Link
-                    // todo : change href
-                      href={"#"}
+                  email: email ? email : "user@example.com.",
+                  span: (chunk) => (
+                    <span
+                      onClick={() => onBack()}
                       className="text-blue-700 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition cursor-pointer active:scale-90 underline"
                     >
                       {chunk}
-                    </Link>
+                    </span>
                   ),
                 })}
               </p>
@@ -135,25 +144,34 @@ export default function OtpStep() {
           />
 
           {/* timer */}
-          <p className="text-zinc-700 dark:text-zinc-400 text-center text-sm mt-6">
-            {timer > 0 ? (
-              <>
-                {t.rich("otp-time-left", {
-                  timer: timer,
-                  span: (chunk) => <span className="text-primary dark:text-primary">{chunk}</span>,
-                })}
-              </>
-            ) : (
-              <button
-                type="button"
-                // todo
-                // onClick={handleResend}
-                className="text-end w-full font-medium text-primary hover:text-maroon-800 dark:text-primary hover:dark:text-softPink-300 transition cursor-pointer active:scale-90"
-              >
-                {t("otp-resend")}
-              </button>
-            )}
-          </p>
+          <div className="w-full flex justify-end">
+            <p className="text-zinc-700 dark:text-zinc-400 text-center text-sm mt-6">
+              {timer > 0 ? (
+                <>
+                  {t.rich("otp-time-left", {
+                    time: timer,
+                    span: (chunk) => (
+                      <span className="text-primary dark:text-primary font-medium">{chunk}</span>
+                    ),
+                  })}
+                </>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleResend}
+                  className="inline-flex items-center justify-end gap-1 text-end font-medium text-primary hover:text-maroon-800 dark:text-primary hover:dark:text-softPink-300 transition cursor-pointer active:scale-90"
+                >
+                  {isPending ? (
+                    <>
+                      {t("otp-resending")} <Loader2 className="animate-spin" />
+                    </>
+                  ) : (
+                    <>{t("otp-resend")}</>
+                  )}
+                </button>
+              )}
+            </p>
+          </div>
 
           {/* Form validation error */}
           {form.formState.errors.resetCode && (
@@ -161,15 +179,17 @@ export default function OtpStep() {
           )}
 
           {/* Server error (only if no form error) */}
-          {!form.formState.errors.resetCode && error && <ErrorAlert message={error.message} />}
+          {!form.formState.errors.resetCode && verifyError && (
+            <ErrorAlert message={verifyError.message} />
+          )}
 
           {/* Submit button */}
           <Button
             type="submit"
-            disabled={isPending}
+            disabled={isVerifyPending}
             className="w-full mt-4 flex items-center justify-center gap-x-2"
           >
-            {isPending ? (
+            {isVerifyPending ? (
               <>
                 {t("verifying-otp")} <Loader2 className="animate-spin" />
               </>

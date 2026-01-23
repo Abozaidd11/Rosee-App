@@ -31,14 +31,64 @@
     "heading": "most popular"
   },
   "forgot-password": {
+    "title": "Forgot Password?",
+    "desc": "Worry not, we’ll send you instructions to help you reset it.",
+    "field-lable": "Email",
+    "footer": "Don’t have an account yet? <a>Create one now!</a>",
+    "email-form-button": "Continue",
+    "new-password-title": "Create a new password",
+    "new-password-desc": "Set a strong password to secure your account.",
+    "new-password-field-one-label": "Password",
+    "new-password-button": "Reset Password",
+    "new-password-footer": "Need help? <a>Contact us</a>",
+    "new-password-field-two-label": "Confirm Password",
+    "validation-email": "In-Valid Email",
+    "email-require": "Email is Require",
+    "password-require": "Please enter your password",
+    "rePassword-require": "Please enter your confirm password",
+    "password-confirmPassword": "password and confirm Password don't match",
+    "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
+    "sendotp-toast": "OTP sent to your email",
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
     "otp-title": "Enter the OTP Code",
-    "otp-description": "We have sent a 6-digit code to {email} <a>edit</a>",
+    "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
     "otp-verify": "Verify OTP",
-    "otp-time-left": "You can request another code in: <span>{time}</span>",
+    "otp-time-left": "You can request another code in: <span>{time}s</span>",
     "otp-resend": "Send a new code",
+    "otp-resending": "Sending a new code",
     "verify-otp": "Verify OTP",
     "verifying-otp": "Verifying OTP",
     "otp-need-help": "Need help? <a>Contact us</a>",
-    "otp-required": "Please enter a valid otp (6 digits)"
+    "otp-required": "Please enter a valid otp (6 digits)",
+    "promoCardheroSection": {
+      "badge": "Starting from 10.99 EGP",
+      "title": "Special Gifts For The People You Love",
+      "button": "Shop Now"
+    },
+    "carouselheroSection": {
+      "heading": "Say It with Flowers",
+      "subheading": "Elegant gifts for every special moment.",
+      "cta": "I’m buying!"
+    },
+    "login": {
+      "title": "Welcome back!",
+      "email": {
+        "label": "Email"
+      },
+
+      "password": {
+        "label": "Password"
+      },
+
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "submit": "Login",
+
+      "noAccount": "Don’t have an account yet?",
+      "createAccount": "Create one now!",
+
+      "email-invalid": "Invalid email address.",
+      "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+    }
   }
 }

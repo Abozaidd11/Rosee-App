@@ -12,5 +12,6 @@ export default function useVerifyOtp() {
       return payload;
     },
   });
-  return { isPending, error, verifyOtp: mutate };
+
+  return { isVerifyPending: isPending, verifyError: error, verifyOtp: mutate };
 }

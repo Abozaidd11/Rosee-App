@@ -14,7 +14,8 @@ export default function TestimonialsCarousel({ userReviews }: PageProps) {
   // Variables
   // this variable for increasing the length for testimonials array to make the carousel autoplay work
   const testimonials = [...userReviews, ...userReviews];
-  const direction = typeof document !== "undefined" && document.documentElement.dir === "rtl" ? "rtl" : "ltr";
+  const direction =
+    typeof document !== "undefined" && document.documentElement.dir === "rtl" ? "rtl" : "ltr";
 
   return (
     <Carousel
