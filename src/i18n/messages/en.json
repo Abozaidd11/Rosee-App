@@ -40,6 +40,27 @@
     "subheading": "Elegant gifts for every special moment.",
     "cta": "I’m buying!"
   },
+  "forgot-password": {
+    "title": "Forgot Password?",
+    "desc": "Worry not, we’ll send you instructions to help you reset it.",
+    "field-lable": "Email",
+    "footer": "Don’t have an account yet? <a>Create one now!</a>",
+    "email-form-button": "Continue",
+    "new-password-title": "Create a new password",
+    "new-password-desc": "Set a strong password to secure your account.",
+    "new-password-field-one-label": "Password",
+    "new-password-button": "Reset Password",
+    "new-password-footer": "Need help? <a>Contact us</a>",
+    "new-password-field-two-label": "Confirm Password",
+    "validation-email": "In-Valid Email",
+    "email-require": "Email is Require",
+    "password-require": "Please enter your password",
+    "rePassword-require": "Please enter your confirm password",
+    "password-confirmPassword": "password and confirm Password don't match",
+    "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
+    "sendotp-toast": "OTP sent to your email",
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s"
+  },
   "login": {
     "title": "Welcome back!",
     "email": {

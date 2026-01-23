@@ -7,11 +7,11 @@ type ErrorAlertProps = {
 export default function ErrorAlert({ message }: ErrorAlertProps) {
   return (
     <p
-      className="relative mt-2 text-red-600 text-sm border border-red-600 px-4 py-3 bg-red-50 text-center"
+      className="relative bg-red-50 mt-2 px-4 py-3 border border-red-600 text-red-600 text-sm text-center"
       role="alert"
     >
-      <span className="absolute left-1/2 -translate-x-1/2 -top-3 flex items-center justify-center">
-        <CircleX className="text-red-600 w-6 h-6 fill-white overflow-hidden" />
+      <span className="-top-3 left-1/2 absolute flex justify-center items-center -translate-x-1/2">
+        <CircleX className="fill-white w-6 h-6 overflow-hidden text-red-600" />
       </span>
       {message}
     </p>
