@@ -32,16 +32,10 @@ export default async function BestSellingCarousel() {
       </CarouselContent>
 
       {/* Prev */}
-      <CarouselPrevious
-        variant={"destructive"}
-        className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
-      />
+      <CarouselPrevious className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50" />
 
       {/* Next */}
-      <CarouselNext
-        variant={"destructive"}
-        className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
-      />
+      <CarouselNext className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50" />
     </Carousel>
   );
 }
