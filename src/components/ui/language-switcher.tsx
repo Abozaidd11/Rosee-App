@@ -11,7 +11,7 @@ export default function LanguageSwitcher() {
     <Link
       href={pathName}
       locale={locale === "ar" ? "en" : "ar"}
-      className="p-2 sm:p-4 ltr:font-ar rtl:font-en text-end"
+      className="p-2 sm:p-4 ltr:font-ar rtl:font-en dark:text-zinc-50 text-end"
     >
       {locale === "ar" ? "English" : "العربيه"}
     </Link>

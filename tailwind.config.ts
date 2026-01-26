@@ -161,6 +161,10 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
+        greatVibes: ["var(--font-greatVibes)", "sans-serif"],
+        tajawal: ["var(--font-tajawal)", "sans-serif"],
+        edwardianscriptitc: ["var(--font-edwardianscriptitc)", "sans-serif"],
+        cairo: ["var(--font-CairoRegular)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
         en: ["var(--font-sarabun)", "sans-serif"],
         ar: ["var(--font-tajawal)", "sans-serif"],

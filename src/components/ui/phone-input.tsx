@@ -54,7 +54,11 @@ PhoneInput.displayName = "PhoneInput";
 const InputComponent = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, ...props }, ref) => (
     <Input
-      className={cn("rounded-e-lg rounded-s-none border-s-0", className)}
+      className={cn(
+        "border-s-0 rounded-e-lg rounded-s-none",
+        "rtl:border-e-0 rtl:rounded-s-lg rtl:border-s rtl:rounded-e-none",
+        className
+      )}
       {...props}
       ref={ref}
     />
@@ -94,16 +98,16 @@ const CountrySelect = ({
         <Button
           type="button"
           variant="ghost"
-          className="flex gap-1 rounded-e-none rounded-s-lg border border-e-0 border-zinc-300 px-3 focus:z-10 h-12 dark:border-zinc-600 dark:bg-zinc-700"
+          className="focus:z-10 flex gap-1 dark:bg-zinc-700 px-3 border border-e-0 border-zinc-300 dark:border-zinc-600 rounded-e-none rounded-s-lg h-12"
           disabled={disabled}
         >
           <FlagComponent country={selectedCountry} countryName={selectedCountry} />
           <ChevronsUpDown
-            className={cn("ms-[-2px] size-4 opacity-50", disabled ? "hidden" : "opacity-100")}
+            className={cn("opacity-50 ms-[-2px] size-4", disabled ? "hidden" : "opacity-100")}
           />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
+      <PopoverContent className="p-0 w-[300px]">
         <Command>
           <CommandInput
             value={searchValue}
@@ -169,7 +173,7 @@ const CountrySelectOption = ({
     <CommandItem className="gap-2" onSelect={handleSelect}>
       <FlagComponent country={country} countryName={countryName} />
       <span className="flex-1 text-sm">{countryName}</span>
-      <span className="text-sm text-foreground/50">{`+${RPNInput.getCountryCallingCode(country)}`}</span>
+      <span className="text-foreground/50 text-sm">{`+${RPNInput.getCountryCallingCode(country)}`}</span>
       <CheckIcon
         className={`ml-auto size-4 ${country === selectedCountry ? "opacity-100" : "opacity-0"}`}
       />

@@ -6,8 +6,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/shared/product-card";
-import Link from "next/link";
 import { getBestSellingProducts } from "@/lib/services/product.service";
+import { Link } from "@/i18n/navigation";
 
 export default async function BestSellingCarousel() {
   // Hooks

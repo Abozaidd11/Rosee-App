@@ -14,14 +14,14 @@ export function generateStaticParams() {
 
 export default function AuthLayout({ children }: AuthProps) {
   return (
-    <div className="grid grid-cols-2 h-screen">
+    <div className="grid grid-cols-2 dark:bg-zinc-800 h-screen overflow-y-hidden">
       {/* Body */}
-      <section className="flex flex-col gap-10 m-auto min-w-[50%]">
+      <section className="flex flex-col gap-10 m-auto min-w-[70%]">
         {/* Header  */}
         <LanguageSwitcher />
 
         {/* Content  */}
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-5">
           <AuthLayoutSeparator />
           {children}
           <AuthLayoutSeparator flip />

@@ -62,8 +62,13 @@ export default function CarouselSection() {
       >
         <CarouselContent>
           {imagesCarouselHeroSectionData.map((item, index) => (
-            <CarouselItem className="relative aspect-[955/440] w-full h-full" key={index}>
-              <Image src={`/assets/${item}`} fill alt={item} className="object-cover rounded-2xl" />
+            <CarouselItem className="relative aspect-[955/440] w-full h-[27.5rem]" key={index}>
+              <Image
+                src={`/assets/${item}`}
+                fill
+                alt={item}
+                className="object-cover rounded-2xl"
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
