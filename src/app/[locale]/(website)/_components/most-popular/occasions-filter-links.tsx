@@ -1,8 +1,8 @@
 "use client";
 
+import { Link } from "@/i18n/navigation";
 import { TOccasion } from "@/lib/types/occasion";
 import { cn } from "@/lib/utils/tailwind-merge";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 type OccasionsFilterProps = { occasions: TOccasion[] };
@@ -29,7 +29,7 @@ export default function OccasionsFilterLinks({ occasions }: OccasionsFilterProps
                 : "text-zinc-700 dark:text-zinc-400 hover:text-maroon-600"
             )}
           >
-            <Link href={`?occasionId=${_id}`} className="text-inherit">
+            <Link scroll={false} href={`?occasionId=${_id}`} className="text-inherit">
               {name}
             </Link>
           </li>
