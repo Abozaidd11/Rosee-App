@@ -79,7 +79,7 @@ export function LoginForm() {
   }
 
   return (
-    <form className="max-w-sm" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="w-full" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
       <FieldGroup className="gap-4">
         <Controller
           name="email"
@@ -156,7 +156,7 @@ export function LoginForm() {
 
         <span className="text-sm border-t dark:border-zinc-600 text-center pt-4 mt-7">
           {t("noAccount")}
-          <Link href="#" className="text-maroon-700 dark:text-softPink-300">
+          <Link href="/register" className="text-maroon-700 dark:text-softPink-300">
             {" "}
             {t("createAccount")}
           </Link>

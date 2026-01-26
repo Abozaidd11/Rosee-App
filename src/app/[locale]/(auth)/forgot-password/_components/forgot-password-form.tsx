@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import EmailStep from "./_components/email-step";
-import NewPasswordStep from "./_components/new-password-step";
 import OtpStep from "./_components/otp-step";
+import EmailStep from "./af-task/email-step";
+import NewPasswordStep from "./af-task/new-password-step";
 
 export default function ForgotPasswordForm() {
   const [step, setStep] = useState<"email" | "otp" | "new-password">("email");
