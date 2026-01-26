@@ -6,8 +6,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/shared/product-card";
-import Link from "next/link";
 import { getBestSellingProducts } from "@/lib/services/product.service";
+import { Link } from "@/i18n/navigation";
 
 export default async function BestSellingCarousel() {
   // Hooks
@@ -32,10 +32,16 @@ export default async function BestSellingCarousel() {
       </CarouselContent>
 
       {/* Prev */}
-      <CarouselPrevious className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50" />
+      <CarouselPrevious
+        variant={"destructive"}
+        className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
+      />
 
       {/* Next */}
-      <CarouselNext className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50" />
+      <CarouselNext
+        variant={"destructive"}
+        className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
+      />
     </Carousel>
   );
 }
