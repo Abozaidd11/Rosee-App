@@ -45,11 +45,11 @@ export default function ProductsSection({ defaultOccasionId }: ProductsSectionPr
       {payload?.products && payload?.products.length >= 12 ? (
         <Link
           href={`/products?occasionId=${occasionId}`}
-          className="flex justify-end items-center gap-2 h-10 font-semibold text-[#741C21] text-maroon-700 dark:text-[#FFC2D0] dark:text-soft-pink capitalize"
+          className="flex justify-end items-center gap-2 h-10 font-semibold text-maroon-700 dark:text-softPink-200 capitalize"
         >
           view more
           <MoveRight
-            className="content-end size-5 text-[#741C21] text-maroon-700 dark:text-[#FFC2D0] dark:text-soft-pink"
+            className="content-end size-5 text-maroon-700 dark:text-softPink-200"
             strokeWidth={1.48}
           />
         </Link>
