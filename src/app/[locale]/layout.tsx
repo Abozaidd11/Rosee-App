@@ -50,6 +50,15 @@ const inter = localFont({
   weight: "300 400 500 600 700 800 900",
 });
 
+// edwardianscriptitc
+const edwardianscriptitc = localFont({
+  src: "../../../public/fonts/edwardianscriptitc.ttf",
+  variable: "--font-edwardianscriptitc",
+  weight: "400",
+});
+
+
+
 export async function generateMetadata({ params: { locale } }: Pick<LocaleProps, "params">) {
   // Translations
   const t = await getTranslations({ locale, namespace: "Metadata" });
@@ -74,7 +83,7 @@ export default function LocaleLayout({ children, params: { locale } }: LocalePro
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
-        className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} ${greatVibes.variable} antialiased`}
+        className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} ${edwardianscriptitc.variable} ${greatVibes.variable} antialiased`}
       >
         <Providers>
           {children}

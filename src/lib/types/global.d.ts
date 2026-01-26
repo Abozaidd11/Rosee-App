@@ -1,2 +1,6 @@
+import { getTranslations } from "next-intl/server";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Translation = (key: string, values?: Record<string, any>) => string;
+export type RegisterTranslation = (key: string, values?: Record<string, any>) => string;
+
+export type Translation = Awaited<ReturnType<typeof getTranslations>>;
