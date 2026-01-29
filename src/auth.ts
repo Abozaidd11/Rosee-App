@@ -48,7 +48,7 @@ export const authOptions: NextAuthOptions = {
         // Return user object to NextAuth
         return {
           id: payload.user._id,
-          accsesToken: payload.accsesToken,
+          accessToken: payload.accessToken,
           user: payload.user,
           rememberMe: credentials?.rememberMe === "true",
         };
@@ -61,14 +61,16 @@ export const authOptions: NextAuthOptions = {
     // Modify JWT token after login
     async jwt({ token, user }) {
       if (user) {
-        token.accsesToken = user.accsesToken;
+        token.accessToken = user.accessToken;
         token.user = user.user;
+        token.rememberMe = user.rememberMe;
       }
       return token;
     },
 
     // Modify session object sent to the client
     async session({ session, token }) {
+      session.accessToken = token.accessToken as string;
       session.user = token.user;
       return session;
     },

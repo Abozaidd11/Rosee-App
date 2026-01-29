@@ -5,7 +5,7 @@ declare module "next-auth" {
    * or the second parameter of the `session` callback, when using a database.
    */
   interface User {
-    accsesToken: string;
+    accessToken: string;
     user: {
       _id: string;
       firstName: string;
@@ -26,10 +26,27 @@ declare module "next-auth" {
    */
   interface Session {
     user: User["user"];
+    accessToken: string;
   }
 }
 declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  interface JWT extends User {}
+  interface JWT {
+    accessToken: string;
+    user: {
+      _id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+      gender: "male" | "female" | string;
+      phone: string;
+      photo: string;
+      role: "user" | "admin" | string;
+      wishlist: [];
+      addresses: [];
+      createdAt: string;
+    };
+    rememberMe?: boolean;
+  }
 }

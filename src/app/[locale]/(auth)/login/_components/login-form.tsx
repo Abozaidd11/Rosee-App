@@ -25,7 +25,8 @@ import useLogin from "../_hooks/use-login";
 // Components
 import ErrorAlert from "../../_components/error-alert";
 import RememberMe from "../../_components/remember-me";
-import { signIn } from "next-auth/react";
+import { getSession, signIn, signOut } from "next-auth/react";
+import { toast } from "sonner";
 
 // Types
 interface LoginFormFields {
@@ -51,30 +52,37 @@ export function LoginForm() {
     defaultValues: {
       email: "",
       password: "",
-      rememberMe: false,
     },
   });
 
   // Functions
   async function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
-    login(data);
     try {
-      const response = await signIn("credentials", {
+      const response = await signIn("login", {
+        email: data.email,
+        password: data.password,
         rememberMe: rememberMe ? "true" : "false",
         redirect: false,
       });
 
-      if (response?.ok) {
-        // Only store if rememberMe is false (for session-only login)
-        if (!rememberMe) {
-          sessionStorage.setItem("authSession", "true");
-        } else {
-          // If rememberMe is true, cookie persists, and deletes sessionStorage
-          sessionStorage.removeItem("authSession");
-        }
+      if (!response?.ok) return;
+
+      // If rememberMe is true, signOut and store cookie in sessionStorage
+      if (rememberMe) {
+        const session = await getSession();
+
+        // store cookie in sessionStorage
+        sessionStorage.setItem("token", session?.accessToken ?? "");
+
+        // delete nextAuth cookie
+        await signOut({ redirect: false });
       }
+      
+        // redirect to dashboard
+        window.location.href = "/dashboard";
+      
     } catch (error) {
-      setError("An unexpected error occurred");
+      toast.error("An unexpected error occurred");
     }
   }
 
