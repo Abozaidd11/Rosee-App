@@ -10,32 +10,36 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 // Icons
 import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 
 // Navigation & i18n
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 // Logic
 import { loginSchema } from "@/lib/schemes/login";
-import useLogin from "../_hooks/use-login";
 
 // Components
 import ErrorAlert from "../../_components/error-alert";
+import RememberMe from "../../_components/remember-me";
+import { signIn } from "next-auth/react";
 
 export function LoginForm() {
   // Translation
   const t = useTranslations("login");
+  
+  // Router for client-side navigation (doesn't trigger beforeunload)
+  const router = useRouter();
 
   // State
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Hooks
-  const { isPending, error, login } = useLogin();
+  // Remember Me
+  const [rememberMe, setRememberMe] = useState(false);
 
   // Form & validation
   const form = useForm<z.infer<ReturnType<typeof loginSchema>>>({
@@ -47,12 +51,44 @@ export function LoginForm() {
   });
 
   // Functions
-  function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
-    login(data);
+  async function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
+    setIsPending(true);
+    setError(null);
+
+    try {
+      const response = await signIn("login", {
+        email: data.email,
+        password: data.password,
+        rememberMe: rememberMe ? "true" : "false",
+        redirect: false,
+      });
+
+      if (!response?.ok) {
+        setError(response?.error || "Login failed");
+        setIsPending(false);
+        return;
+      }
+
+      // Handle cookie based on Remember Me preference
+      // Remember Me = TRUE: httpOnly cookie (30 days) + persistent rememberMe cookie
+      // Remember Me = FALSE: non-httpOnly cookie + SESSION rememberMe cookie (expires on browser close)
+      await fetch("/api/auth/session-type", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ rememberMe }),
+      });
+
+      // Redirect to dashboard
+      router.push("/product");
+    } catch (err) {
+      setError("An unexpected error occurred");
+      setIsPending(false);
+    }
   }
 
   return (
-    <form className="max-w-sm" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="w-full" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
       <FieldGroup className="gap-4">
         <Controller
           name="email"
@@ -117,11 +153,10 @@ export function LoginForm() {
         </Link>
 
         <Field className="mt-6 gap-2.5" orientation="horizontal">
-          <Checkbox id="rememberMe" />
-          <Label htmlFor="rememberMe">{t("rememberMe")}</Label>
+         <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
-        {error && <ErrorAlert message={error.message} />}
+        {error && <ErrorAlert message={error} />}
 
         <Button type="submit" disabled={isPending} className="mt-9 w-full space-x-2">
           {t("submit")}
@@ -130,7 +165,7 @@ export function LoginForm() {
 
         <span className="text-sm border-t dark:border-zinc-600 text-center pt-4 mt-7">
           {t("noAccount")}
-          <Link href="#" className="text-maroon-700 dark:text-softPink-300">
+          <Link href="/register" className="text-maroon-700 dark:text-softPink-300">
             {" "}
             {t("createAccount")}
           </Link>

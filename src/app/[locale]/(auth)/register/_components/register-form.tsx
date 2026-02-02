@@ -46,7 +46,7 @@ export default function RegisterForm() {
       password: "",
       rePassword: "",
       phone: "",
-      gender: "",
+      gender: "male",
     },
     resolver: zodResolver(registerSchema(tZod)),
   });
