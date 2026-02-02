@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 const labelVariants = cva(
-  "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-inter text-zinc-800 dark:text-zinc-50"
+  "peer-disabled:opacity-70 font-inter rtl:font-tajawal font-medium text-zinc-800 dark:text-zinc-50 text-sm capitalize leading-none peer-disabled:cursor-not-allowed"
 );
 
 const Label = React.forwardRef<

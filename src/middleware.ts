@@ -1,4 +1,4 @@
-import { withAuth } from "next-auth/middleware";
+// import { withAuth } from "next-auth/middleware";
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
