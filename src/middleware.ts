@@ -36,12 +36,46 @@ export default function middleware(req: NextRequest) {
 
   const isPublicPage = buildRegex(publicPages).test(pathname);
   const isAuthPage = buildRegex(authPages).test(pathname);
-  console.log({ isPublicPage, isAuthPage });
-  const token =
+
+  // Check for session token
+  const sessionToken =
     req.cookies.get("next-auth.session-token")?.value ||
     req.cookies.get("__Secure-next-auth.session-token")?.value;
 
-  if (token && isAuthPage) {
+  // Check for rememberMe cookie (session cookie that expires when browser closes)
+  const rememberMeCookie = req.cookies.get("rememberMe")?.value;
+
+  // If session token exists but rememberMe cookie is missing:
+  // This means the browser was closed and the session cookie expired
+  // But the token cookie still exists because it had maxAge
+  // This indicates user logged in WITHOUT "Remember Me" and closed browser
+  // We should clear the session and redirect to login
+  if (sessionToken && !rememberMeCookie) {
+    console.log("Session token exists but rememberMe cookie is missing - clearing session");
+    
+    const isSecure = process.env.NODE_ENV === "production";
+    const cookieName = isSecure
+      ? "__Secure-next-auth.session-token"
+      : "next-auth.session-token";
+    
+    // Redirect to login and clear the session cookie
+    const url = req.nextUrl.clone();
+    url.pathname = "/login";
+    const response = NextResponse.redirect(url);
+    
+    // Delete the session cookie
+    response.cookies.set(cookieName, "", {
+      httpOnly: false,
+      secure: isSecure,
+      sameSite: "lax",
+      path: "/",
+      maxAge: 0,
+    });
+    
+    return response;
+  }
+
+  if (sessionToken && isAuthPage) {
     const url = req.nextUrl.clone();
     url.pathname = `/product`;
     return NextResponse.redirect(url);

@@ -15,36 +15,31 @@ import { Input } from "@/components/ui/input";
 import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 
 // Navigation & i18n
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 // Logic
 import { loginSchema } from "@/lib/schemes/login";
-import useLogin from "../_hooks/use-login";
 
 // Components
 import ErrorAlert from "../../_components/error-alert";
 import RememberMe from "../../_components/remember-me";
-import { getSession, signIn, signOut } from "next-auth/react";
-import { toast } from "sonner";
-
-// Types
-interface LoginFormFields {
-  rememberMe: boolean;
-}
+import { signIn } from "next-auth/react";
 
 export function LoginForm() {
   // Translation
   const t = useTranslations("login");
+  
+  // Router for client-side navigation (doesn't trigger beforeunload)
+  const router = useRouter();
 
   // State
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
   // Remember Me
   const [rememberMe, setRememberMe] = useState(false);
-
-  // Hooks
-  const { isPending, error, login } = useLogin();
 
   // Form & validation
   const form = useForm<z.infer<ReturnType<typeof loginSchema>>>({
@@ -57,6 +52,9 @@ export function LoginForm() {
 
   // Functions
   async function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
+    setIsPending(true);
+    setError(null);
+
     try {
       const response = await signIn("login", {
         email: data.email,
@@ -65,24 +63,27 @@ export function LoginForm() {
         redirect: false,
       });
 
-      if (!response?.ok) return;
-
-      // If rememberMe is true, signOut and store cookie in sessionStorage
-      if (rememberMe) {
-        const session = await getSession();
-
-        // store cookie in sessionStorage
-        sessionStorage.setItem("token", session?.accessToken ?? "");
-
-        // delete nextAuth cookie
-        await signOut({ redirect: false });
+      if (!response?.ok) {
+        setError(response?.error || "Login failed");
+        setIsPending(false);
+        return;
       }
-      
-        // redirect to dashboard
-        window.location.href = "/dashboard";
-      
-    } catch (error) {
-      toast.error("An unexpected error occurred");
+
+      // Handle cookie based on Remember Me preference
+      // Remember Me = TRUE: httpOnly cookie (30 days) + persistent rememberMe cookie
+      // Remember Me = FALSE: non-httpOnly cookie + SESSION rememberMe cookie (expires on browser close)
+      await fetch("/api/auth/session-type", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ rememberMe }),
+      });
+
+      // Redirect to dashboard
+      router.push("/product");
+    } catch (err) {
+      setError("An unexpected error occurred");
+      setIsPending(false);
     }
   }
 
@@ -155,7 +156,7 @@ export function LoginForm() {
          <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
-        {error && <ErrorAlert message={error.message} />}
+        {error && <ErrorAlert message={error} />}
 
         <Button type="submit" disabled={isPending} className="mt-9 w-full space-x-2">
           {t("submit")}
