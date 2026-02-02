@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
         secure: isSecure,
         sameSite: "lax",
         path: "/",
-        maxAge: 60 * 15, // 15 minutes
+        maxAge: 60 * 30, // 30 minutes
       });
       
       // Set SESSION cookie for rememberMe (expires when browser closes)
@@ -69,7 +69,7 @@ export async function POST(req: NextRequest) {
         secure: isSecure,
         sameSite: "lax",
         path: "/",
-        maxAge: 60 * 15, // 15 minutes
+        maxAge: 60 * 30, // 30 minutes
       });
     }
 
