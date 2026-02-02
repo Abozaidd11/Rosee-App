@@ -139,25 +139,32 @@
     "password-confirmPassword": "password and confirm Password don't match",
     "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
     "sendotp-toast": "OTP sent to your email",
-    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s"
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
+    "otp-title": "Enter the OTP Code",
+    "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
+    "otp-verify": "Verify OTP",
+    "otp-time-left": "You can request another code in: <span>{time}s</span>",
+    "otp-resend": "Send a new code",
+    "otp-resending": "Sending a new code",
+    "verify-otp": "Verify OTP",
+    "verifying-otp": "Verifying OTP",
+    "otp-need-help": "Need help? <a>Contact us</a>",
+    "otp-required": "Please enter a valid otp (6 digits)",
+    "new-password-success-toast": "your password changed successfully, please login"
   },
   "login": {
     "title": "Welcome back!",
     "email": {
       "label": "Email"
     },
-
     "password": {
       "label": "Password"
     },
-
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot your password?",
     "submit": "Login",
-
     "noAccount": "Don’t have an account yet?",
     "createAccount": "Create one now!",
-
     "email-invalid": "Invalid email address.",
     "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   }

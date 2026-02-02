@@ -3,7 +3,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
-const authPages = ["/login", "/register"];
+const authPages = ["/login", "/register", "/forgot-password"];
 const publicPages = ["/"];
 
 const handleI18nRouting = createMiddleware(routing);
@@ -27,12 +27,12 @@ export default function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   const buildRegex = (pages: string[]) =>
-   RegExp(
-    `^(/(${locales.join('|')}))?(${pages
-      .flatMap((p) => (p === '/' ? ['', '/'] : p))
-      .join('|')})/?$`,
-    'i'
-  );
+    RegExp(
+      `^(/(${locales.join("|")}))?(${pages
+        .flatMap((p) => (p === "/" ? ["", "/"] : p))
+        .join("|")})/?$`,
+      "i"
+    );
 
   const isPublicPage = buildRegex(publicPages).test(pathname);
   const isAuthPage = buildRegex(authPages).test(pathname);
@@ -52,17 +52,15 @@ export default function middleware(req: NextRequest) {
   // We should clear the session and redirect to login
   if (sessionToken && !rememberMeCookie) {
     console.log("Session token exists but rememberMe cookie is missing - clearing session");
-    
+
     const isSecure = process.env.NODE_ENV === "production";
-    const cookieName = isSecure
-      ? "__Secure-next-auth.session-token"
-      : "next-auth.session-token";
-    
+    const cookieName = isSecure ? "__Secure-next-auth.session-token" : "next-auth.session-token";
+
     // Redirect to login and clear the session cookie
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     const response = NextResponse.redirect(url);
-    
+
     // Delete the session cookie
     response.cookies.set(cookieName, "", {
       httpOnly: false,
@@ -71,7 +69,7 @@ export default function middleware(req: NextRequest) {
       path: "/",
       maxAge: 0,
     });
-    
+
     return response;
   }
 

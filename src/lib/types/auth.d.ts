@@ -4,7 +4,8 @@ import { emailStepSchema, newPasswordSchems } from "../schemes/af-task-schema/au
 import z from "zod";
 
 // Fields Types
-export type RegisterFormFields = z.infer<typeof registerSchema>;
+// export type RegisterFormFields = z.infer<typeof registerSchema>;
+export type RegisterFormFields = z.infer<ReturnType<typeof registerSchema>>;
 
 export type EmailStepField = z.infer<ReturnType<typeof emailStepSchema>>;
 
@@ -13,7 +14,7 @@ export type NewPasswordFields = z.infer<ReturnType<typeof newPasswordSchems>>;
 // Response Types
 export type RegisterResponse = {
   token: string;
-  user: User["user"] 
+  user: User["user"];
 };
 
 export type EmailStepResponse = {
