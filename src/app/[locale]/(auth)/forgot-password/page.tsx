@@ -1,11 +1,9 @@
-// import EmailStep from "./_components/af-task/email-step";
-// import NewPasswordStep from "./_components/af-task/new-password-step";
+import ForgotPasswordForm from "./_components/forgot-password-form";
 
-export default function Page() {
+export default function ForgotPassword() {
   return (
-    <main className="flex flex-col justify-center items-center mx-auto w-full max-w-[25.38rem] container">
-      {/* <EmailStep /> */}
-      {/* <NewPasswordStep email={""} /> */}
-    </main>
+    <div>
+      <ForgotPasswordForm />
+    </div>
   );
 }
