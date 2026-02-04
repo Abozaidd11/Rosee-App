@@ -27,12 +27,12 @@ export default function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   const buildRegex = (pages: string[]) =>
-   RegExp(
-    `^(/(${locales.join('|')}))?(${pages
-      .flatMap((p) => (p === '/' ? ['', '/'] : p))
-      .join('|')})/?$`,
-    'i'
-  );
+    RegExp(
+      `^(/(${locales.join("|")}))?(${pages
+        .flatMap((p) => (p === "/" ? ["", "/"] : p))
+        .join("|")})/?$`,
+      "i"
+    );
 
   const isPublicPage = buildRegex(publicPages).test(pathname);
   const isAuthPage = buildRegex(authPages).test(pathname);

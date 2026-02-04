@@ -57,8 +57,6 @@ const edwardianscriptitc = localFont({
   weight: "400",
 });
 
-
-
 export async function generateMetadata({ params: { locale } }: Pick<LocaleProps, "params">) {
   // Translations
   const t = await getTranslations({ locale, namespace: "Metadata" });
