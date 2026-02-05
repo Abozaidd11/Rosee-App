@@ -75,7 +75,7 @@ export default function middleware(req: NextRequest) {
 
   if (sessionToken && isAuthPage) {
     const url = req.nextUrl.clone();
-    url.pathname = `/product`;
+    url.pathname = `/products`;
     return NextResponse.redirect(url);
   }
 
