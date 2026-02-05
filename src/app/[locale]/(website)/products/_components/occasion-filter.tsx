@@ -6,6 +6,7 @@ import OccasionFilterSkeleton from "@/components/skeletons/shared/occasion-filte
 import Image from "next/image";
 import { useRef, useEffect, useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/tailwind-merge";
 import ClearButton from "./clear-button";
 
@@ -14,11 +15,18 @@ const OCCASION_OVERLAY_GRADIENT =
 const OCCASION_PARAM = "occasion";
 
 export default function OccasionFilter() {
+
+  // Translations
+  const t = useTranslations("Products");
+
+  // Hooks
   const { isPending, data: payload, error, refetch, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useOccasions();
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  // Infinite Scroll Refs
   const scrollRef = useRef<HTMLDivElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +53,7 @@ export default function OccasionFilter() {
     [searchParams, setOccasionParams]
   );
 
+  // Clear handler
   const handleClear = useCallback(() => {
     setOccasionParams(new Set());
   }, [setOccasionParams]);
@@ -70,6 +79,7 @@ export default function OccasionFilter() {
   if (error) return <ErrorBoundary onRetry={refetch} error={error} />;
   if (isPending) return <OccasionFilterSkeleton />;
 
+  // Data variables
   const imageBaseUrl = "https://flower.elevateegy.com/uploads/";
   const occasions = payload?.pages.flatMap((page) => page.occasions) ?? [];
 
@@ -78,10 +88,9 @@ export default function OccasionFilter() {
         <div className="flex justify-between items-center">
         {/* filter title */}
         <h3 className="text-zinc-800 dark:text-zinc-50 font-medium text-lg ps-[5px]">
-            Occasion
+            {t("occasion")}
         </h3>
-        {/* clear button */}
-        <ClearButton onClick={handleClear} />
+        <ClearButton onClick={handleClear} label={t("reset")} />
         </div>
         {/* Occasions list */}
       <div
@@ -129,7 +138,7 @@ export default function OccasionFilter() {
         })}
         <div ref={sentinelRef} className="w-full h-0 shrink-0" aria-hidden />
         {isFetchingNextPage && (
-          <div className="w-full py-2 text-center text-sm text-zinc-500">Loading more…</div>
+          <div className="w-full py-2 text-center text-sm text-zinc-500">{t("loading-more")}</div>
         )}
       </div>
     </section>

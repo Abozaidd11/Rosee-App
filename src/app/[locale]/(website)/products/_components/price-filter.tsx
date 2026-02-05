@@ -5,6 +5,7 @@ import ClearButton from "./clear-button";
 import { Label } from "@/components/ui/label";
 import { useForm } from "react-hook-form";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Form } from "@/components/ui/form";
 
 type FormValues = { 
@@ -13,6 +14,10 @@ type FormValues = {
 };
 
 export default function PriceFilter() {
+
+    // Translations
+    const t = useTranslations("Products");
+
     // Hooks
     const pathname = usePathname();
     const router = useRouter();
@@ -29,7 +34,7 @@ export default function PriceFilter() {
     // Form values
     const { register, handleSubmit, reset } = form;
 
-  const updateUrl = (min?: number, max?: number) => {
+    const updateUrl = (min?: number, max?: number) => {
     const params = new URLSearchParams(searchParams.toString());
 
     // remove old values first
@@ -67,16 +72,15 @@ export default function PriceFilter() {
         <div className="flex items-center justify-between">
           {/* filter title */}
           <h3 className="ps-[5px] text-lg font-medium text-zinc-800 dark:text-zinc-50">
-            Price
+            {t("price")}
           </h3>
-          {/* clear button */}
-          <ClearButton onClick={clearPrices} />
+          <ClearButton onClick={clearPrices} label={t("reset")} />
         </div>
-        <div className="flex items-center space-x-2 ps-1 pt-1">
+        <div className="flex items-center space-x-2 ps-1 pt-1 rtl:space-x-reverse">
           <div className="flex w-1/2 flex-col gap-2">
             {/* from label */}
             <Label htmlFor="min-price" className="lowercase">
-              from
+              {t("from")}
             </Label>
             <Input
               id="min-price"
@@ -88,7 +92,7 @@ export default function PriceFilter() {
           <div className="flex w-1/2 flex-col gap-2">
             {/* from label */}
             <Label htmlFor="max-price" className="lowercase">
-              to
+              {t("to")}
             </Label>
             <Input
               id="max-price"
