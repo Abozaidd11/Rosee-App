@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils/tailwind-merge";
 import ProductCardSkeleton from "../skeletons/shared/product-card.skeleton";
 import {
   Carousel,
@@ -8,6 +9,8 @@ import {
 } from "../ui/carousel";
 
 export default function CarouselFallback() {
+  // Variables
+  const carouselSkeletonButtonStyle = "bg-maroon-500 rounded-3xl size-10 text-maroon-50";
   return (
     <Carousel
       opts={{
@@ -24,10 +27,10 @@ export default function CarouselFallback() {
       </CarouselContent>
 
       {/* Prev button */}
-      <CarouselPrevious className="-left-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50" />
+      <CarouselPrevious className={cn("-left-5", carouselSkeletonButtonStyle)} />
 
       {/* Next button */}
-      <CarouselNext className="-right-5 bg-maroon-500 rounded-3xl size-10 text-maroon-50" />
+      <CarouselNext className={cn("-right-5", carouselSkeletonButtonStyle)} />
     </Carousel>
   );
 }
