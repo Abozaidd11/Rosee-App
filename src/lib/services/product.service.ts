@@ -1,9 +1,20 @@
+import { API_PRODUCTS_LIMIT } from "../constants/global-constants";
+import { SearchParams } from "../types/global";
 import { TProductCard } from "../types/product";
 
-export async function getBestSellingProducts() {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/products?limit=6&fields=imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity&sort=-sold`
-  );
+export async function getProducts(searchParams?: SearchParams) {
+  const params = new URLSearchParams({
+    limit: API_PRODUCTS_LIMIT.toString(),
+    fields: "imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity",
+    sort: "-sold",
+    ...searchParams,
+  });
+
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/products?${params.toString()}`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch products");
+  }
 
   const payload: ApiResponse<PaginatedData<TProductCard[]>> = await response.json();
 

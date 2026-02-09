@@ -4,3 +4,5 @@ import { getTranslations } from "next-intl/server";
 export type RegisterTranslation = (key: string, values?: Record<string, any>) => string;
 
 export type Translation = Awaited<ReturnType<typeof getTranslations>>;
+
+export type SearchParams = Record<string, string | string[] | undefined>;
