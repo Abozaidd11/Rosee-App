@@ -117,8 +117,13 @@ export function LoginForm() {
         </Link>
 
         <Field className="mt-6 gap-2.5" orientation="horizontal">
-          <Checkbox id="rememberMe" />
-          <Label htmlFor="rememberMe">{t("rememberMe")}</Label>
+          <Checkbox id="rememberMe" className="h-5 w-5 rounded-sm border-[#741C21]" />
+          <Label
+            htmlFor="rememberMe"
+            className="font-inter text-sm font-normal leading-none whitespace-nowrap"
+          >
+            {t("rememberMe")}
+          </Label>
         </Field>
 
         {error && <ErrorAlert message={error.message} />}

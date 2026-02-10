@@ -16,6 +16,15 @@
     "delete-notification": "حذف الإشعار",
     "no-notifications": "لا يوجد إشعارات لعرضها."
   },
+  "header": {
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "myProfile": "ملفي الشخصي",
+    "myAddresses": "عناويني",
+    "myOrders": "طلباتي",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
   "best-selling": {
     "header": "الأكثر مبيعًا",
     "title": {
@@ -143,7 +152,7 @@
   },
 
   "login": {
-    "title":"مرحبًا بعودتك!",
+    "title": "مرحبًا بعودتك!",
     "email": {
       "label": "البريد الإلكتروني"
     },

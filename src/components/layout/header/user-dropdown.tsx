@@ -9,10 +9,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { signOut, useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import LoginPopover from "./login-popover";
 
 export default function UserDropdown() {
+  // Translation
+  const t = useTranslations("header");
+
   const { data: session } = useSession();
 
   // If user is not logged in, show login popover
@@ -26,7 +30,7 @@ export default function UserDropdown() {
       <DropdownMenuTrigger asChild>
         <button className="flex items-center gap-2 cursor-pointer text-zinc-700 dark:text-zinc-50 p-4 focus-visible:outline-none">
           <User className="w-5 h-5" />
-          <span className="hidden sm:inline">Login</span>
+          <span className="hidden sm:inline">{t("login")}</span>
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
@@ -49,21 +53,21 @@ export default function UserDropdown() {
           <DropdownMenuItem asChild className="cursor-pointer h-8 rounded-sm">
             <Link href="/profile" className="flex items-center gap-2">
               <User className="w-5 h-5" />
-              <span>My Profile</span>
+              <span>{t("myProfile")}</span>
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild className="cursor-pointer h-8 rounded-sm">
             <Link href="/addresses" className="flex items-center gap-2">
               <MapPin className="w-5 h-5" />
-              <span>My Addresses</span>
+              <span>{t("myAddresses")}</span>
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild className="cursor-pointer h-8 rounded-sm">
             <Link href="/orders" className="flex items-center gap-2">
               <ScrollText className="w-5 h-5" />
-              <span>My Orders</span>
+              <span>{t("myOrders")}</span>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
@@ -76,7 +80,7 @@ export default function UserDropdown() {
           <DropdownMenuItem asChild className="cursor-pointer h-8 rounded-sm">
             <Link href="/dashboard" className="flex items-center gap-2">
               <Settings className="w-5 h-5" />
-              <span>Dashboard</span>
+              <span>{t("dashboard")}</span>
             </Link>
           </DropdownMenuItem>
 
@@ -86,7 +90,7 @@ export default function UserDropdown() {
           <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer h-8 rounded-sm">
             <div className="flex items-center gap-2">
               <LogOut className="w-5 h-5" />
-              <span>Log out</span>
+              <span>{t("logout")}</span>
             </div>
           </DropdownMenuItem>
         </DropdownMenuGroup>
