@@ -75,6 +75,7 @@
     "review-comment": "Review",
     "text-area-placholder": "What do you think of this product?",
     "title-field-placholder": "Enter review title",
-    "review-form-button": "Add Review"
+    "review-form-button": "Add Review",
+    "add-review-toast": "You Review Added Successfully"
   }
 }

@@ -11,9 +11,9 @@ type HeaderProps = {
 export default function ReviewsHeader({ rateAvg, rateCount }: HeaderProps) {
   // Translation
   const t = useTranslations("product-reviews");
-
   const format = useFormatter();
 
+  // Review Section Head
   return (
     <header className="space-y-0.5 col-span-3 pb-6 border-zinc-100 border-b">
       <SectionHead size={"sm"}>{t("header")}</SectionHead>
@@ -28,7 +28,6 @@ export default function ReviewsHeader({ rateAvg, rateCount }: HeaderProps) {
         })}
       </p>
 
-      {/* <RatingStar avgRate={rateAvg} /> */}
       <Rating value={rateAvg} variant="yellow" Icon={<Star strokeWidth={0} size={20} />} />
     </header>
   );

@@ -75,6 +75,7 @@
     "review-comment": "رايك",
     "text-area-placholder": "ما رأيك في هذا المنتج؟",
     "title-field-placholder": "أدخل عنوان المراجعة",
-    "review-form-button": "أضف مراجعة"
+    "review-form-button": "أضف مراجعة",
+    "add-review-toast": "لقد قمت باضافه مراجعة بنجاح"
   }
 }

@@ -24,11 +24,11 @@ import LoginNeed from "./login-need";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 export default function ReviewForm({ id }: { id: string }) {
-  // Session
-  const session = useSession();
-
   // Translation
   const t = useTranslations("product-reviews");
+
+  // Session
+  const session = useSession();
 
   // Mutation
   const { addReview, error, isPending } = useAddReview();
@@ -45,12 +45,11 @@ export default function ReviewForm({ id }: { id: string }) {
 
   // Functions
   const onSubmit: SubmitHandler<TReviewFields> = (values) => {
-    console.log(values);
     addReview(
       { ...values, productId: id },
       {
         onSuccess: () => {
-          toast.success("You Review Added Successfully");
+          toast.success(t("add-review-toast"));
         },
       }
     );

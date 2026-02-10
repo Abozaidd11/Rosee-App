@@ -21,10 +21,13 @@ export default function RelatedCarousel({ id }: { id: string }) {
   // Hooks
   const { data, isLoading, error, refetch } = useRelatedProducts(id);
 
+  // Handling Loading
   if (isLoading) return <CarouselFallback />;
 
+  // Handling the Error
   if (error) return <ErrorBoundary onRetry={refetch} error={error} />;
 
+  // Related Products Carousel
   return (
     <Carousel
       opts={{
@@ -46,6 +49,7 @@ export default function RelatedCarousel({ id }: { id: string }) {
         </CarouselContent>
       )}
 
+      {/* Carousel Buttons */}
       <CarouselNext
         variant={"destructive"}
         className="bg-maroon-600 rounded-3xl size-10 rtl:-start-2 ltr:-end-2"
