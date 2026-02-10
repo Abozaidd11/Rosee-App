@@ -1,8 +1,5 @@
 "use server";
 
-import { NextRequest } from "next/server";
-import { checkToken } from "../utils/check-token";
-
 export async function addReviewAction(
   fields: {
     product: string;
@@ -10,12 +7,18 @@ export async function addReviewAction(
     title: string;
     comment: string;
   },
-  req: NextRequest
+  userToken: string | null
 ) {
-  const accessToken = await checkToken(req);
+  let accessToken;
+
+  if (!userToken) {
+    accessToken = "";
+  } else {
+    accessToken = userToken;
+  }
 
   if (!accessToken) {
-    throw new Error("You are not authorized");
+    return { error: "Unauthorized: No access token found." };
   }
 
   const res = await fetch(`${process.env.API}/reviews`, {
