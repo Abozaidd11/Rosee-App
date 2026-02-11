@@ -30,86 +30,6 @@
   "most-popular": {
     "heading": "most popular"
   },
-  "auth": {
-    "register": {
-      "header": "Become part of our family!",
-      "name": {
-        "first": {
-          "title": "first name",
-          "placeholder": "Abdulrahman"
-        },
-        "last": {
-          "title": "last name",
-          "placeholder": "Shams"
-        }
-      },
-      "email": {
-        "title": "email",
-        "placeholder": "user@example.com"
-      },
-      "phone": {
-        "title": "phone",
-        "placeholder": "1012345678"
-      },
-      "gender": {
-        "title": "gender",
-        "placeholder": "Select gender",
-        "options": {
-          "male": "male",
-          "female": "female"
-        }
-      },
-      "password": {
-        "title": "password",
-        "placeholder": "Password@12345"
-      },
-      "confirm-password": {
-        "title": "confirm password",
-        "placeholder": "********"
-      },
-      "button": "create account",
-      "user-question": "Already have an account?",
-      "link": "login"
-    },
-    "validation": {
-      "firstName": {
-        "required": "Please enter your first name",
-        "min": "Please enter at least {min} characters for the first name",
-        "max": "Please enter at most {max} characters for the first name"
-      },
-      "lastName": {
-        "required": "Please enter your last name",
-        "min": "Please enter at least {min} characters for the last name",
-        "max": "Please enter at most {max} characters for the last name"
-      },
-      "email": {
-        "required": "Please enter your email",
-        "invalid": "Please enter a valid email",
-        "tooShort": "Email is too short, please check",
-        "tooLong": "Email is too long, please shorten it"
-      },
-      "phone": {
-        "required": "Please enter your phone number",
-        "invalid": "Please enter a valid phone number"
-      },
-      "password": {
-        "required": "Please enter your password",
-        "min": "Password must be at least {min} characters",
-        "max": "Password must be at most {max} characters",
-        "upper": "Password must contain at least one uppercase letter",
-        "lower": "Password must contain at least one lowercase letter",
-        "number": "Password must contain at least one number",
-        "special": "Password must contain at least one special character",
-        "mismatch": "Passwords do not match, please check"
-      },
-      "rePassword": {
-        "required": "Please confirm your password"
-      },
-      "gender": {
-        "required": "Please select your gender"
-      }
-    }
-  },
   "promoCardheroSection": {
     "badge": "Starting from 10.99 EGP",
     "title": "Special Gifts For The People You Love",
@@ -139,33 +59,23 @@
     "password-confirmPassword": "password and confirm Password don't match",
     "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
     "sendotp-toast": "OTP sent to your email",
-    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
-    "otp-title": "Enter the OTP Code",
-    "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
-    "otp-verify": "Verify OTP",
-    "otp-time-left": "You can request another code in: <span>{time}s</span>",
-    "otp-resend": "Send a new code",
-    "otp-resending": "Sending a new code",
-    "verify-otp": "Verify OTP",
-    "verifying-otp": "Verifying OTP",
-    "otp-need-help": "Need help? <a>Contact us</a>",
-    "otp-required": "Please enter a valid otp (6 digits)",
-    "new-password-success-toast": "your password changed successfully, please login"
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s"
   },
-  "login": {
-    "title": "Welcome back!",
-    "email": {
-      "label": "Email"
-    },
-    "password": {
-      "label": "Password"
-    },
-    "rememberMe": "Remember me",
-    "forgotPassword": "Forgot your password?",
-    "submit": "Login",
-    "noAccount": "Don’t have an account yet?",
-    "createAccount": "Create one now!",
-    "email-invalid": "Invalid email address.",
-    "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+  "related-products": {
+    "header": "Related Products"
+  },
+  "product-reviews": {
+    "header": "Product Reviews",
+    "second-head": "General rating:",
+    "general-rate": "{rate} <span>({count} rating)</span>",
+    "title-field": "Please Enter review title",
+    "login-need": "Please login to be able to review the product",
+    "form-rate-label": "Your rating:",
+    "title-field-label": "Title",
+    "review-comment": "Review",
+    "text-area-placholder": "What do you think of this product?",
+    "title-field-placholder": "Enter review title",
+    "review-form-button": "Add Review",
+    "add-review-toast": "You Review Added Successfully"
   }
 }

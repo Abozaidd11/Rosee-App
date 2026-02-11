@@ -25,6 +25,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
           style: "percent",
           numberingSystem: locale === "ar" ? "arab" : "latn",
         },
+        "numbers-only": {
+          numberingSystem: locale === "ar" ? "arab" : "latn",
+        },
       },
       dateTime: {
         short: {
