@@ -30,6 +30,8 @@ export default function ReviewForm({ id }: { id: string }) {
   // Session
   const session = useSession();
 
+  console.log(session);
+
   // Mutation
   const { addReview, error, isPending } = useAddReview();
 
