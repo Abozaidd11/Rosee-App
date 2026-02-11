@@ -1,6 +1,5 @@
 import { TProduct } from "@/lib/types/search";
 import { Star } from "lucide-react";
-import { useFormatter } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
@@ -11,9 +10,6 @@ type TCardProps = {
 };
 
 export default function SearchCard({ product, setOpen }: TCardProps) {
-  // Translation
-  const formate = useFormatter();
-
   // Search Card UI
   return (
     <Link
