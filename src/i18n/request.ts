@@ -21,6 +21,12 @@ export default getRequestConfig(async ({ requestLocale }) => {
           currencyDisplay: "name",
           numberingSystem: locale === "ar" ? "arab" : "latn",
         },
+        "currency-short": {
+          style: "currency",
+          currency: CURRENCY,
+          currencyDisplay: "symbol",
+          numberingSystem: locale === "ar" ? "arab" : "latn",
+        },
         "percentage-format": {
           style: "percent",
           numberingSystem: locale === "ar" ? "arab" : "latn",

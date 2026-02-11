@@ -13,6 +13,7 @@ import MobileNavigation from "./mobile-navigation";
 import LoginIcon from "./login-icon";
 import LanguageSwitcher from "@/components/ui/language-switcher";
 import Notifications from "@/app/[locale]/(website)/_components/notifications/notifications";
+import Search from "../search/search";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/auth";
 
@@ -43,12 +44,13 @@ export default function Header() {
 
           {/* search bar */}
           <div className="hidden md:block sm:w-2/3">
-            <Input
+            {/* <Input
               id="search"
               type="text"
               placeholder="What awesome gift are you looking for?"
               className="w-full"
-            />
+            /> */}
+            <Search />
           </div>
 
           {/* icons */}
