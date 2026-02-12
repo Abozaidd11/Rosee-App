@@ -1,11 +1,12 @@
-import { TProduct } from "@/lib/types/search";
+import { TProductCard } from "@/lib/types/product";
+import { TProduct, TRecommendation } from "@/lib/types/search";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 type TCardProps = {
-  product: TProduct;
+  product: TProduct | TRecommendation | TProductCard;
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 

@@ -1,26 +1,31 @@
-import { TProductDetails } from "../types/search";
+import { getSession } from "next-auth/react";
+import { TRecommendationResponse } from "../types/search";
 
-type TSearchParams = {
-  limit: number;
-  fields: string;
-};
+export async function getProductsYouMayLike() {
+  const token = await getSession();
 
-export async function getProductsYouMayLike({ limit, fields }: TSearchParams) {
+  console.log(token?.user._id);
+
+  console.log(token?.accessToken);
+
   const res = await fetch(
-    `https://flower.elevateegy.com/api/v1/products?limit=${limit}&fields=${fields}`,
+    `${process.env.NEXT_PUBLIC_API}/related/recommendations/${token?.user._id}`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token?.accessToken}`,
       },
     }
   );
 
+  console.log(res);
+
   if (!res.ok) {
-    throw new Error("Failed to fetch Products");
+    throw new Error("Failed to fetch Products....");
   }
 
-  const payload: ApiResponse<TProductDetails> = await res.json();
+  const payload: ApiResponse<TRecommendationResponse> = await res.json();
 
   if ("error" in payload) {
     throw new Error(payload.error);

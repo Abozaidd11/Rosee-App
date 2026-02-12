@@ -17,3 +17,19 @@ export type TProductDetails = {
   };
   products: TProduct[];
 };
+
+export type TRecommendation = {
+  _id: string;
+  title: string;
+  imgCover: string;
+  price: number;
+  priceAfterDiscount: number;
+  rateAvg: number;
+  rateCount: number;
+  id: string;
+};
+
+export type TRecommendationResponse = {
+  count: number;
+  recommendations: TRecommendation[];
+};

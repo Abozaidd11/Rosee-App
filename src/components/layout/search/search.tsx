@@ -13,10 +13,14 @@ import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 import { useDebounce } from "@/hooks/search/use-debounce";
 import { useProductsYouMayLike } from "@/hooks/product-you-may-like/use-products-you-may-like";
+import { useSession } from "next-auth/react";
 
 export default function Search() {
   // State
   const [open, setOpen] = useState(false);
+
+  // Session
+  const session = useSession();
 
   // Refs
   const refSearch = useRef<HTMLDivElement>(null);
@@ -32,15 +36,14 @@ export default function Search() {
 
   const searchTirm = watch("keyword");
 
-  console.log(searchTirm);
-
   // Hooks
   const debounceSearchTirm = useDebounce(searchTirm, 200);
 
   const { youLike, youLikeError, youLikeLoading } = useProductsYouMayLike({
-    limit: 6,
-    fields: fields,
+    status: session.status,
   });
+
+  console.log(youLike);
 
   const { result, error, fetchNextPage, hasNextPage, isFetching, isLoading } = useSearchResult({
     keyword: debounceSearchTirm,
@@ -129,9 +132,13 @@ export default function Search() {
               <h1 className="p-2 border-zinc-200 border-b w-full">Products you may like:</h1>
               {youLikeLoading
                 ? Array.from({ length: 6 }).map((_, idx) => <SearchCardSkeleton key={idx} />)
-                : youLike?.products.map((product) => (
-                    <SearchCard key={product._id} product={product} setOpen={setOpen} />
-                  ))}
+                : session.status === "unauthenticated"
+                  ? youLike?.products.map((product) => (
+                      <SearchCard key={product._id} product={product} setOpen={setOpen} />
+                    ))
+                  : youLike?.recommendations.map((product) => (
+                      <SearchCard key={product._id} product={product} setOpen={setOpen} />
+                    ))}
             </>
           )}
 
