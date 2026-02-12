@@ -2,6 +2,14 @@
   "Metadata": {
     "app-title": "Rose App"
   },
+  "Products": {
+    "occasion": "Occasion",
+    "price": "Price",
+    "from": "from",
+    "to": "to",
+    "reset": "Reset",
+    "loading-more": "Loading more…"
+  },
   "testimonials": {
     "title": "Testimonials",
     "description": "Real Words from Happy Customers",

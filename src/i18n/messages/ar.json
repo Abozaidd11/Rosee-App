@@ -2,6 +2,14 @@
   "Metadata": {
     "app-title": "محل الورد"
   },
+  "Products": {
+    "occasion": "المناسبة",
+    "price": "السعر",
+    "from": "من",
+    "to": "إلى",
+    "reset": "مسح",
+    "loading-more": "جاري تحميل المزيد…"
+  },
   "testimonials": {
     "title": "التعليقات",
     "description": "كلمات حقيقية من عملاء سعداء",

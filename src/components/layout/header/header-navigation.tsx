@@ -8,10 +8,13 @@ import { cn } from "@/lib/utils/tailwind-merge";
 export default function HeaderNavigation() {
   const pathname = usePathname(); // get the current pathname
 
+  // Remove locale prefix from pathname for comparison (e.g., /en/products -> /products)
+  const pathnameWithoutLocale = pathname.replace(/^\/(en|ar)/, "") || "/";
+
   return (
     <nav className="block sm:flex items-center justify-center md:gap-4">
       {HEADER_NAV.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive = pathnameWithoutLocale === item.href;
 
         return (
           // header navigation link you can edit them inside the header-nav.constant.ts file
