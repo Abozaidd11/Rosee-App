@@ -26,24 +26,27 @@ export default function PriceFilter() {
     // Form
     const form = useForm<FormValues>({
         defaultValues: {
-        min: Number(searchParams.get("price[gt]")) || undefined,
-        max: Number(searchParams.get("price[lt]")) || undefined,
+        min: Number(searchParams.get("price[gte]")) || undefined,
+        max: Number(searchParams.get("price[lte]")) || undefined,
         },
     });
     
     // Form values
-    const { register, handleSubmit, reset } = form;
+    const { register, handleSubmit, reset, watch } = form;
+    const minValue = watch("min");
+    const maxValue = watch("max");
+    const hasPriceFilter = Boolean(minValue || maxValue);
 
     const updateUrl = (min?: number, max?: number) => {
     const params = new URLSearchParams(searchParams.toString());
 
     // remove old values first
-    params.delete("price[gt]");
-    params.delete("price[lt]");
+    params.delete("price[gte]");
+    params.delete("price[lte]");
 
     // set new values
-    if (min) params.set("price[gt]", String(min));
-    if (max) params.set("price[lt]", String(max)); 
+    if (min) params.set("price[gte]", String(min));
+    if (max) params.set("price[lte]", String(max)); 
 
     // build query string
     const query = params.toString().replace(/%5B/g, "[").replace(/%5D/g, "]");
@@ -74,7 +77,9 @@ export default function PriceFilter() {
           <h3 className="ps-[5px] text-lg font-medium text-zinc-800 dark:text-zinc-50">
             {t("price")}
           </h3>
-          <ClearButton onClick={clearPrices} label={t("reset")} />
+          {hasPriceFilter && (
+            <ClearButton onClick={clearPrices} label={t("reset")} />
+          )}
         </div>
         <div className="flex items-center space-x-2 ps-1 pt-1 rtl:space-x-reverse">
           <div className="flex w-1/2 flex-col gap-2">

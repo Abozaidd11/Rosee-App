@@ -4,15 +4,17 @@ import ErrorBoundary from "@/components/shared/error-boundary";
 import useOccasions from "@/hooks/shared/use-occasions";
 import OccasionFilterSkeleton from "@/components/skeletons/shared/occasion-filter.skeleton";
 import Image from "next/image";
-import { useRef, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils/tailwind-merge";
 import ClearButton from "./clear-button";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const OCCASION_OVERLAY_GRADIENT =
-  "linear-gradient(180deg, rgba(166, 37, 42, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%)";
+   "linear-gradient(180deg, rgba(0, 0, 0, 0.1375) 0%, rgba(166, 37, 42, 0.55) 100%)";
 const OCCASION_PARAM = "occasion";
+
 
 export default function OccasionFilter() {
 
@@ -26,11 +28,8 @@ export default function OccasionFilter() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Infinite Scroll Refs
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const sentinelRef = useRef<HTMLDivElement>(null);
-
   const activeOccasionIds = new Set(searchParams.getAll(OCCASION_PARAM));
+  const hasActiveOccasion = activeOccasionIds.size > 0;
 
   const setOccasionParams = useCallback(
     (ids: Set<string>) => {
@@ -53,28 +52,9 @@ export default function OccasionFilter() {
     [searchParams, setOccasionParams]
   );
 
-  // Clear handler
   const handleClear = useCallback(() => {
     setOccasionParams(new Set());
   }, [setOccasionParams]);
-
-  // IntersectionObserver: load more when sentinel scrolls into view
-  useEffect(() => {
-    const root = scrollRef.current;
-    const sentinel = sentinelRef.current;
-    if (!root || !sentinel) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting && hasNextPage && !isFetchingNextPage) {
-          fetchNextPage();
-        }
-      },
-      { root, rootMargin: "80px", threshold: 0 }
-    );
-    observer.observe(sentinel);
-    return () => observer.disconnect();
-  }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   if (error) return <ErrorBoundary onRetry={refetch} error={error} />;
   if (isPending) return <OccasionFilterSkeleton />;
@@ -90,27 +70,36 @@ export default function OccasionFilter() {
         <h3 className="text-zinc-800 dark:text-zinc-50 font-medium text-lg ps-[5px]">
             {t("occasion")}
         </h3>
-        <ClearButton onClick={handleClear} label={t("reset")} />
+        {hasActiveOccasion && (
+          <ClearButton onClick={handleClear} label={t("reset")} />
+        )}
         </div>
         {/* Occasions list */}
-      <div
-        ref={scrollRef}
-        className="flex flex-wrap justify-between overflow-y-auto overflow-x-hidden overscroll-contain hide-scroll"
-        style={{ maxHeight: "min(270px, calc(100vh - 12rem))" }}
+      <InfiniteScroll
+        dataLength={occasions.length}
+        next={fetchNextPage}
+        hasMore={hasNextPage ?? false}
+        loader={
+          <div className="w-full py-2 text-center text-sm text-zinc-500">
+            {t("loading-more")}
+          </div>
+        }
+        height={260}
+        className="hide-scroll flex flex-wrap justify-between overflow-x-hidden overscroll-contain"
       >
         {occasions.map((occasion) => {
           const isActive = activeOccasionIds.has(occasion._id);
           return (
             <div
               key={occasion._id}
+              className={cn(
+                "group w-1/2 cursor-pointer overflow-hidden pt-[10px] ps-[5px] pe-[5px] pb-[5px] outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                isActive && "active"
+              )}
               role="button"
               tabIndex={0}
               onClick={() => handleToggle(occasion._id)}
               onKeyDown={(e) => e.key === "Enter" && handleToggle(occasion._id)}
-              className={cn(
-                "w-1/2 cursor-pointer overflow-hidden pt-[10px] ps-[5px] pe-[5px] pb-[5px] outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                isActive && "active"
-              )}
             >
               <div className="relative rounded-lg">
                 <Image
@@ -123,8 +112,9 @@ export default function OccasionFilter() {
                 />
                 <div
                   className={cn(
-                    "absolute inset-0 rounded-lg",
-                    !isActive && "bg-black/50"
+                    "absolute inset-0 rounded-lg transition-colors",
+                    !isActive &&
+                      "bg-black/50 group-hover:bg-gradient-to-b group-hover:from-black/25 group-hover:to-black/50"
                   )}
                   style={isActive ? { background: OCCASION_OVERLAY_GRADIENT } : undefined}
                   aria-hidden
@@ -136,11 +126,7 @@ export default function OccasionFilter() {
             </div>
           );
         })}
-        <div ref={sentinelRef} className="w-full h-0 shrink-0" aria-hidden />
-        {isFetchingNextPage && (
-          <div className="w-full py-2 text-center text-sm text-zinc-500">{t("loading-more")}</div>
-        )}
-      </div>
+      </InfiniteScroll>
     </section>
   );
 }
