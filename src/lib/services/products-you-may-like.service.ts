@@ -2,12 +2,10 @@ import { getSession } from "next-auth/react";
 import { TRecommendationResponse } from "../types/search";
 
 export async function getProductsYouMayLike() {
+  // Get token & user ID
   const token = await getSession();
 
-  console.log(token?.user._id);
-
-  console.log(token?.accessToken);
-
+  // Fetch Recommendations data
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API}/related/recommendations/${token?.user._id}`,
     {
@@ -18,8 +16,6 @@ export async function getProductsYouMayLike() {
       },
     }
   );
-
-  console.log(res);
 
   if (!res.ok) {
     throw new Error("Failed to fetch Products....");

@@ -43,8 +43,6 @@ export default function Search() {
     status: session.status,
   });
 
-  console.log(youLike);
-
   const { result, error, fetchNextPage, hasNextPage, isFetching, isLoading } = useSearchResult({
     keyword: debounceSearchTirm,
     limit: 6,
