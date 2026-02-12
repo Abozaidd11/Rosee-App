@@ -1,0 +1,53 @@
+import { TReview } from "@/lib/types/reviews";
+import Image from "next/image";
+import { useFormatter } from "next-intl";
+import { Rating } from "@/components/ui/star-rating";
+import { Star } from "lucide-react";
+
+type ReviewProps = {
+  review: TReview;
+};
+
+export default function ReviewCard({ review }: ReviewProps) {
+  // Variables
+  const createdAt = new Date(review.createdAt);
+
+  // Hooks
+  const format = useFormatter();
+
+  return (
+    <div className="mb-3 pb-4 border-zinc-100 border-b w-full overflow-hidden">
+      {/* User Info */}
+      <div className="flex items-center gap-2 mb-2">
+        <Image
+          src={review.user.photo}
+          alt="userImage"
+          className="bg-maroon-600 rounded-full h-11 object-cover"
+          width={45}
+          height={45}
+        />
+        <div>
+          <p className="font-semibold text-zinc-800">
+            {review.user.firstName} {review.user.lastName}
+          </p>
+          <p className="font-medium text-zinc-400 text-sm">{format.dateTime(createdAt, "short")}</p>
+        </div>
+      </div>
+
+      {/* Rating */}
+      <div className="flex">
+        <Rating value={review.rating} size={20} variant="yellow" Icon={<Star strokeWidth={0} />} />
+        <span className="font-semibold text-zinc-800">({review.rating})</span>
+      </div>
+
+      {/* Review Title */}
+      <h2 className="mt-2 font-semibold text-black">{review.title}</h2>
+
+      {/* Review Comment */}
+      <p className="mt-1 text-zinc-600">
+        {review.comment} {review.comment} {review.comment} {review.comment} {review.comment}{" "}
+        {review.comment}
+      </p>
+    </div>
+  );
+}

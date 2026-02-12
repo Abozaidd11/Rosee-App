@@ -1,5 +1,6 @@
-import NextAuth, { NextAuthOptions, User } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { loginResponse } from "./lib/types/auth";
 
 // NextAuth configuration options
 export const authOptions: NextAuthOptions = {
@@ -40,7 +41,7 @@ export const authOptions: NextAuthOptions = {
         });
 
         // Parse API response
-        const payload: ApiResponse<User> = await res.json();
+        const payload: ApiResponse<loginResponse> = await res.json();
 
         // Throw error if authentication fails
         if ("error" in payload) throw new Error(payload.error);
@@ -48,7 +49,7 @@ export const authOptions: NextAuthOptions = {
         // Return user object to NextAuth
         return {
           id: payload.user._id,
-          accessToken: payload.accessToken,
+          accessToken: payload.token,
           user: payload.user,
           rememberMe: credentials?.rememberMe === "true",
         };

@@ -4,7 +4,11 @@ import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
 const authPages = ["/login", "/register", "/forgot-password"];
-const publicPages = ["/"];
+const publicPages = ["/", "/products"];
+
+// Matches product detail paths: /products/:id or /:locale/products/:id
+const productDetailRegex = (locales: readonly string[]) =>
+  RegExp(`^(/(${locales.join("|")}))?/products/[^/]+/?$`, "i");
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -34,7 +38,8 @@ export default function middleware(req: NextRequest) {
       "i"
     );
 
-  const isPublicPage = buildRegex(publicPages).test(pathname);
+  const isPublicPage =
+    buildRegex(publicPages).test(pathname) || productDetailRegex(locales).test(pathname);
   const isAuthPage = buildRegex(authPages).test(pathname);
 
   // Check for session token
