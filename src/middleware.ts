@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
 const authPages = ["/login", "/register", "/forgot-password"];
-const publicPages = ["/"];
+const publicPages = ["/", "/checkout"];
 
 const handleI18nRouting = createMiddleware(routing);
 
