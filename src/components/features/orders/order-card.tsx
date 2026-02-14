@@ -4,44 +4,39 @@ import { Order } from "@/lib/types/order";
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown, Banknote } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface OrderCardProps {
   order: Order;
 }
 
-const statusMap = {
-  pending: { label: "Pending", color: "bg-yellow-500" },
-  processing: { label: "Processing", color: "bg-blue-500" },
-  delivered: { label: "Delivered", color: "bg-green-500" },
-  cancelled: { label: "Cancelled", color: "bg-red-500" },
-};
-
-const paymentStatusMap = {
-  paid: { label: "Paid", color: "bg-emerald-500" },
-  not_paid: { label: "Not Paid", color: "bg-red-500" },
-};
-
-const deliveryStatusMap = {
-  pending: { label: "Pending", color: "text-yellow-600" },
-  delivered: { label: "Delivered", color: "text-green-600" },
-  cancelled: { label: "Cancelled", color: "text-red-600" },
-};
+// Status maps will use translations dynamically in component
 
 export default function OrderCard({ order }: OrderCardProps) {
+  const t = useTranslations("orders");
   const [showAll, setShowAll] = useState(false);
   const maxProducts = 4;
   const previewCount = 2;
 
-  const status = statusMap[order.state as keyof typeof statusMap] || {
-    label: order.state,
-    color: "bg-gray-400",
+  const getStatusLabel = (state: string) => {
+    const statusMap: { [key: string]: { label: string; key: string; color: string } } = {
+      pending: { label: t("pending"), key: "pending", color: "bg-yellow-500" },
+      processing: { label: t("processing"), key: "processing", color: "bg-blue-500" },
+      delivered: { label: t("delivered"), key: "delivered", color: "bg-green-500" },
+      cancelled: { label: t("cancelled"), key: "cancelled", color: "bg-red-500" },
+    };
+    return statusMap[state] || { label: state, key: state, color: "bg-gray-400" };
   };
 
-  const paymentStatus = order.isPaid ? paymentStatusMap.paid : paymentStatusMap.not_paid;
+  const status = getStatusLabel(order.state);
+
+  const paymentStatus = order.isPaid
+    ? { label: t("paid"), color: "bg-emerald-500" }
+    : { label: t("not-paid"), color: "bg-red-500" };
 
   const deliveryStatus = order.isDelivered
-    ? deliveryStatusMap.delivered
-    : deliveryStatusMap.pending;
+    ? { label: t("delivered"), color: "text-green-600" }
+    : { label: t("pending"), color: "text-yellow-600" };
 
   const orderItems = order.orderItems || [];
 
@@ -52,10 +47,10 @@ export default function OrderCard({ order }: OrderCardProps) {
       {/* Header */}
       <div className="bg-[#A6252A] text-white flex items-center justify-between px-4 h-14">
         <div className="text-2xl font-semibold font-primary leading-none">
-          Order {order.orderNumber || `#${order._id}` || "N/A"}
+          {t("order-header")} {order.orderNumber || `#${order._id}` || "N/A"}
         </div>
         <div className="text-base font-normal font-primary leading-none">
-          Created in:{" "}
+          {t("created-in")}{" "}
           {(() => {
             if (!order.createdAt) return "N/A";
             const d = new Date(order.createdAt);
@@ -78,7 +73,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         <div className="flex items-center justify-between pb-4 mb-4">
           <div className="flex items-center gap-3">
             <span className="text-2xl font-medium font-primary leading-none text-gray-900">
-              Total Price: {(order.totalPrice || 0).toLocaleString()} EGP
+              {t("total-price")} {(order.totalPrice || 0).toLocaleString()} EGP
             </span>
             <span
               className={`px-3 py-1 rounded-full text-white font-primary font-semibold text-base leading-none ${paymentStatus.color}`}
@@ -89,7 +84,7 @@ export default function OrderCard({ order }: OrderCardProps) {
 
           <div className="flex items-center gap-2.5">
             <span className="font-semibold text-base font-primary leading-none text-black">
-              Status:
+              {t("status")}:
             </span>
             <span
               className={`px-3 py-1 rounded-full text-white font-primary font-semibold text-base leading-none ${status.color}`}
@@ -105,7 +100,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         <div className="mb-6 text-sm space-y-3">
           <div className="flex items-center gap-2">
             <span className="font-medium" style={{ color: "#71717A" }}>
-              Payment Method:
+              {t("payment-method")}
             </span>
             <div className="flex items-center gap-2">
               <Banknote className="h-5 w-5" style={{ color: "#71717A" }} />
@@ -113,13 +108,13 @@ export default function OrderCard({ order }: OrderCardProps) {
                 className="font-primary font-semibold text-[16px] leading-none"
                 style={{ color: "#71717A" }}
               >
-                {order.paymentType === "cash" ? "Cash" : "Credit Card"}
+                {order.paymentType === "cash" ? t("cash") : t("credit-card")}
               </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-medium text-gray-700">Delivery Status:</span>
+            <span className="font-medium text-gray-700">{t("delivery-status")}</span>
             <div className="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +178,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                           <div className="flex items-center gap-1.5">
                             <span className="text-yellow-500 text-lg">★</span>
                             <span className="text-sm font-medium text-gray-700">
-                              Rating: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
+                              {t("rating")}: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
                             </span>
                             <span className="text-sm text-blue-600">
                               ({item.product?.rateCount || 0} rating
@@ -232,7 +227,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                           <div className="flex items-center gap-1.5">
                             <span className="text-yellow-500 text-lg">★</span>
                             <span className="text-sm font-medium text-gray-700">
-                              Rating: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
+                              {t("rating")}: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
                             </span>
                             <span className="text-sm text-blue-600">
                               ({item.product?.rateCount || 0} rating
@@ -255,16 +250,13 @@ export default function OrderCard({ order }: OrderCardProps) {
               </div>
 
               {!showAll && showToggle && (
-                <div
-                  className="pointer-events-none absolute z-10 flex"
-                  style={{ left: "567.5px", right: "567.5px", top: "197px" }}
-                >
+                <div className="absolute inset-x-0 bottom-0 flex justify-center pt-4 pb-4 bg-gradient-to-t from-white to-transparent">
                   <button
                     onClick={() => setShowAll(true)}
-                    className="pointer-events-auto w-[61px] text-center text-[#A6252A] text-base font-medium leading-none flex flex-col items-center"
+                    className="text-[#A6252A] text-base font-medium leading-none flex flex-col items-center hover:opacity-70 transition-opacity"
                   >
-                    <span>Show All</span>
-                    <ChevronDown className="h-6 w-6 text-[#A6252A]" style={{ marginTop: "2px" }} />
+                    <span>{t("show-all")}</span>
+                    <ChevronDown className="h-6 w-6 text-[#A6252A] mt-1" />
                   </button>
                 </div>
               )}
@@ -279,7 +271,7 @@ export default function OrderCard({ order }: OrderCardProps) {
               >
                 {showAll ? (
                   <>
-                    Show Less
+                    {t("show-less")}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -291,7 +283,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                   </>
                 ) : (
                   <>
-                    Show All
+                    {t("show-all")}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"

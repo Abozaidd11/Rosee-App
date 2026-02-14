@@ -2,8 +2,10 @@
 import OrderList from "@/components/features/orders/order-list";
 import OrderCardSkeleton from "@/components/skeletons/orders/order-card-skeleton";
 import useOrders from "@/hooks/orders/use-orders";
+import { useTranslations } from "next-intl";
 
 export default function OrdersPage() {
+  const t = useTranslations("orders");
   const { data, isLoading, isError, error } = useOrders();
 
   if (isLoading) {
@@ -11,7 +13,7 @@ export default function OrdersPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-[1280px] mx-auto">
           <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">
-            Orders
+            {t("title")}
           </h1>
         </div>
         <div className="space-y-6">
@@ -28,7 +30,7 @@ export default function OrdersPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-[146px] mx-auto">
           <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">
-            Orders
+            {t("title")}
           </h1>
         </div>
         <div className="flex flex-col items-center justify-center py-6">
@@ -42,15 +44,13 @@ export default function OrdersPage() {
               />
             </svg>
           </div>
-          <h2 className="text-lg font-semibold mb-2 text-gray-800">Failed to load orders</h2>
-          <p className="text-gray-600 mb-4">
-            {error?.message || "Something went wrong. Please try again later."}
-          </p>
+          <h2 className="text-lg font-semibold mb-2 text-gray-800">{t("failed-to-load")}</h2>
+          <p className="text-gray-600 mb-4">{error?.message || t("try-again")}</p>
           <button
             onClick={() => window.location.reload()}
             className="inline-block px-6 py-2 bg-[#A6252A] text-white rounded hover:bg-[#8B1F23] transition"
           >
-            Retry
+            {t("retry")}
           </button>
         </div>
       </div>
@@ -60,7 +60,9 @@ export default function OrdersPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-[1280px] mx-auto">
-        <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">Orders</h1>
+        <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">
+          {t("title")}
+        </h1>
       </div>
       <OrderList orders={data?.orders || []} />
     </div>
