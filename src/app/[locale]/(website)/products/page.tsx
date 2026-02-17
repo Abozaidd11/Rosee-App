@@ -1,3 +1,4 @@
+import { WishlistProvider } from "@/components/providers/wishlist/wishlist.provider";
 import ProductsList from "@/components/shared/products-list";
 import ProductListSkeleton from "@/components/skeletons/shared/product-list.skeleton";
 import { SearchParams } from "@/lib/types/global";
@@ -15,7 +16,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
       <div className="space-y-6 col-span-8">
         {/* Products */}
         <Suspense fallback={<ProductListSkeleton />}>
-          <ProductsList searchParams={searchParams} className="gap-4 grid-cols-3" />
+          <WishlistProvider>
+            <ProductsList searchParams={searchParams} className="gap-4 grid-cols-3" />
+          </WishlistProvider>
         </Suspense>
 
         {/* Pagination */}
