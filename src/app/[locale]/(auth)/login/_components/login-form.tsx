@@ -12,7 +12,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field
 import { Input } from "@/components/ui/input";
 
 // Icons
-import { Eye, EyeOff, Loader2Icon } from "lucide-react";
+import { Loader2Icon } from "lucide-react";
 
 // Navigation & i18n
 import { Link, useRouter } from "@/i18n/navigation";
@@ -29,7 +29,7 @@ import { signIn } from "next-auth/react";
 export function LoginForm() {
   // Translation
   const t = useTranslations("login");
-  
+
   // Router for client-side navigation (doesn't trigger beforeunload)
   const router = useRouter();
 
@@ -80,8 +80,8 @@ export function LoginForm() {
       });
 
       // Redirect to dashboard
-      router.push("/product");
-    } catch (err) {
+      router.push("/products");
+    } catch {
       setError("An unexpected error occurred");
       setIsPending(false);
     }
@@ -133,9 +133,7 @@ export function LoginForm() {
                   onClick={() => setShowPassword((prev) => !prev)}
                   aria-pressed={showPassword}
                   className="absolute inset-y-0 end-2 flex items-center text-muted-foreground hover:text-foreground"
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </button>
+                ></button>
               </div>
 
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
@@ -153,7 +151,7 @@ export function LoginForm() {
         </Link>
 
         <Field className="mt-6 gap-2.5" orientation="horizontal">
-         <RememberMe value={rememberMe} onChange={setRememberMe} />
+          <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
         {error && <ErrorAlert message={error} />}
