@@ -72,6 +72,19 @@
   "related-products": {
     "header": "Related Products"
   },
+  "checkout": {
+    "shipping-address": "Shipping Address",
+    "summary": "Summary",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "add-address": "Add a New Address",
+    "payment-method": "Payment Method",
+    "checkout-success-cash": "Cash order created successfully",
+    "checkout-success-credit": "Credit order created successfully",
+    "checkout-error": "Failed to create order",
+    "checkout-button": "Checkout",
+    "checkout-loading": "Loading..."
+  },
   "product-reviews": {
     "header": "Product Reviews",
     "second-head": "General rating:",

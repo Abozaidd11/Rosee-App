@@ -72,6 +72,19 @@
   "related-products": {
     "header": "منتجات ذات الصلة"
   },
+  "checkout": {
+    "shipping-address": "عنوان الشحن",
+    "summary": "الملخص",
+    "total": "المجموع",
+    "subtotal": "المجموع الفرعي",
+    "add-address": "اضافه عنوان جديد",
+    "payment-method": "طريقة الدفع",
+    "checkout-success-cash": "تم إنشاء طلب الدفع بالنقدية بنجاح",
+    "checkout-success-credit": "تم إنشاء طلب الدفع بالبطاقة بنجاح",
+    "checkout-error": "فشل إنشاء الطلب",
+    "checkout-button": "إتمام الطلب",
+    "checkout-loading": "جاري التحميل..."
+  },
   "product-reviews": {
     "header": "التعليقات",
     "second-head": "التقييم العام:",
