@@ -12,7 +12,7 @@ import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field
 import { Input } from "@/components/ui/input";
 
 // Icons
-import { Loader2Icon } from "lucide-react";
+import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 
 // Navigation & i18n
 import { Link, useRouter } from "@/i18n/navigation";

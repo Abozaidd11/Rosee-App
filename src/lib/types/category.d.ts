@@ -1,3 +1,14 @@
+export type TAllCategories = {
+  message: string;
+  metadata: {
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+    totalItems: number;
+  };
+  categories: Tcategory[];
+};
+
 export type Tcategory = {
   _id: string;
   name: string;
