@@ -20,13 +20,23 @@ type PaymentMethodProps = {
 type CheckoutStatus = "idle" | "loading" | "success" | "error";
 
 export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethodProps) {
+  
+  // Translation
   const t = useTranslations("checkout");
+
+  // Router
   const router = useRouter();
+
+  // Session
   const { data: session } = useSession();
 
+  // State
   const [checkoutStatus, setCheckoutStatus] = useState<CheckoutStatus>("idle");
+
+  // Selected Payment ID
   const [selectedPaymentId, setSelectedPaymentId] = useState<number | null>(null);
 
+  // Payment Methods
   const paymentMethods = [
     {
       id: 1,
@@ -47,12 +57,16 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
 
     setCheckoutStatus("loading");
     try {
+
+      // Cash Order
       if (selectedPaymentId === 1) {
         await cashOrderService(session.accessToken, selectedAddress);
         toast.success(t("checkout-success-cash"));
         setCheckoutStatus("success");
         router.push("/orders");
       } else {
+
+        // Credit Order
         const response = await creditOrderService(session.accessToken, selectedAddress);
         toast.success(t("checkout-success-credit"));
         window.location.href = response.session.url;
@@ -70,6 +84,8 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
     <div className="flex flex-col gap-5">
       {/* Back button and title */}
       <div className="flex gap-3 items-center">
+
+        {/* Back button */}
         <Button
           variant="secondary"
           className="py-2 px-5 flex items-center justify-center gap-2"
@@ -85,7 +101,11 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
       {/* Payment methods */}
       <div className="flex gap-4 payment-methods border-b border-zinc-100 pb-9">
         {paymentMethods.map((paymentMethod) => {
+
+          // Check which payment method is selected
           const isSelected = selectedPaymentId === paymentMethod.id;
+
+          // Return the payment method component
           return (
             <div
               key={paymentMethod.id}

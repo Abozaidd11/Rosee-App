@@ -83,7 +83,12 @@
     "checkout-success-credit": "تم إنشاء طلب الدفع بالبطاقة بنجاح",
     "checkout-error": "فشل إنشاء الطلب",
     "checkout-button": "إتمام الطلب",
-    "checkout-loading": "جاري التحميل..."
+    "checkout-loading": "جاري التحميل...",
+    "coupon-code": "كود الخصم",
+    "apply-coupon": "تطبيق الخصم",
+    "no-coupons-applied": "لا يوجد خصمات مطبقة",
+    "subtotal": "المجموع الفرعي",
+    "total": "المجموع"
   },
   "product-reviews": {
     "header": "التعليقات",

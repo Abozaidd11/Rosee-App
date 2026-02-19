@@ -83,7 +83,12 @@
     "checkout-success-credit": "Credit order created successfully",
     "checkout-error": "Failed to create order",
     "checkout-button": "Checkout",
-    "checkout-loading": "Loading..."
+    "checkout-loading": "Loading...",
+    "coupon-code": "Coupon Code",
+    "apply-coupon": "Apply Coupon",
+    "no-coupons-applied": "No coupons applied",
+    "subtotal": "Subtotal",
+    "total": "Total"
   },
   "product-reviews": {
     "header": "Product Reviews",
