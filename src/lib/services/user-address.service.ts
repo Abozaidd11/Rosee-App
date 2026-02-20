@@ -1,7 +1,13 @@
 import { TUserAddress } from "../types/user-address";
+import { getDecodedToken } from "@/hooks/shared/use-decoded-token";
 
-export async function getUserAddresses(token: string) {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/addresses`, {
+export async function getUserAddresses() {
+  const token = await getDecodedToken();
+
+  const response = await fetch(`${process.env.API}/addresses`, {
+    next: {
+      tags: ["user-addresses"],
+    },
     headers: {
       Authorization: `Bearer ${token}`,
     },

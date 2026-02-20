@@ -24,8 +24,8 @@ export async function OpenAddressesModalButton() {
   let userAddresses: TUserAddress[] | null = null;
 
   if (token) {
-    const payload = await getUserAddresses(token);
-    userAddresses = payload.addresses.slice(0, 3);
+    const payload = await getUserAddresses();
+    userAddresses = payload.addresses;
   }
 
   return (

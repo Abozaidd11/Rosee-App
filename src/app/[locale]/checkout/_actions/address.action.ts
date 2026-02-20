@@ -2,6 +2,7 @@
 
 import { getDecodedToken } from "@/hooks/shared/use-decoded-token";
 import { TUserAddress, TUserAddressDetails } from "@/lib/types/user-address";
+import { revalidateTag } from "next/cache";
 
 export async function addUserAddressAction(newAddress: TUserAddressDetails) {
   const token = await getDecodedToken();
@@ -26,6 +27,8 @@ export async function addUserAddressAction(newAddress: TUserAddressDetails) {
     if (!response.ok) {
       throw new Error(response.statusText);
     }
+
+    revalidateTag("user-addresses");
 
     const payload: ApiResponse<{ address: TUserAddress[] }> = await response.json();
 
@@ -62,6 +65,8 @@ export async function updateUserAddressAction(updatedAddress: TUserAddress) {
       throw new Error(response.statusText);
     }
 
+    revalidateTag("user-addresses");
+
     const payload: ApiResponse<{ addresses: TUserAddress[] }> = await response.json();
 
     if ("error" in payload) {
@@ -84,6 +89,8 @@ export async function deleteUserAddressAction(addressId: string) {
         authorization: `Bearer ${token}`,
       },
     });
+
+    revalidateTag("user-addresses");
 
     if (!response.ok) {
       throw new Error("Failed to update address");

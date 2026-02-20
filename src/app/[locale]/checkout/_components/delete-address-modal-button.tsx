@@ -12,15 +12,12 @@ import { cn } from "@/lib/utils/tailwind-merge";
 import { Trash, Trash2, X } from "lucide-react";
 import { useState } from "react";
 import useDeleteUserAddress from "../_hooks/use-delete-address";
-import { useRouter } from "@/i18n/navigation";
 import { Spinner } from "@/components/ui/spinner";
 import { useTranslations } from "next-intl";
 
 export function DeleteAddressModalButton({ addressId }: { addressId: string }) {
   // Translation
   const t = useTranslations("user-address.modal.confirmation");
-  // Navigation
-  const router = useRouter();
 
   // States
   const [modalState, setModalState] = useState(false);
@@ -34,8 +31,6 @@ export function DeleteAddressModalButton({ addressId }: { addressId: string }) {
       await deleteUserAddress();
 
       setModalState(false);
-
-      router.refresh();
     } catch (error) {
       console.log(error);
     }

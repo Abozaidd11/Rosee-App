@@ -2,7 +2,7 @@ import { TProductCard } from "../types/product";
 
 export async function getBestSellingProducts() {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/products?limit=6&fields=imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity&sort=-sold`
+    `${process.env.API}/products?limit=6&fields=imgCover,title,rateAvg,price,priceAfterDiscount,createdAt,sold,quantity&sort=-sold`
   );
 
   const payload: ApiResponse<PaginatedData<TProductCard[]>> = await response.json();

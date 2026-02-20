@@ -6,10 +6,9 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 import { cn } from "@/lib/utils/tailwind-merge";
 import { ArrowLeft, PenLine } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "@/i18n/navigation";
 import { TUserAddress, TUserAddressFormFields } from "@/lib/types/user-address";
 import { Progress } from "@/components/ui/progress";
-import useUpdateUserAddress from "../_hooks/use-update-user-address";
+import useUpdateUserAddress from "../_hooks/use-update-address";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
@@ -24,9 +23,6 @@ export function UpdateAddressModalButton({ userAddress }: { userAddress: TUserAd
   // Translation
   const t = useTranslations("user-address.modal.mutate-address");
   const tZod = useTranslations("user-address.validation");
-
-  //Navigation
-  const router = useRouter();
 
   // States
   const [currentStep, setCurrentStep] = useState(0);
@@ -43,13 +39,9 @@ export function UpdateAddressModalButton({ userAddress }: { userAddress: TUserAd
   const { city, street, phone, username, _id } = userAddress;
   const steps = [
     {
-      // title: "Forgot Password",
-      // description: "Don’t worry, we will help you recover your account.",
       fields: ["city", "street", "phone"],
     },
     {
-      // title: "Forgot Password",
-      // description: "Don’t worry, we will help you recover your account.",
       fields: ["lat", "lng"],
     },
   ];
@@ -81,8 +73,6 @@ export function UpdateAddressModalButton({ userAddress }: { userAddress: TUserAd
       setModalState(false);
 
       setCurrentStep(0);
-
-      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -291,7 +281,7 @@ export function UpdateAddressModalButton({ userAddress }: { userAddress: TUserAd
 
                 {isLastStep && (
                   <Button type="submit" className="rounded-xl mt-9 w-full" disabled={isPending}>
-                    {t("button-steps.second")}
+                    {t("button-steps.second.update")}
                   </Button>
                 )}
               </footer>

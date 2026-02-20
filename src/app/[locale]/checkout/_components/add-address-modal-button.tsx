@@ -6,10 +6,9 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 import { cn } from "@/lib/utils/tailwind-merge";
 import { ArrowLeft } from "lucide-react";
 import { useState } from "react";
-import { useRouter } from "@/i18n/navigation";
 import { TUserAddressDetails, TUserAddressFormFields } from "@/lib/types/user-address";
 import { Progress } from "@/components/ui/progress";
-import useAddUserAddress from "../_hooks/use-add-user-address";
+import useAddUserAddress from "../_hooks/use-add-address";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
@@ -26,9 +25,6 @@ export function AddAddressModalButton() {
   const t = useTranslations("user-address.modal.mutate-address");
   const tZod = useTranslations("user-address.validation");
 
-  //Navigation
-  const router = useRouter();
-
   // States
   const [currentStep, setCurrentStep] = useState(0);
   const [modalState, setModalState] = useState(false);
@@ -43,17 +39,12 @@ export function AddAddressModalButton() {
   const username = useSession().data?.user.firstName as string;
   const steps = [
     {
-      // title: "Forgot Password",
-      // description: "Don’t worry, we will help you recover your account.",
       fields: ["city", "street", "phone"],
     },
     {
-      // title: "Forgot Password",
-      // description: "Don’t worry, we will help you recover your account.",
       fields: ["lat", "lng"],
     },
   ];
-  // const currentForm = steps[currentStep];
   const isLastStep = currentStep === steps.length - 1;
 
   // Form & validation
@@ -80,8 +71,6 @@ export function AddAddressModalButton() {
       setModalState(false);
 
       setCurrentStep(0);
-
-      router.refresh();
     } catch (error) {
       console.log(error);
     }
@@ -288,7 +277,7 @@ export function AddAddressModalButton() {
 
                 {isLastStep && (
                   <Button type="submit" className="rounded-xl mt-9 w-full" disabled={isPending}>
-                    {t("button-steps.second")}
+                    {t("button-steps.second.add")}
                   </Button>
                 )}
               </footer>
