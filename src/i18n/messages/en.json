@@ -192,7 +192,10 @@
         },
         "button-steps": {
           "first": "next",
-          "second": "add Address"
+          "second": {
+            "add":"add Address",
+            "update":"update Address"
+          }
         },
 
         "city": {

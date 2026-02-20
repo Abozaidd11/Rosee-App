@@ -10,21 +10,21 @@ export type CheckoutAddressProps = {
 
 export default function CheckoutAddress({ userAddress }: CheckoutAddressProps) {
   //Variables
-  const { street, phone, city, _id } = userAddress;
+  const { street, phone, city, _id, username } = userAddress;
 
   return (
     <fieldset className="relative w-full">
       <label
         className={cn(
           "flex flex-col gap-4 relative",
-          "pt-6 pb-5 pl-4 pr-9",
-          "border border-zinc-300 has-[:checked]:border-maroon-600 rounded-3xl",
-          "dark:has-[:checked]:bg-softPink-100 dark:has-[:checked]:border-softPink-300"
+          "pt-6 pb-5 ps-4 pe-9",
+          "border border-zinc-300 hover:border-maroon-600 rounded-3xl",
+          "dark:hover:bg-softPink-100 dark:hover:border-softPink-300"
         )}
       >
         {/* Name  */}
-        <span className="-top-[1.125rem] left-3 absolute bg-white p-1 font-semibold text-maroon-600 text-2xl leading-none">
-          {street}
+        <span className="-top-[1.125rem] start-3 absolute bg-white p-1 font-semibold text-maroon-600 text-2xl leading-none">
+          {username}
         </span>
 
         {/* Header  */}
@@ -44,13 +44,14 @@ export default function CheckoutAddress({ userAddress }: CheckoutAddressProps) {
             <span className="flex justify-center items-center rounded-full size-8">
               <Phone className="size-5 text-zinc-800" strokeWidth={1.48} />
             </span>
-            +{phone}
+            {!phone.startsWith("+2") && "+2"}
+            {phone}
           </p>
         </header>
 
         {/* Footer  */}
         <footer className="w-fit bg-zinc-100 px-3 py-1 rounded-full font-medium text-zinc-800">
-          21 Ahmed Mohamed St., King Faisal St., Giza
+          {street}
         </footer>
 
         {/* Radio input  */}
@@ -58,7 +59,7 @@ export default function CheckoutAddress({ userAddress }: CheckoutAddressProps) {
       </label>
 
       {/* Actions */}
-      <span className="top-1/2 -translate-y-1/2 -right-[1.125rem] absolute flex flex-col gap-1">
+      <span className="top-1/2 -translate-y-1/2 -end-[1.125rem] absolute flex flex-col gap-1">
         {/* Edit */}
         <UpdateAddressModalButton userAddress={userAddress} />
 

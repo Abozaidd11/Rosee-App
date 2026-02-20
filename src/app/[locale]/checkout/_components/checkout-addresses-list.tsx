@@ -1,6 +1,7 @@
 import { TUserAddress } from "@/lib/types/user-address";
 import CheckoutAddress from "./checkout-address";
 import { MapPinHouse } from "lucide-react";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 type CheckoutAddressesList = {
   userAddresses: TUserAddress[] | null;
@@ -21,7 +22,12 @@ export default function CheckoutAddressesList({ userAddresses }: CheckoutAddress
       <p className="text-lg leading-none">There are no addresses.</p>
     </section>
   ) : (
-    <section className="flex flex-col gap-9">
+    <section
+      className={cn(
+        "flex flex-col gap-9 max-h-128",
+        userAddresses.length > 3 && "py-2 pe-5 overflow-y-auto scroll-smooth overflow-x-hidden"
+      )}
+    >
       {userAddresses.map((userAddress) => (
         <CheckoutAddress key={userAddress._id} userAddress={userAddress} />
       ))}
