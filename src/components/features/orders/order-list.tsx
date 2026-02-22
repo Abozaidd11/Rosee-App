@@ -8,9 +8,13 @@ interface OrderListProps {
 }
 
 export default function OrderList({ orders }: OrderListProps) {
+  // Translation
   const t = useTranslations("orders");
 
-  if (!orders.length) {
+  // Variables
+  const hasOrders = orders.length > 0;
+
+  if (!hasOrders) {
     return (
       <div className="flex flex-col items-center justify-center py-16">
         <h2 className="text-lg font-semibold mb-2 text-primary">{t("no-orders")}</h2>

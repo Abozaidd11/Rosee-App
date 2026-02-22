@@ -1,61 +1,44 @@
-"use client";
 import OrderList from "@/components/features/orders/order-list";
-import OrderCardSkeleton from "@/components/skeletons/orders/order-card-skeleton";
-import useOrders from "@/hooks/orders/use-orders";
-import { useTranslations } from "next-intl";
+import { authOptions } from "@/auth";
+import { Order, OrdersResponse } from "@/lib/types/order";
+import { getServerSession } from "next-auth";
+import { getTranslations } from "next-intl/server";
 
-export default function OrdersPage() {
-  const t = useTranslations("orders");
-  const { data, isLoading, isError, error } = useOrders();
+// Functions
+async function getOrdersServer(accessToken: string): Promise<Order[]> {
+  const response = await fetch(`${process.env.API}/orders?page=1&limit=40`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
+  });
 
-  if (isLoading) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-[1280px] mx-auto">
-          <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">
-            {t("title")}
-          </h1>
-        </div>
-        <div className="space-y-6">
-          <OrderCardSkeleton />
-          <OrderCardSkeleton />
-          <OrderCardSkeleton />
-        </div>
-      </div>
-    );
+  const contentType = response.headers.get("content-type") || "";
+  const payload: ApiResponse<OrdersResponse> = contentType.includes("application/json")
+    ? await response.json()
+    : { error: await response.text() };
+
+  if (!response.ok || "error" in payload) {
+    const message = "error" in payload ? payload.error : "Failed to load orders";
+    throw new Error(message);
   }
 
-  if (isError) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-[146px] mx-auto">
-          <h1 className="text-5xl font-bold font-primary leading-none text-gray-800 mb-6">
-            {t("title")}
-          </h1>
-        </div>
-        <div className="flex flex-col items-center justify-center py-6">
-          <div className="text-red-500 mb-4">
-            <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-              />
-            </svg>
-          </div>
-          <h2 className="text-lg font-semibold mb-2 text-gray-800">{t("failed-to-load")}</h2>
-          <p className="text-gray-600 mb-4">{error?.message || t("try-again")}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="inline-block px-6 py-2 bg-[#A6252A] text-white rounded hover:bg-[#8B1F23] transition"
-          >
-            {t("retry")}
-          </button>
-        </div>
-      </div>
-    );
+  return payload.orders ?? [];
+}
+
+export default async function OrdersPage() {
+  // Translation
+  const t = await getTranslations("orders");
+
+  // Variables
+  const session = await getServerSession(authOptions);
+
+  if (!session?.accessToken) {
+    throw new Error(t("failed-to-load"));
   }
+
+  const orders = await getOrdersServer(session.accessToken);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -64,7 +47,7 @@ export default function OrdersPage() {
           {t("title")}
         </h1>
       </div>
-      <OrderList orders={data?.orders || []} />
+      <OrderList orders={orders} />
     </div>
   );
 }

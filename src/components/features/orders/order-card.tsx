@@ -4,7 +4,7 @@ import { Order } from "@/lib/types/order";
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronDown, Banknote } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 interface OrderCardProps {
   order: Order;
@@ -13,10 +13,21 @@ interface OrderCardProps {
 // Status maps will use translations dynamically in component
 
 export default function OrderCard({ order }: OrderCardProps) {
+  // Translation
   const t = useTranslations("orders");
+  const format = useFormatter();
+
+  // State
   const [showAll, setShowAll] = useState(false);
+
+  // Variables
   const maxProducts = 4;
   const previewCount = 2;
+
+  // Functions
+  const formatPrice = (value: number) => format.number(value);
+  const formatRating = (value?: number) =>
+    format.number(value ?? 0, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
   const getStatusLabel = (state: string) => {
     const statusMap: { [key: string]: { label: string; key: string; color: string } } = {
@@ -28,6 +39,7 @@ export default function OrderCard({ order }: OrderCardProps) {
     return statusMap[state] || { label: state, key: state, color: "bg-gray-400" };
   };
 
+  // Variables
   const status = getStatusLabel(order.state);
 
   const paymentStatus = order.isPaid
@@ -42,6 +54,13 @@ export default function OrderCard({ order }: OrderCardProps) {
 
   const showToggle = orderItems.length > previewCount;
 
+  const formattedCreatedAt = order.createdAt
+    ? format.dateTime(new Date(order.createdAt), {
+        dateStyle: "medium",
+        timeStyle: "short",
+      })
+    : "N/A";
+
   return (
     <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-md bg-white max-w-[1280px] mx-auto">
       {/* Header */}
@@ -50,20 +69,7 @@ export default function OrderCard({ order }: OrderCardProps) {
           {t("order-header")} {order.orderNumber || `#${order._id}` || "N/A"}
         </div>
         <div className="text-base font-normal font-primary leading-none">
-          {t("created-in")}{" "}
-          {(() => {
-            if (!order.createdAt) return "N/A";
-            const d = new Date(order.createdAt);
-            const day = d.getDate();
-            const month = d.toLocaleString("en-US", { month: "long" });
-            const year = d.getFullYear();
-            const time = d.toLocaleString("en-US", {
-              hour: "numeric",
-              minute: "2-digit",
-              hour12: true,
-            });
-            return `${day} ${month}, ${year} at ${time}`;
-          })()}
+          {t("created-in")} {formattedCreatedAt}
         </div>
       </div>
 
@@ -73,7 +79,7 @@ export default function OrderCard({ order }: OrderCardProps) {
         <div className="flex items-center justify-between pb-4 mb-4">
           <div className="flex items-center gap-3">
             <span className="text-2xl font-medium font-primary leading-none text-gray-900">
-              {t("total-price")} {(order.totalPrice || 0).toLocaleString()} EGP
+              {t("total-price")} {formatPrice(order.totalPrice || 0)} EGP
             </span>
             <span
               className={`px-3 py-1 rounded-full text-white font-primary font-semibold text-base leading-none ${paymentStatus.color}`}
@@ -144,7 +150,7 @@ export default function OrderCard({ order }: OrderCardProps) {
 
         {/* Products */}
         <div>
-          <div className="font-semibold mb-4 text-gray-800">Order Items:</div>
+          <div className="font-semibold mb-4 text-gray-800">{t("order-items")}</div>
 
           <div className="bg-white rounded-xl p-5">
             <div
@@ -178,10 +184,10 @@ export default function OrderCard({ order }: OrderCardProps) {
                           <div className="flex items-center gap-1.5">
                             <span className="text-yellow-500 text-lg">★</span>
                             <span className="text-sm font-medium text-gray-700">
-                              {t("rating")}: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
+                              {t("rating")} {formatRating(item.product?.rateAvg)}/5
                             </span>
                             <span className="text-sm text-blue-600">
-                              ({item.product?.rateCount || 0} rating
+                              ({format.number(item.product?.rateCount || 0)} rating
                               {item.product?.rateCount === 1 ? "" : "s"})
                             </span>
                           </div>
@@ -191,8 +197,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                             (×{item.quantity || 1})
                           </span>
                           <span className="font-bold text-lg text-gray-900">
-                            {(item.price || 0).toLocaleString()}{" "}
-                            <span className="text-base">EGP</span>
+                            {formatPrice(item.price || 0)} <span className="text-base">EGP</span>
                           </span>
                         </div>
                       </div>
@@ -227,10 +232,10 @@ export default function OrderCard({ order }: OrderCardProps) {
                           <div className="flex items-center gap-1.5">
                             <span className="text-yellow-500 text-lg">★</span>
                             <span className="text-sm font-medium text-gray-700">
-                              {t("rating")}: {item.product?.rateAvg?.toFixed(1) || "0.0"}/5
+                              {t("rating")} {formatRating(item.product?.rateAvg)}/5
                             </span>
                             <span className="text-sm text-blue-600">
-                              ({item.product?.rateCount || 0} rating
+                              ({format.number(item.product?.rateCount || 0)} rating
                               {item.product?.rateCount === 1 ? "" : "s"})
                             </span>
                           </div>
@@ -240,8 +245,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                             (×{item.quantity || 1})
                           </span>
                           <span className="font-bold text-lg text-gray-900">
-                            {(item.price || 0).toLocaleString()}{" "}
-                            <span className="text-base">EGP</span>
+                            {formatPrice(item.price || 0)} <span className="text-base">EGP</span>
                           </span>
                         </div>
                       </div>
@@ -266,7 +270,7 @@ export default function OrderCard({ order }: OrderCardProps) {
           {showToggle && showAll && (
             <div className="mt-6 flex justify-center">
               <button
-                onClick={() => setShowAll((s) => !s)}
+                onClick={() => setShowAll((s: boolean) => !s)}
                 className="text-[#A6252A] text-base font-medium leading-none hover:underline flex items-center gap-2"
               >
                 {showAll ? (
