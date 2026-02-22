@@ -33,6 +33,13 @@
     "dashboard": "Dashboard",
     "logout": "Log out"
   },
+  "trusted-companies": {
+    "heading": {
+      "trusted-by": "Trusted by over",
+      "count": "4.5k+",
+      "companies": "companies"
+    }
+  },
   "best-selling": {
     "header": "best selling",
     "title": {
@@ -127,10 +134,32 @@
       }
     }
   },
+  "gallery": {
+    "badge": "GALLERY",
+    "heading": "Check Out our Wonderful Gallery"
+  },
   "promoCardheroSection": {
     "badge": "Starting from 10.99 EGP",
     "title": "Special Gifts For The People You Love",
     "button": "Shop Now"
+  },
+  "about": {
+    "badge": "ABOUT",
+    "heading": {
+      "delivering-the": "Delivering the ",
+      "finest": "Finest",
+      "gift-boxes-for-your": " Gift Boxes for Your ",
+      "special": "Special",
+      "moments": " Moments"
+    },
+    "description": "Make every moment memorable with our premium gift boxes...",
+    "button": "Discover",
+    "features": {
+      "competitive-prices": "Competitive Prices & Easy Shopping",
+      "premium-quality": "Premium Quality & Elegant Packaging",
+      "perfect-occasion": "Perfect for Every Occasion",
+      "fast-delivery": "Fast & Reliable Delivery"
+    }
   },
   "carouselheroSection": {
     "heading": "Say It with Flowers",
