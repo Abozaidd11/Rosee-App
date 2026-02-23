@@ -26,7 +26,6 @@ import useLogin from "../_hooks/use-login";
 
 // Components
 import ErrorAlert from "../../_components/error-alert";
-import useWishlistToAdd from "@/hooks/wishlist/use-wishlist";
 
 export function LoginForm() {
   // Translation
@@ -37,7 +36,6 @@ export function LoginForm() {
 
   // Hooks
   const { isPending, error, login } = useLogin();
-  const { mutateAsync: addUserWishlist } = useWishlistToAdd();
 
   // Form & validation
   const form = useForm<z.infer<ReturnType<typeof loginSchema>>>({
@@ -50,25 +48,7 @@ export function LoginForm() {
 
   // Functions
   function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
-    login(data, {
-      onSuccess: async () => {
-        const userWishlist = localStorage.getItem("wishlist");
-
-        if (!userWishlist) return;
-
-        const wishlist: string[] = JSON.parse(userWishlist);
-
-        for (const id of wishlist) {
-          try {
-            await addUserWishlist(id);
-          } catch (error) {
-            console.error(`Failed to add product ${id} to wishlist`, error);
-          }
-        }
-
-        localStorage.removeItem("wishlist");
-      },
-    });
+    login(data);
   }
 
   return (
