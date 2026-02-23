@@ -11,6 +11,11 @@ export type EmailStepField = z.infer<ReturnType<typeof emailStepSchema>>;
 export type NewPasswordFields = z.infer<ReturnType<typeof newPasswordSchems>>;
 
 // Response Types
+export type loginResponse = {
+  token: string;
+  user: User["user"];
+};
+
 export type RegisterResponse = {
   token: string;
   user: User["user"];

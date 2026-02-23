@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
 const authPages = ["/login", "/register"];
-const publicPages = ["/"];
+const publicPages = ["/", "/products"];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -27,12 +27,12 @@ export default function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
   const buildRegex = (pages: string[]) =>
-   RegExp(
-    `^(/(${locales.join('|')}))?(${pages
-      .flatMap((p) => (p === '/' ? ['', '/'] : p))
-      .join('|')})/?$`,
-    'i'
-  );
+    RegExp(
+      `^(/(${locales.join("|")}))?(${pages
+        .flatMap((p) => (p === "/" ? ["", "/"] : p))
+        .join("|")})/?$`,
+      "i"
+    );
 
   const isPublicPage = buildRegex(publicPages).test(pathname);
   const isAuthPage = buildRegex(authPages).test(pathname);
@@ -43,7 +43,7 @@ export default function middleware(req: NextRequest) {
 
   if (token && isAuthPage) {
     const url = req.nextUrl.clone();
-    url.pathname = `/product`;
+    url.pathname = `/products`;
     return NextResponse.redirect(url);
   }
 
