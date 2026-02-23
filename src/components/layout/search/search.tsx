@@ -10,12 +10,16 @@ import { useSearchResult } from "@/hooks/search/use-search-result";
 import SearchCardSkeleton from "@/components/skeletons/search-card-skeleton";
 import { fields } from "@/lib/constants/header-nav.constant";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { SearchIcon, X } from "lucide-react";
 import { useDebounce } from "@/hooks/search/use-debounce";
 import { useProductsYouMayLike } from "@/hooks/product-you-may-like/use-products-you-may-like";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 export default function Search() {
+  // Translation
+  const t = useTranslations("search-input");
+
   // State
   const [open, setOpen] = useState(false);
 
@@ -71,7 +75,7 @@ export default function Search() {
 
   // Return Search input & Modal UI
   return (
-    <div className="relative bg-white p-0 border rounded-xl w-full" ref={refSearch}>
+    <div className="relative bg-white p-0 w-full" ref={refSearch}>
       {/* Search Input */}
       <Form {...form}>
         <form>
@@ -85,8 +89,8 @@ export default function Search() {
                   <Input
                     {...field}
                     type="text"
-                    placeholder="What awesome gift are you looking for?"
-                    className="focus:rounded-b-none w-full"
+                    placeholder={t("placeholder")}
+                    className="ps-7 placeholder:ps-1 focus:rounded-t-3xl focus:rounded-b-none w-full"
                     onFocus={() => {
                       setOpen(true);
                     }}
@@ -95,6 +99,10 @@ export default function Search() {
               </FormItem>
             )}
           />
+          {/* Search Icon */}
+          {!form.formState.isDirty && (
+            <SearchIcon className="top-4 absolute text-zinc-400 start-2" width={18} height={18} />
+          )}
 
           {/* Clear Button */}
           {form.formState.isDirty && (
@@ -103,7 +111,7 @@ export default function Search() {
               onClick={() => {
                 form.reset();
               }}
-              className="top-0.5 absolute bg-white border-none end-0.5"
+              className="top-0.5 absolute bg-transparent hover:bg-none border-none end-0.5"
             >
               <X />
             </Button>
@@ -127,7 +135,9 @@ export default function Search() {
           {/* Products you may like */}
           {open && !form.formState.isDirty && (
             <>
-              <h1 className="p-2 border-zinc-200 border-b w-full">Products you may like:</h1>
+              <h1 className="p-2 border-zinc-200 border-b w-full font-semibold text-maroon-700">
+                {t("like-head")}
+              </h1>
               {youLikeLoading
                 ? Array.from({ length: 6 }).map((_, idx) => <SearchCardSkeleton key={idx} />)
                 : session.status === "unauthenticated"

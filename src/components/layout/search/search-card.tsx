@@ -1,8 +1,9 @@
+import { Link } from "@/i18n/navigation";
 import { TProductCard } from "@/lib/types/product";
 import { TProduct, TRecommendation } from "@/lib/types/search";
 import { Star } from "lucide-react";
+import { useFormatter, useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
 type TCardProps = {
@@ -11,6 +12,10 @@ type TCardProps = {
 };
 
 export default function SearchCard({ product, setOpen }: TCardProps) {
+  // Translations
+  const t = useTranslations("search-input");
+  const format = useFormatter();
+
   // Search Card UI
   return (
     <Link
@@ -30,15 +35,23 @@ export default function SearchCard({ product, setOpen }: TCardProps) {
 
       <div className="col-span-7">
         <h2 className="font-semibold text-zinc-800 text-sm">{product.title}</h2>
-        <p className="font-bold text-zinc-800 text-xl">{product.price} EGP</p>
+        <p className="font-bold text-zinc-800 text-xl">
+          {format.number(product.price, { style: "decimal" })}{" "}
+          <span className="font-medium text-zinc-800 text-xs">{t("currency")}</span>
+        </p>
       </div>
 
       <p className="flex justify-end items-center self-start gap-1 col-span-3">
         <Star stroke="#FFA508" fill="#FFA508" />{" "}
         <span className="text-black text-sm">
-          Rating: <span className="font-medium text-black text-base">{product.rateAvg}/5</span>
+          {t("general-rate")}:{" "}
+          <span className="font-medium text-black text-base">
+            {format.number(product.rateAvg, "numbers-only")}/{format.number(5, "numbers-only")}
+          </span>
         </span>
-        <span className="font-medium text-blue-600 text-sm">({product.rateCount} ratings)</span>
+        <span className="font-medium text-blue-600 text-sm">
+          ({format.number(product.rateCount, "numbers-only")} {t("rate-count")})
+        </span>
       </p>
     </Link>
   );

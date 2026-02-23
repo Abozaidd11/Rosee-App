@@ -8,7 +8,7 @@ export type TProductCard = {
   quantity: number;
   sold: number;
   rateAvg: number;
-  rateCount?: number;
+  rateCount: number;
 };
 
 export type TProduct = {

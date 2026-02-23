@@ -9,13 +9,7 @@ type TSearchParams = {
 
 export async function getSearchResultService({ pageParam, keyword, limit, fields }: TSearchParams) {
   const res = await fetch(
-    `https://flower.elevateegy.com/api/v1/products?page=${pageParam}&keyword=${keyword}&limit=${limit}&fields=${fields}`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
+    `https://flower.elevateegy.com/api/v1/products?page=${pageParam}&keyword=${keyword}&limit=${limit}&fields=${fields}`
   );
 
   if (!res.ok) {

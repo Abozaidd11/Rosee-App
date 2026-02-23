@@ -184,5 +184,12 @@
     "title-field-placholder": "أدخل عنوان المراجعة",
     "review-form-button": "أضف مراجعة",
     "add-review-toast": "لقد قمت باضافه مراجعة بنجاح"
+  },
+  "search-input": {
+    "placeholder": "ما هي الهدية الرائعة التي تبحث عنها؟",
+    "rate-count": "تقييمات",
+    "general-rate": "تصنيف",
+    "like-head": "المنتجات التي قد تعجبك:",
+    "currency": "ج.م"
   }
 }

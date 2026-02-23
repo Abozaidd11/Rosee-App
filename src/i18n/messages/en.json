@@ -184,5 +184,12 @@
     "title-field-placholder": "Enter review title",
     "review-form-button": "Add Review",
     "add-review-toast": "You Review Added Successfully"
+  },
+  "search-input": {
+    "placeholder": "What awesome gift are you looking for?",
+    "rate-count": "ratings",
+    "general-rate": "Rating",
+    "like-head": "Products you may like:",
+    "currency": "EGP"
   }
 }
