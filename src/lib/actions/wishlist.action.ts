@@ -6,7 +6,7 @@ import { TWishlist } from "../types/wishlist";
 export async function addToWishlistAction(productId: string) {
   const token = await getDecodedToken();
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/wishlist`, {
+  const response = await fetch(`${process.env.API}/wishlist`, {
     method: "POST",
     body: JSON.stringify({
       productId,
@@ -33,11 +33,10 @@ export async function addToWishlistAction(productId: string) {
 export async function removeFromWishlistAction(productId: string) {
   const token = await getDecodedToken();
 
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/wishlist/${productId}`, {
+  const response = await fetch(`${process.env.API}/wishlist/${productId}`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
     },
   });
 

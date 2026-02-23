@@ -1,8 +1,9 @@
 "use client";
 
+import { useWishlistToAdd } from "@/hooks/wishlist/use-wishlist";
 import { TProductCard } from "@/lib/types/product";
 import { useSession } from "next-auth/react";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 type TWishlistContext = {
   wishlist: TProductCard[];
@@ -18,19 +19,52 @@ const WishlistContext = createContext<TWishlistContext>({
 
 export function WishlistProvider({ children }: { children: React.ReactNode }) {
   const [wishlist, setWishlist] = useState<TProductCard[]>([]);
+  const hasSynced = useRef(false);
+
   const { status } = useSession();
+  const { mutateAsync: addUserWishlist } = useWishlistToAdd();
+
   const isUserLoggedIn = status === "authenticated";
 
   useEffect(() => {
     const stored = localStorage.getItem("wishlist");
-    if (stored) {
-      try {
-        setWishlist(JSON.parse(stored));
-      } catch (err) {
-        console.error("Failed to parse wishlist from localStorage", err);
-      }
+    if (!stored) return;
+
+    try {
+      setWishlist(JSON.parse(stored));
+    } catch (err) {
+      console.error("Failed to parse wishlist from localStorage", err);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isUserLoggedIn || hasSynced.current) return;
+
+    const stored = localStorage.getItem("wishlist");
+    if (!stored) return;
+
+    const syncWishlist = async () => {
+      try {
+        hasSynced.current = true;
+
+        const localWishlist: TProductCard[] = JSON.parse(stored);
+
+        await Promise.all(
+          localWishlist.map((item) =>
+            addUserWishlist(item._id).catch((error) => {
+              console.error(`Failed to sync product with id => ${item._id}`, error);
+            })
+          )
+        );
+
+        localStorage.removeItem("wishlist");
+      } catch (err) {
+        console.error("Failed to sync wishlist after login", err);
+      }
+    };
+
+    syncWishlist();
+  }, [isUserLoggedIn, addUserWishlist]);
 
   const toggleWishlist = (product: TProductCard) => {
     setWishlist((prev) => {
@@ -40,6 +74,10 @@ export function WishlistProvider({ children }: { children: React.ReactNode }) {
 
       if (!isUserLoggedIn) {
         localStorage.setItem("wishlist", JSON.stringify(updated));
+      } else {
+        addUserWishlist(product._id).catch((err) =>
+          console.error("Failed to update server wishlist", err)
+        );
       }
 
       return updated;
