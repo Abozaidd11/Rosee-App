@@ -13,6 +13,7 @@ import MobileNavigation from "./mobile-navigation";
 import LoginIcon from "./login-icon";
 import LanguageSwitcher from "@/components/ui/language-switcher";
 import Notifications from "@/app/[locale]/(website)/_components/notifications/notifications";
+import UserDropdown from "./user-dropdown";
 import Search from "../search/search";
 // import { getServerSession } from "next-auth";
 // import { authOptions } from "@/auth";
@@ -68,7 +69,7 @@ export default function Header() {
             )} */}
 
             <div className="hidden sm:block">
-              <LoginIcon />
+              <UserDropdown />
             </div>
 
             {/* mobile toggle */}
