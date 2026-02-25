@@ -39,7 +39,7 @@ export default function DashboardNavLinks() {
             <Link
               href={link.href}
               className={cn(
-                "flex items-center gap-2 p-2.5 font-bold text-zinc-800 text-lg",
+                "flex items-center gap-2 p-2.5 font-nunitoSans font-bold text-zinc-800 text-lg",
                 pathName === link.href
                   ? "rounded-md bg-maroon-50 text-maroon-600"
                   : "focus:rounded-md focus:bg-maroon-50 focus:text-maroon-600"
