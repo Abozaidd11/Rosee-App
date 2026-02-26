@@ -160,7 +160,6 @@
       "email-invalid": "Invalid email address.",
       "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
     }
-    }
   },
   "promoCardheroSection": {
     "badge": "Starting from 10.99 EGP",
@@ -219,5 +218,17 @@
     "createAccount": "Create one now!",
     "email-invalid": "Invalid email address.",
     "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+  },
+  "product-page": {
+    "left-in-stock": "left in stock",
+    "EGP": "EGP",
+    "out-of-stock": "Out of stock",
+    "rating": "Rating",
+    "ratings": "ratings",
+    "No-ratings-yet": "No Ratings Yet",
+    "Add-to-Cart": "Add to Cart",
+    "Adding-to-Cart": "adding to cart...",
+    "added-to-cart-success": "Product added to cart successfully",
+    "added-to-cart-error": "Failed to add product to cart"
   }
 }

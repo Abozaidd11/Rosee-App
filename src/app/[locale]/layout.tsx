@@ -6,6 +6,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local";
 import { Great_Vibes } from "next/font/google";
+import Header from "@/components/layout/header/header";
+import Footer from "@/components/layout/footer/footer";
 
 // Auth layout font
 const greatVibes = Great_Vibes({
@@ -84,7 +86,9 @@ export default function LocaleLayout({ children, params: { locale } }: LocalePro
         className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} ${edwardianscriptitc.variable} ${greatVibes.variable} antialiased`}
       >
         <Providers>
+          <Header />
           {children}
+          <Footer />
           <Toaster />
         </Providers>
       </body>
