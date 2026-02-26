@@ -29,12 +29,11 @@ import { signIn } from "next-auth/react";
 export function LoginForm() {
   // Translation
   const t = useTranslations("login");
-  
+
   // Router for client-side navigation (doesn't trigger beforeunload)
   const router = useRouter();
 
   // State
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -80,7 +79,7 @@ export function LoginForm() {
       });
 
       // Redirect to dashboard
-      router.push("/product");
+      router.push("/products");
     } catch (err) {
       setError("An unexpected error occurred");
       setIsPending(false);
@@ -117,26 +116,14 @@ export function LoginForm() {
             <Field className="gap-1.5 relative" data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="password">{t("password.label")}</FieldLabel>
 
-              <div className="relative">
-                <Input
-                  {...field}
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  autoComplete="current-password"
-                  className="pe-8"
-                  aria-invalid={fieldState.invalid}
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-pressed={showPassword}
-                  className="absolute inset-y-0 end-2 flex items-center text-muted-foreground hover:text-foreground"
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </button>
-              </div>
+              <Input
+                type="password"
+                {...field}
+                id="password"
+                placeholder="••••••••"
+                autoComplete="current-password"
+                aria-invalid={fieldState.invalid}
+              />
 
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>
@@ -153,7 +140,7 @@ export function LoginForm() {
         </Link>
 
         <Field className="mt-6 gap-2.5" orientation="horizontal">
-         <RememberMe value={rememberMe} onChange={setRememberMe} />
+          <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
         {error && <ErrorAlert message={error} />}
