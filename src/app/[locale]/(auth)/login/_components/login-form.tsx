@@ -113,7 +113,7 @@ export function LoginForm() {
           name="password"
           control={form.control}
           render={({ field, fieldState }) => (
-            <Field className="gap-1.5 relative" data-invalid={fieldState.invalid}>
+            <Field className="relative gap-1.5" data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="password">{t("password.label")}</FieldLabel>
 
               <Input
@@ -131,26 +131,26 @@ export function LoginForm() {
         />
       </FieldGroup>
 
-      <div className="w-full flex flex-col mt-2.5">
+      <div className="flex flex-col mt-2.5 w-full">
         <Link
           href="forgot-password"
-          className="font-semibold text-sm text-maroon-700 dark:text-softPink-300 text-end"
+          className="font-semibold text-maroon-700 dark:text-softPink-300 text-sm text-end"
         >
           {t("forgotPassword")}
         </Link>
 
-        <Field className="mt-6 gap-2.5" orientation="horizontal">
+        <Field className="gap-2.5 mt-6" orientation="horizontal">
           <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
         {error && <ErrorAlert message={error} />}
 
-        <Button type="submit" disabled={isPending} className="mt-9 w-full space-x-2">
+        <Button type="submit" disabled={isPending} className="space-x-2 mt-9 w-full">
           {t("submit")}
           <Loader2Icon className={isPending ? "animate-spin" : "hidden"} />
         </Button>
 
-        <span className="text-sm border-t dark:border-zinc-600 text-center pt-4 mt-7">
+        <span className="mt-7 pt-4 dark:border-zinc-600 border-t text-sm text-center">
           {t("noAccount")}
           <Link href="/register" className="text-maroon-700 dark:text-softPink-300">
             {" "}

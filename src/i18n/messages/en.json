@@ -2,6 +2,14 @@
   "Metadata": {
     "app-title": "Rose App"
   },
+  "Products": {
+    "occasion": "Occasion",
+    "price": "Price",
+    "from": "from",
+    "to": "to",
+    "reset": "Reset",
+    "loading-more": "Loading more…"
+  },
   "testimonials": {
     "title": "Testimonials",
     "description": "Real Words from Happy Customers",
@@ -15,6 +23,22 @@
     "mark-as-read": "Mark as read",
     "delete-notification": "Delete notification",
     "no-notifications": "No notifications to display."
+  },
+  "header": {
+    "login": "Login",
+    "register": "Register",
+    "myProfile": "My Profile",
+    "myAddresses": "My Addresses",
+    "myOrders": "My Orders",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "trusted-companies": {
+    "heading": {
+      "trusted-by": "Trusted by over",
+      "count": "4.5k+",
+      "companies": "companies"
+    }
   },
   "best-selling": {
     "header": "best selling",
@@ -161,10 +185,32 @@
       "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
     }
   },
+  "gallery": {
+    "badge": "GALLERY",
+    "heading": "Check Out our Wonderful Gallery"
+  },
   "promoCardheroSection": {
     "badge": "Starting from 10.99 EGP",
     "title": "Special Gifts For The People You Love",
     "button": "Shop Now"
+  },
+  "about": {
+    "badge": "ABOUT",
+    "heading": {
+      "delivering-the": "Delivering the ",
+      "finest": "Finest",
+      "gift-boxes-for-your": " Gift Boxes for Your ",
+      "special": "Special",
+      "moments": " Moments"
+    },
+    "description": "Make every moment memorable with our premium gift boxes...",
+    "button": "Discover",
+    "features": {
+      "competitive-prices": "Competitive Prices & Easy Shopping",
+      "premium-quality": "Premium Quality & Elegant Packaging",
+      "perfect-occasion": "Perfect for Every Occasion",
+      "fast-delivery": "Fast & Reliable Delivery"
+    }
   },
   "carouselheroSection": {
     "heading": "Say It with Flowers",
@@ -190,18 +236,7 @@
     "password-confirmPassword": "password and confirm Password don't match",
     "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
     "sendotp-toast": "OTP sent to your email",
-    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
-    "otp-title": "Enter the OTP Code",
-    "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
-    "otp-verify": "Verify OTP",
-    "otp-time-left": "You can request another code in: <span>{time}s</span>",
-    "otp-resend": "Send a new code",
-    "otp-resending": "Sending a new code",
-    "verify-otp": "Verify OTP",
-    "verifying-otp": "Verifying OTP",
-    "otp-need-help": "Need help? <a>Contact us</a>",
-    "otp-required": "Please enter a valid otp (6 digits)",
-    "new-password-success-toast": "your password changed successfully, please login"
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s"
   },
   "login": {
     "title": "Welcome back!",
@@ -230,5 +265,51 @@
     "Adding-to-Cart": "adding to cart...",
     "added-to-cart-success": "Product added to cart successfully",
     "added-to-cart-error": "Failed to add product to cart"
+  },
+  "related-products": {
+    "header": "Related Products"
+  },
+  "product-reviews": {
+    "header": "Product Reviews",
+    "second-head": "General rating:",
+    "general-rate": "{rate} <span>({count} rating)</span>",
+    "title-field": "Please Enter review title",
+    "login-need": "Please login to be able to review the product",
+    "form-rate-label": "Your rating:",
+    "title-field-label": "Title",
+    "review-comment": "Review",
+    "text-area-placholder": "What do you think of this product?",
+    "title-field-placholder": "Enter review title",
+    "review-form-button": "Add Review",
+    "add-review-toast": "You Review Added Successfully"
+  },
+  "orders": {
+    "title": "Orders",
+    "no-orders": "You haven't placed any orders yet!",
+    "no-orders-desc": "Start shopping and your orders will appear here.",
+    "go-home": "Go to Home",
+    "order-header": "Order",
+    "created-in": "Created in:",
+    "total-price": "Total price:",
+    "payment-status": "Payment status",
+    "paid": "Paid",
+    "not-paid": "Not Paid",
+    "status": "Status",
+    "payment-method": "Payment Method:",
+    "delivery-status": "Delivery Status:",
+    "cash": "Cash",
+    "credit-card": "Credit Card",
+    "pending": "Pending",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "order-items": "Order Items:",
+    "show-all": "Show All",
+    "show-less": "Show Less",
+    "rating": "Rating:",
+    "quantity": "Quantity:",
+    "failed-to-load": "Failed to load orders",
+    "try-again": "Something went wrong. Please try again later.",
+    "retry": "Retry"
   }
 }

@@ -33,3 +33,8 @@ export type EmailStepResponse = {
 export type NewPasswordResponse = {
   token: string;
 };
+
+export type loginResponse = {
+  token: string;
+  user: User["user"];
+};

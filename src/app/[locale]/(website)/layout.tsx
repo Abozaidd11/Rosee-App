@@ -1,6 +1,3 @@
-import Footer from "@/components/layout/footer/footer";
-import Header from "@/components/layout/header/header";
-
 type LocaleProps = {
   children: React.ReactNode;
 };

@@ -1,5 +1,8 @@
 import { productDetailsServices } from "@/lib/services/product-details.service";
 import { setRequestLocale } from "next-intl/server";
+
+import ProductReviews from "./_components/products-reviews/product-reviews";
+import RelatedProducts from "./_components/related-products/related-products";
 import ProductGallery from "./_components/product-gallery";
 import ProductInfo from "./_components/product-info";
 
@@ -27,6 +30,10 @@ export default async function ProductPage({ params: { locale, id } }: LocaleProp
 
         {/* Product info */}
         <ProductInfo {...productDetials?.product} />
+      </section>
+      <section>
+        <ProductReviews productDetials={productDetials} />
+        <RelatedProducts id={productDetials.product.category} />
       </section>
     </main>
   );
