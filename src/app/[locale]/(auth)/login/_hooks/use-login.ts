@@ -25,7 +25,7 @@ export default function useLogin() {
     onSuccess: async () => {
       const lang = location.pathname.split("/")[1];
       // Retrieve callback URL from query parameters, fallback to '/product'
-      const callbackUrl = new URLSearchParams(location.search).get("callbackurl") || "/product";
+      const callbackUrl = new URLSearchParams(location.search).get("callbackurl") || "/products";
 
       // Redirect the user to the callback URL
       location.replace(`/${lang}${callbackUrl}`);

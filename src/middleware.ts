@@ -3,8 +3,8 @@ import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
 
-const authPages = ["/login", "/register", "/forgot-password"];
-const publicPages = ["/"];
+const authPages = ["/login", "/register"];
+const publicPages = ["/", "/products"];
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -75,7 +75,7 @@ export default function middleware(req: NextRequest) {
 
   if (sessionToken && isAuthPage) {
     const url = req.nextUrl.clone();
-    url.pathname = `/product`;
+    url.pathname = `/products`;
     return NextResponse.redirect(url);
   }
 

@@ -1,4 +1,4 @@
-import Providers from "@/components/providers";
+import Providers from "@/components/providers/app";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
@@ -56,8 +56,6 @@ const edwardianscriptitc = localFont({
   variable: "--font-edwardianscriptitc",
   weight: "400",
 });
-
-
 
 export async function generateMetadata({ params: { locale } }: Pick<LocaleProps, "params">) {
   // Translations
