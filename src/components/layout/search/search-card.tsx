@@ -6,12 +6,42 @@ import { useFormatter, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
 
+// Highlight all case-insensitive matches of searchTerm inside text
+const highlightMatches = (text: string, searchTerm?: string) => {
+  if (!searchTerm) return text;
+
+  const trimmed = searchTerm.trim();
+  if (!trimmed) return text;
+
+  const lowerSearch = trimmed.toLowerCase();
+
+  // Escape regex special chars in the search term
+  const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  const regex = new RegExp(`(${escapeRegExp(lowerSearch)})`, "ig");
+  const parts = text.split(regex);
+
+  // If there's no actual match, just return the original text
+  if (parts.length === 1) return text;
+
+  return parts.map((part, index) =>
+    part.toLowerCase() === lowerSearch ? (
+      <span key={index} className="text-maroon-600">
+        {part}
+      </span>
+    ) : (
+      <span key={index}>{part}</span>
+    )
+  );
+};
+
 type TCardProps = {
   product: TProduct | TRecommendation | TProductCard;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  searchTerm?: string;
 };
 
-export default function SearchCard({ product, setOpen }: TCardProps) {
+export default function SearchCard({ product, setOpen, searchTerm }: TCardProps) {
   // Translations
   const t = useTranslations("search-input");
   const format = useFormatter();
@@ -34,7 +64,9 @@ export default function SearchCard({ product, setOpen }: TCardProps) {
       />
 
       <div className="col-span-7">
-        <h2 className="font-semibold text-zinc-800 text-sm">{product.title}</h2>
+        <h2 className="font-semibold text-zinc-800 text-sm">
+          {highlightMatches(product.title, searchTerm)}
+        </h2>
         <p className="font-bold text-zinc-800 text-xl">
           {format.number(product.price, { style: "decimal" })}{" "}
           <span className="font-medium text-zinc-800 text-xs">{t("currency")}</span>
