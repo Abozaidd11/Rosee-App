@@ -19,7 +19,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <section className="flex flex-col justify-between h-[22.75rem]">
       {/* Cover  */}
-      <section className="group relative h-[17rem]">
+      <section className="relative h-[17rem]">
         {/* Header  */}
         <header className="top-3 z-10 absolute flex justify-between px-3 w-full">
           {/* Add to wishlist */}
