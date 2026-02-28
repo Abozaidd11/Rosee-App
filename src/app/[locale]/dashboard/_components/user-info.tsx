@@ -23,7 +23,7 @@ export default function UserInfo() {
   const lastInitial = session.data?.user?.lastName?.charAt(0) ?? "";
   const fallback = firstInitial + lastInitial || "CN";
 
-  const color = generateColor(session.data?.user?._id ?? fallback);
+  const color = generateColor(session.data?.user?.email ?? fallback);
 
   return (
     <>
@@ -32,7 +32,7 @@ export default function UserInfo() {
         {/* User Image */}
         <Avatar className="rounded-full w-12 h-12">
           <AvatarImage src="/assets/images/avatar.png" alt={session.data?.user.firstName} />
-          <AvatarFallback style={{ backgroundColor: color }} className="text-xl">
+          <AvatarFallback style={{ backgroundColor: `hsl(${color})` }} className="text-xl">
             {fallback}
           </AvatarFallback>
         </Avatar>
