@@ -9,15 +9,18 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
-const LABELS: Record<string, string> = {
-  categories: "Categories",
-  occasions: "Occasions",
-  products: "Products",
-  account: "Account",
+const BREADCRUMB_KEYS: Record<string, string> = {
+  categories: "breadcrumb-categories",
+  occasions: "breadcrumb-occasions",
+  products: "breadcrumb-products",
+  account: "breadcrumb-account",
 };
 
 export default function DashboardBreadcrumb() {
+  // Translations
+  const t = useTranslations("dashboard");
   // Variales
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
@@ -36,7 +39,7 @@ export default function DashboardBreadcrumb() {
             href={"/dashboard"}
             className="flex items-center gap-2 text-gray-500 text-sm"
           >
-            Dashboard
+            {t("breadcrumb-segmentone")}
           </BreadcrumbLink>
         </BreadcrumbItem>
 
@@ -46,7 +49,7 @@ export default function DashboardBreadcrumb() {
 
             <BreadcrumbItem>
               <BreadcrumbPage className="flex items-center gap-2 text-maroon-600 text-sm">
-                {LABELS[subpage]}
+                {BREADCRUMB_KEYS[subpage] ? t(BREADCRUMB_KEYS[subpage]) : subpage}
               </BreadcrumbPage>
             </BreadcrumbItem>
           </>

@@ -3,31 +3,35 @@
 import { Link, usePathname } from "@/i18n/navigation";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { CalendarHeart, ClipboardList, LayoutDashboard, Package } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export const links = [
   {
-    label: "Overview",
+    labelKey: "nav-overview",
     icon: LayoutDashboard,
     href: "/dashboard",
   },
   {
-    label: "Categories",
+    labelKey: "nav-categories",
     icon: ClipboardList,
     href: "/dashboard/categories",
   },
   {
-    label: "Occasions",
+    labelKey: "nav-occasions",
     icon: CalendarHeart,
     href: "/dashboard/occasions",
   },
   {
-    label: "Products",
+    labelKey: "nav-products",
     icon: Package,
     href: "/dashboard/products",
   },
 ];
 
 export default function DashboardNavLinks() {
+  // Translations
+  const t = useTranslations("dashboard");
+
   // Hooks
   const pathName = usePathname();
 
@@ -46,7 +50,7 @@ export default function DashboardNavLinks() {
               )}
             >
               <link.icon />
-              {link.label}
+              {t(link.labelKey)}
             </Link>
           </li>
         ))}

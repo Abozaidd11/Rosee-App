@@ -6,8 +6,12 @@ import DashboardNavLinks from "./nav-links";
 import UserInfo from "./user-info";
 import DashboardBreadcrumb from "./dashboard-breadcrumb";
 import MobileNavLinks from "./mobile-nav-links";
+import { useTranslations } from "next-intl";
 
 export default function DashboardSidebar() {
+  // Translation
+  const t = useTranslations("dashboard");
+
   return (
     <>
       <aside className="hidden md:flex flex-col justify-between items-center col-span-2 bg-white p-6 border-black/10 border-r h-screen">
@@ -19,7 +23,7 @@ export default function DashboardSidebar() {
           {/* Home Button */}
           <Button className="w-full font-inter font-semibold">
             <Link href={"/"} className="flex items-center gap-2">
-              <Flower /> Preview website
+              <Flower /> {t("home-button")}
             </Link>
           </Button>
 
@@ -32,7 +36,6 @@ export default function DashboardSidebar() {
       </aside>
 
       {/* Mobile Screen */}
-
       <header className="md:hidden flex items-center gap-2 col-span-10 bg-white pr-4 pl-4">
         <Image src="/assets/logo.png" alt="Logo" width={60} height={57} />
 
