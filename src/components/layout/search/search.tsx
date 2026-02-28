@@ -167,7 +167,12 @@ export default function Search() {
                 </p>
               ) : (
                 productSearch.map((product) => (
-                  <SearchCard key={product._id} product={product} setOpen={setOpen} />
+                  <SearchCard
+                    key={product._id}
+                    product={product}
+                    setOpen={setOpen}
+                    searchTerm={searchTirm}
+                  />
                 ))
               )}
             </InfiniteScroll>
