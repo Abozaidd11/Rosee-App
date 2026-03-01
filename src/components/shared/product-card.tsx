@@ -4,10 +4,17 @@ import { Badge } from "@/components/ui/badge";
 import { TProductCard } from "@/lib/types/product";
 import { Button } from "../ui/button";
 import WishlistButton from "../features/wishlist/wishlist-button";
+import { useLocale, useTranslations } from "next-intl";
 
 type ProductCardProps = { product: TProductCard };
 
 export default function ProductCard({ product }: ProductCardProps) {
+  // Translations
+  const t = useTranslations("product-listing.badge");
+
+  // Hooks
+  const locale = useLocale();
+
   // Variables
   const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold, _id } =
     product;
@@ -26,13 +33,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           <WishlistButton product={product} />
 
           {/* New  badge */}
-          {isNewProduct && <Badge variant="subtle">new</Badge>}
+          {isNewProduct && <Badge variant="subtle">{t("new")}</Badge>}
 
           {/* Sold out badge */}
-          {!quantity && <Badge>out of stock</Badge>}
+          {!quantity && <Badge>{t("sold-out")}</Badge>}
 
           {/* Hot badge */}
-          {isHotProduct && <Badge variant="secondary">hot</Badge>}
+          {isHotProduct && <Badge variant="secondary">{t("hot")}</Badge>}
         </header>
 
         {/* Cover  */}
@@ -70,13 +77,13 @@ export default function ProductCard({ product }: ProductCardProps) {
               ))}
             </div>
 
-            {/* Price */}
-            {`${priceAfterDiscount?.toFixed(2)} EGP`}
-
             {/* PriceAfterDiscount */}
+            {`${priceAfterDiscount?.toFixed(2)} ${locale === "ar" ? "ج.م" : "EGP"}`}
+
+            {/* Price */}
             {price && (
-              <span className="pl-1 font-medium text-zinc-400 dark:text-zinc-500 line-through">
-                {`${price?.toFixed(2)} EGP`}
+              <span className="ps-2 font-medium text-zinc-400 dark:text-zinc-500 line-through">
+                {`${price?.toFixed(2)} ${locale === "ar" ? "ج.م" : "EGP"}`}
               </span>
             )}
           </div>

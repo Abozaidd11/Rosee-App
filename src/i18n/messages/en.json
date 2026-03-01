@@ -160,5 +160,18 @@
       "email-invalid": "Invalid email address.",
       "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
     }
+  },
+
+  "product-listing": {
+    "badge": {
+      "new": "new",
+      "sold-out": "out of stock",
+      "hot": "hot"
+    },
+    "wishlist-button": {
+      "add": "add to wishlist",
+      "remove": "remove from wishlist"
+    },
+    "no-products-message": "no products to display"
   }
 }
