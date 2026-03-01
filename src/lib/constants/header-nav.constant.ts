@@ -38,3 +38,5 @@ export const HEADER_NAV: HeaderNav[] = [
     icon: Info,
   },
 ];
+
+export const fields = "imgCover,title,rateAvg,rateCount,price";
