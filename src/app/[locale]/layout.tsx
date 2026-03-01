@@ -2,7 +2,7 @@ import Providers from "@/components/providers/app";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local";
 import { Great_Vibes } from "next/font/google";
@@ -70,7 +70,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default function LocaleLayout({ children, params: { locale } }: LocaleProps) {
+export default async function LocaleLayout({ children, params: { locale } }: LocaleProps) {
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -78,12 +78,14 @@ export default function LocaleLayout({ children, params: { locale } }: LocalePro
   // Enable static rendering
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body
         className={`${sarabun.variable} ${tajawal.variable} ${inter.variable} ${edwardianscriptitc.variable} ${greatVibes.variable} antialiased`}
       >
-        <Providers>
+        <Providers locale={locale} messages={messages}>
           {children}
           <Toaster />
         </Providers>

@@ -10,19 +10,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { newPasswordSchems } from "@/lib/schemes/af-task-schema/auth.schema";
 import { NewPasswordFields } from "@/lib/types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { SubmitHandler, useForm } from "react-hook-form";
 import useNewPassword from "../../_hooks/af-task/use-new-password";
+import { toast } from "sonner";
 
 type NewPasswordProps = {
   email: string;
 };
 
 export default function NewPasswordStep({ email }: NewPasswordProps) {
+  // navigate
+  const router = useRouter();
+
   // Translation
   const t = useTranslations("forgot-password");
 
@@ -40,19 +44,27 @@ export default function NewPasswordStep({ email }: NewPasswordProps) {
 
   // Functions
   const onSubmit: SubmitHandler<NewPasswordFields> = (values) => {
-    console.log(values);
-
-    newPassword({
-      ...values,
-      email,
-    });
+    newPassword(
+      {
+        ...values,
+        email,
+      },
+      {
+        onSuccess: () => {
+          router.replace("/login");
+          toast.success(t("new-password-success-toast"));
+        },
+      }
+    );
   };
 
   return (
     <>
       {/* Header */}
       <header className="mb-5 pb-3 border-zinc-200 border-b w-full">
-        <h1 className="font-semibold text-zinc-800 dark:text-zinc-50 text-2xl">{t("new-password-title")}</h1>
+        <h1 className="font-semibold text-zinc-800 dark:text-zinc-50 text-2xl">
+          {t("new-password-title")}
+        </h1>
         <p className="text-zinc-800 dark:text-zinc-50">{t("new-password-desc")}</p>
       </header>
 

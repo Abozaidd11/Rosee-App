@@ -10,7 +10,11 @@ export const authOptions: NextAuthOptions = {
     signOut: "/auth/login",
     error: "/auth/login",
   },
-
+  // Session configuration - 30 days for persistent sessions
+  session: {
+    strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
   // Authentication providers
   providers: [
     CredentialsProvider({
@@ -19,6 +23,7 @@ export const authOptions: NextAuthOptions = {
       credentials: {
         email: {},
         password: {},
+        rememberMe: {},
       },
       // Function to authorize credentials and return user object
       async authorize(credentials) {
@@ -45,6 +50,7 @@ export const authOptions: NextAuthOptions = {
           id: payload.user._id,
           accessToken: payload.token,
           user: payload.user,
+          rememberMe: credentials?.rememberMe === "true",
         };
       },
     }),
@@ -57,12 +63,14 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.accessToken = user.accessToken;
         token.user = user.user;
+        token.rememberMe = user.rememberMe;
       }
       return token;
     },
 
     // Modify session object sent to the client
     async session({ session, token }) {
+      session.accessToken = token.accessToken as string;
       session.user = token.user;
       return session;
     },

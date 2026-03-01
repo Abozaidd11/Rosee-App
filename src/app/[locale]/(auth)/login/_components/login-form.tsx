@@ -10,32 +10,36 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
 
 // Icons
 import { Eye, EyeOff, Loader2Icon } from "lucide-react";
 
 // Navigation & i18n
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 // Logic
 import { loginSchema } from "@/lib/schemes/login";
-import useLogin from "../_hooks/use-login";
 
 // Components
 import ErrorAlert from "../../_components/error-alert";
+import RememberMe from "../../_components/remember-me";
+import { signIn } from "next-auth/react";
 
 export function LoginForm() {
   // Translation
   const t = useTranslations("login");
 
+  // Router for client-side navigation (doesn't trigger beforeunload)
+  const router = useRouter();
+
   // State
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isPending, setIsPending] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
 
-  // Hooks
-  const { isPending, error, login } = useLogin();
+  // Remember Me
+  const [rememberMe, setRememberMe] = useState(false);
 
   // Form & validation
   const form = useForm<z.infer<ReturnType<typeof loginSchema>>>({
@@ -47,12 +51,44 @@ export function LoginForm() {
   });
 
   // Functions
-  function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
-    login(data);
+  async function onSubmit(data: z.infer<ReturnType<typeof loginSchema>>) {
+    setIsPending(true);
+    setError(null);
+
+    try {
+      const response = await signIn("login", {
+        email: data.email,
+        password: data.password,
+        rememberMe: rememberMe ? "true" : "false",
+        redirect: false,
+      });
+
+      if (!response?.ok) {
+        setError(response?.error || "Login failed");
+        setIsPending(false);
+        return;
+      }
+
+      // Handle cookie based on Remember Me preference
+      // Remember Me = TRUE: httpOnly cookie (30 days) + persistent rememberMe cookie
+      // Remember Me = FALSE: non-httpOnly cookie + SESSION rememberMe cookie (expires on browser close)
+      await fetch("/api/auth/session-type", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ rememberMe }),
+      });
+
+      // Redirect to dashboard
+      router.push("/products");
+    } catch (err) {
+      setError("An unexpected error occurred");
+      setIsPending(false);
+    }
   }
 
   return (
-    <form className="max-w-sm" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+    <form className="w-full" id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
       <FieldGroup className="gap-4">
         <Controller
           name="email"
@@ -78,7 +114,7 @@ export function LoginForm() {
           name="password"
           control={form.control}
           render={({ field, fieldState }) => (
-            <Field className="gap-1.5 relative" data-invalid={fieldState.invalid}>
+            <Field className="relative gap-1.5" data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="password">{t("password.label")}</FieldLabel>
 
               <div className="relative">
@@ -96,9 +132,9 @@ export function LoginForm() {
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
                   aria-pressed={showPassword}
-                  className="absolute inset-y-0 end-2 flex items-center text-muted-foreground hover:text-foreground"
+                  className="absolute inset-y-0 flex items-center text-muted-foreground hover:text-foreground end-2"
                 >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
               </div>
 
@@ -108,29 +144,28 @@ export function LoginForm() {
         />
       </FieldGroup>
 
-      <div className="w-full flex flex-col mt-2.5">
+      <div className="flex flex-col mt-2.5 w-full">
         <Link
           href="forgot-password"
-          className="font-semibold text-sm text-maroon-700 dark:text-softPink-300 text-end"
+          className="font-semibold text-maroon-700 dark:text-softPink-300 text-sm text-end"
         >
           {t("forgotPassword")}
         </Link>
 
-        <Field className="mt-6 gap-2.5" orientation="horizontal">
-          <Checkbox id="rememberMe" />
-          <Label htmlFor="rememberMe">{t("rememberMe")}</Label>
+        <Field className="gap-2.5 mt-6" orientation="horizontal">
+          <RememberMe value={rememberMe} onChange={setRememberMe} />
         </Field>
 
-        {error && <ErrorAlert message={error.message} />}
+        {error && <ErrorAlert message={error} />}
 
-        <Button type="submit" disabled={isPending} className="mt-9 w-full space-x-2">
+        <Button type="submit" disabled={isPending} className="space-x-2 mt-9 w-full">
           {t("submit")}
           <Loader2Icon className={isPending ? "animate-spin" : "hidden"} />
         </Button>
 
-        <span className="text-sm border-t dark:border-zinc-600 text-center pt-4 mt-7">
+        <span className="mt-7 pt-4 dark:border-zinc-600 border-t text-sm text-center">
           {t("noAccount")}
-          <Link href="#" className="text-maroon-700 dark:text-softPink-300">
+          <Link href="/register" className="text-maroon-700 dark:text-softPink-300">
             {" "}
             {t("createAccount")}
           </Link>
