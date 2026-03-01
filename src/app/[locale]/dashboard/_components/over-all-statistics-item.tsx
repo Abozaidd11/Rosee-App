@@ -45,11 +45,14 @@ export default function OverAllStatisticsItem({
       )}
     >
       {/* lucide/package */}
-
       <CustomIcon className="size-7" strokeWidth={2.08} />
-
       {/* Text */}
-      <div className="font-inter font-semibold text-2xl leading-none text-inherit">
+      <div
+        className={cn(
+          locale === "ar" ? "font-tajawal" : "font-inter",
+          "font-semibold text-2xl leading-none text-inherit"
+        )}
+      >
         {name === "totalRevenue"
           ? `${format.number(value, {
               maximumFractionDigits: 0,
