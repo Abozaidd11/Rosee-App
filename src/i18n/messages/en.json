@@ -132,98 +132,18 @@
       "gender": {
         "required": "Please select your gender"
       }
-    },
-    },
+    }
+  },
   "gallery": {
     "badge": "GALLERY",
     "heading": "Check Out our Wonderful Gallery"
   },
-  "auth": {
-    "register": {
-      "header": "Become part of our family!",
-      "name": {
-        "first": {
-          "title": "first name",
-          "placeholder": "Abdulrahman"
-        },
-        "last": {
-          "title": "last name",
-          "placeholder": "Shams"
-        }
-      },
-      "email": {
-        "title": "email",
-        "placeholder": "user@example.com"
-      },
-      "phone": {
-        "title": "phone",
-        "placeholder": "1012345678"
-      },
-      "gender": {
-        "title": "gender",
-        "placeholder": "Select gender",
-        "options": {
-          "male": "male",
-          "female": "female"
-        }
-      },
-      "password": {
-        "title": "password",
-        "placeholder": "Password@12345"
-      },
-      "confirm-password": {
-        "title": "confirm password",
-        "placeholder": "********"
-      },
-      "button": "create account",
-      "user-question": "Already have an account?",
-      "link": "login"
-    },
-    "validation": {
-      "firstName": {
-        "required": "Please enter your first name",
-        "min": "Please enter at least {min} characters for the first name",
-        "max": "Please enter at most {max} characters for the first name"
-      },
-      "lastName": {
-        "required": "Please enter your last name",
-        "min": "Please enter at least {min} characters for the last name",
-        "max": "Please enter at most {max} characters for the last name"
-      },
-      "email": {
-        "required": "Please enter your email",
-        "invalid": "Please enter a valid email",
-        "tooShort": "Email is too short, please check",
-        "tooLong": "Email is too long, please shorten it"
-      },
-      "phone": {
-        "required": "Please enter your phone number",
-        "invalid": "Please enter a valid phone number"
-      },
-      "password": {
-        "required": "Please enter your password",
-        "min": "Password must be at least {min} characters",
-        "max": "Password must be at most {max} characters",
-        "upper": "Password must contain at least one uppercase letter",
-        "lower": "Password must contain at least one lowercase letter",
-        "number": "Password must contain at least one number",
-        "special": "Password must contain at least one special character",
-        "mismatch": "Passwords do not match, please check"
-      },
-      "rePassword": {
-        "required": "Please confirm your password"
-      },
-      "gender": {
-        "required": "Please select your gender"
-      }
-    }
-  },
   "promoCardheroSection": {
-      "badge": "Starting from 10.99 EGP",
-      "title": "Special Gifts For The People You Love",
-      "button": "Shop Now"
-    },
-    "about": {
+    "badge": "Starting from 10.99 EGP",
+    "title": "Special Gifts For The People You Love",
+    "button": "Shop Now"
+  },
+  "about": {
     "badge": "ABOUT",
     "heading": {
       "delivering-the": "Delivering the ",
@@ -242,30 +162,30 @@
     }
   },
   "carouselheroSection": {
-      "heading": "Say It with Flowers",
-      "subheading": "Elegant gifts for every special moment.",
-      "cta": "I’m buying!"
-    },
-    "forgot-password": {
-      "title": "Forgot Password?",
-      "desc": "Worry not, we’ll send you instructions to help you reset it.",
-      "field-lable": "Email",
-      "footer": "Don’t have an account yet? <a>Create one now!</a>",
-      "email-form-button": "Continue",
-      "new-password-title": "Create a new password",
-      "new-password-desc": "Set a strong password to secure your account.",
-      "new-password-field-one-label": "Password",
-      "new-password-button": "Reset Password",
-      "new-password-footer": "Need help? <a>Contact us</a>",
-      "new-password-field-two-label": "Confirm Password",
-      "validation-email": "In-Valid Email",
-      "email-require": "Email is Require",
-      "password-require": "Please enter your password",
-      "rePassword-require": "Please enter your confirm password",
-      "password-confirmPassword": "password and confirm Password don't match",
-      "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
-      "sendotp-toast": "OTP sent to your email",
-      "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
+    "heading": "Say It with Flowers",
+    "subheading": "Elegant gifts for every special moment.",
+    "cta": "I’m buying!"
+  },
+  "forgot-password": {
+    "title": "Forgot Password?",
+    "desc": "Worry not, we’ll send you instructions to help you reset it.",
+    "field-lable": "Email",
+    "footer": "Don’t have an account yet? <a>Create one now!</a>",
+    "email-form-button": "Continue",
+    "new-password-title": "Create a new password",
+    "new-password-desc": "Set a strong password to secure your account.",
+    "new-password-field-one-label": "Password",
+    "new-password-button": "Reset Password",
+    "new-password-footer": "Need help? <a>Contact us</a>",
+    "new-password-field-two-label": "Confirm Password",
+    "validation-email": "In-Valid Email",
+    "email-require": "Email is Require",
+    "password-require": "Please enter your password",
+    "rePassword-require": "Please enter your confirm password",
+    "password-confirmPassword": "password and confirm Password don't match",
+    "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
+    "sendotp-toast": "OTP sent to your email",
+    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
     "otp-title": "Enter the OTP Code",
     "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
     "otp-verify": "Verify OTP",
@@ -277,23 +197,22 @@
     "otp-need-help": "Need help? <a>Contact us</a>",
     "otp-required": "Please enter a valid otp (6 digits)",
     "new-password-success-toast": "your password changed successfully, please login"
+  },
+  "login": {
+    "title": "Welcome back!",
+    "email": {
+      "label": "Email"
     },
-    "login": {
-      "title": "Welcome back!",
-      "email": {
-        "label": "Email"
-      },
-      "password": {
-        "label": "Password"
-      },
-      "rememberMe": "Remember me",
-      "forgotPassword": "Forgot your password?",
-      "submit": "Login",
-      "noAccount": "Don’t have an account yet?",
-      "createAccount": "Create one now!",
-      "email-invalid": "Invalid email address.",
-      "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
-    }
+    "password": {
+      "label": "Password"
+    },
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Login",
+    "noAccount": "Don’t have an account yet?",
+    "createAccount": "Create one now!",
+    "email-invalid": "Invalid email address.",
+    "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   },
   "dashboard": {
     "overview": {
@@ -303,7 +222,7 @@
             "products": "total products",
             "orders": "total orders",
             "categories": "total categories",
-            "revenue": "total revenue" 
+            "revenue": "total revenue"
           },
           "category": {
             "heading": "all categories",
@@ -338,8 +257,8 @@
         "button-steps": {
           "first": "next",
           "second": {
-            "add":"add Address",
-            "update":"update Address"
+            "add": "add Address",
+            "update": "update Address"
           }
         },
 
@@ -372,58 +291,59 @@
         "required": "Please enter your mobile number",
         "invalid": "Please enter a valid mobile number"
       }
+    },
+    "related-products": {
+      "header": "Related Products"
+    },
+    "product-reviews": {
+      "header": "Product Reviews",
+      "second-head": "General rating:",
+      "general-rate": "{rate} <span>({count} rating)</span>",
+      "title-field": "Please Enter review title",
+      "login-need": "Please login to be able to review the product",
+      "form-rate-label": "Your rating:",
+      "title-field-label": "Title",
+      "review-comment": "Review",
+      "text-area-placholder": "What do you think of this product?",
+      "title-field-placholder": "Enter review title",
+      "review-form-button": "Add Review",
+      "add-review-toast": "You Review Added Successfully"
+    },
+    "orders": {
+      "title": "Orders",
+      "no-orders": "You haven't placed any orders yet!",
+      "no-orders-desc": "Start shopping and your orders will appear here.",
+      "go-home": "Go to Home",
+      "order-header": "Order",
+      "created-in": "Created in:",
+      "total-price": "Total price:",
+      "payment-status": "Payment status",
+      "paid": "Paid",
+      "not-paid": "Not Paid",
+      "status": "Status",
+      "payment-method": "Payment Method:",
+      "delivery-status": "Delivery Status:",
+      "cash": "Cash",
+      "credit-card": "Credit Card",
+      "pending": "Pending",
+      "processing": "Processing",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "order-items": "Order Items:",
+      "show-all": "Show All",
+      "show-less": "Show Less",
+      "rating": "Rating:",
+      "quantity": "Quantity:",
+      "failed-to-load": "Failed to load orders",
+      "try-again": "Something went wrong. Please try again later.",
+      "retry": "Retry"
+    },
+    "search-input": {
+      "placeholder": "What awesome gift are you looking for?",
+      "rate-count": "ratings",
+      "general-rate": "Rating",
+      "like-head": "Products you may like:",
+      "currency": "EGP"
     }
-  "related-products": {
-    "header": "Related Products"
-  },
-  "product-reviews": {
-    "header": "Product Reviews",
-    "second-head": "General rating:",
-    "general-rate": "{rate} <span>({count} rating)</span>",
-    "title-field": "Please Enter review title",
-    "login-need": "Please login to be able to review the product",
-    "form-rate-label": "Your rating:",
-    "title-field-label": "Title",
-    "review-comment": "Review",
-    "text-area-placholder": "What do you think of this product?",
-    "title-field-placholder": "Enter review title",
-    "review-form-button": "Add Review",
-    "add-review-toast": "You Review Added Successfully"
-  },
-  "orders": {
-    "title": "Orders",
-    "no-orders": "You haven't placed any orders yet!",
-    "no-orders-desc": "Start shopping and your orders will appear here.",
-    "go-home": "Go to Home",
-    "order-header": "Order",
-    "created-in": "Created in:",
-    "total-price": "Total price:",
-    "payment-status": "Payment status",
-    "paid": "Paid",
-    "not-paid": "Not Paid",
-    "status": "Status",
-    "payment-method": "Payment Method:",
-    "delivery-status": "Delivery Status:",
-    "cash": "Cash",
-    "credit-card": "Credit Card",
-    "pending": "Pending",
-    "processing": "Processing",
-    "delivered": "Delivered",
-    "cancelled": "Cancelled",
-    "order-items": "Order Items:",
-    "show-all": "Show All",
-    "show-less": "Show Less",
-    "rating": "Rating:",
-    "quantity": "Quantity:",
-    "failed-to-load": "Failed to load orders",
-    "try-again": "Something went wrong. Please try again later.",
-    "retry": "Retry"
-  },
-  "search-input": {
-    "placeholder": "What awesome gift are you looking for?",
-    "rate-count": "ratings",
-    "general-rate": "Rating",
-    "like-head": "Products you may like:",
-    "currency": "EGP"
   }
 }
