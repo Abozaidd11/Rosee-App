@@ -17,6 +17,11 @@ export type RegisterResponse = {
   user: User["user"];
 };
 
+export type loginResponse = {
+  token: string;
+  user: User["user"];
+};
+
 export type EmailStepResponse = {
   info: string;
 };

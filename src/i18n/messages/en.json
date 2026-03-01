@@ -294,6 +294,66 @@
     "email-invalid": "Invalid email address.",
     "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   },
+  "user-address": {
+    "modal": {
+      "addresses-list": {
+        "title": "my addresses",
+        "create-button": "add a new address"
+      },
+      "confirmation": {
+        "message": "Are you sure you want to delete this address?",
+        "button": {
+          "confirm": "confirm",
+          "cancel": "cancel"
+        }
+      },
+      "mutate-address": {
+        "form-title": {
+          "add": "add a new address",
+          "edit": "update address info"
+        },
+        "description-steps": {
+          "first": "Enter address details",
+          "second": "Find your location"
+        },
+        "button-steps": {
+          "first": "next",
+          "second": {
+            "add":"add Address",
+            "update":"update Address"
+          }
+        },
+
+        "city": {
+          "title": "city",
+          "placeholder": "Enter city name"
+        },
+        "address": {
+          "title": "address",
+          "placeholder": "Enter your full address"
+        },
+        "phone": {
+          "title": "phone",
+          "placeholder": "Phone number"
+        }
+      }
+    },
+    "validation": {
+      "city": {
+        "required": "Please enter your city",
+        "min": "City name must be at least {min} characters",
+        "max": "City name must not exceed {max} characters"
+      },
+      "address": {
+        "required": "Please enter your address",
+        "min": "Address must be at least {min} characters",
+        "max": "Address must not exceed {max} characters"
+      },
+      "phone": {
+        "required": "Please enter your mobile number",
+        "invalid": "Please enter a valid mobile number"
+      }
+    }
   "related-products": {
     "header": "Related Products"
   },
