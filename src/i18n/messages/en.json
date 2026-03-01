@@ -132,8 +132,8 @@
       "gender": {
         "required": "Please select your gender"
       }
-    }
-  },
+    },
+    },
   "gallery": {
     "badge": "GALLERY",
     "heading": "Check Out our Wonderful Gallery"
@@ -219,11 +219,11 @@
     }
   },
   "promoCardheroSection": {
-    "badge": "Starting from 10.99 EGP",
-    "title": "Special Gifts For The People You Love",
-    "button": "Shop Now"
-  },
-  "about": {
+      "badge": "Starting from 10.99 EGP",
+      "title": "Special Gifts For The People You Love",
+      "button": "Shop Now"
+    },
+    "about": {
     "badge": "ABOUT",
     "heading": {
       "delivering-the": "Delivering the ",
@@ -242,30 +242,30 @@
     }
   },
   "carouselheroSection": {
-    "heading": "Say It with Flowers",
-    "subheading": "Elegant gifts for every special moment.",
-    "cta": "I’m buying!"
-  },
-  "forgot-password": {
-    "title": "Forgot Password?",
-    "desc": "Worry not, we’ll send you instructions to help you reset it.",
-    "field-lable": "Email",
-    "footer": "Don’t have an account yet? <a>Create one now!</a>",
-    "email-form-button": "Continue",
-    "new-password-title": "Create a new password",
-    "new-password-desc": "Set a strong password to secure your account.",
-    "new-password-field-one-label": "Password",
-    "new-password-button": "Reset Password",
-    "new-password-footer": "Need help? <a>Contact us</a>",
-    "new-password-field-two-label": "Confirm Password",
-    "validation-email": "In-Valid Email",
-    "email-require": "Email is Require",
-    "password-require": "Please enter your password",
-    "rePassword-require": "Please enter your confirm password",
-    "password-confirmPassword": "password and confirm Password don't match",
-    "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
-    "sendotp-toast": "OTP sent to your email",
-    "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
+      "heading": "Say It with Flowers",
+      "subheading": "Elegant gifts for every special moment.",
+      "cta": "I’m buying!"
+    },
+    "forgot-password": {
+      "title": "Forgot Password?",
+      "desc": "Worry not, we’ll send you instructions to help you reset it.",
+      "field-lable": "Email",
+      "footer": "Don’t have an account yet? <a>Create one now!</a>",
+      "email-form-button": "Continue",
+      "new-password-title": "Create a new password",
+      "new-password-desc": "Set a strong password to secure your account.",
+      "new-password-field-one-label": "Password",
+      "new-password-button": "Reset Password",
+      "new-password-footer": "Need help? <a>Contact us</a>",
+      "new-password-field-two-label": "Confirm Password",
+      "validation-email": "In-Valid Email",
+      "email-require": "Email is Require",
+      "password-require": "Please enter your password",
+      "rePassword-require": "Please enter your confirm password",
+      "password-confirmPassword": "password and confirm Password don't match",
+      "strong-password": "Password must be at least 8 characters, one uppercase letter,one lowercase letter and one special character",
+      "sendotp-toast": "OTP sent to your email",
+      "otp-cooldown-error-toast": "You cannot ask for another OTP right now, please wait for {duration}s",
     "otp-title": "Enter the OTP Code",
     "otp-description": "We have sent a 6-digit code to {email} <span>edit</span>",
     "otp-verify": "Verify OTP",
@@ -277,22 +277,41 @@
     "otp-need-help": "Need help? <a>Contact us</a>",
     "otp-required": "Please enter a valid otp (6 digits)",
     "new-password-success-toast": "your password changed successfully, please login"
+    },
+    "login": {
+      "title": "Welcome back!",
+      "email": {
+        "label": "Email"
+      },
+      "password": {
+        "label": "Password"
+      },
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot your password?",
+      "submit": "Login",
+      "noAccount": "Don’t have an account yet?",
+      "createAccount": "Create one now!",
+      "email-invalid": "Invalid email address.",
+      "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+    }
   },
-  "login": {
-    "title": "Welcome back!",
-    "email": {
-      "label": "Email"
-    },
-    "password": {
-      "label": "Password"
-    },
-    "rememberMe": "Remember me",
-    "forgotPassword": "Forgot your password?",
-    "submit": "Login",
-    "noAccount": "Don’t have an account yet?",
-    "createAccount": "Create one now!",
-    "email-invalid": "Invalid email address.",
-    "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+  "dashboard": {
+    "overview": {
+      "1st-row": {
+        "statistics": {
+          "total-over-all": {
+            "products": "total products",
+            "orders": "total orders",
+            "categories": "total categories",
+            "revenue": "total revenue" 
+          },
+          "category": {
+            "heading": "all categories",
+            "products-count": "products"
+          }
+        }
+      }
+    }
   },
   "user-address": {
     "modal": {

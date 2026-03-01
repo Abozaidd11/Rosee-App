@@ -1,19 +1,21 @@
 import Image from "next/image";
-import { HeartPlus, ShoppingCart, Star } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TProductCard } from "@/lib/types/product";
 import { Button } from "../ui/button";
+import WishlistButton from "../features/wishlist/wishlist-button";
 
 type ProductCardProps = { product: TProductCard };
 
 export default function ProductCard({ product }: ProductCardProps) {
   // Variables
-  const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold } =
+  const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold, _id } =
     product;
   const productLifeTime =
     (new Date().getTime() - new Date(createdAt).getTime()) / (1000 * 60 * 60 * 24);
   const isNewProduct = productLifeTime < 7;
   const isHotProduct = sold > 150;
+
   return (
     <section className="flex flex-col justify-between h-[22.75rem]">
       {/* Cover  */}
@@ -21,9 +23,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         {/* Header  */}
         <header className="top-3 z-10 absolute flex justify-between px-3 w-full">
           {/* Add to wishlist */}
-          <Button className="bg-white hover:bg-zinc-800 opacity-0 group-hover:opacity-100 p-0 rounded-full size-8 font-medium text-maroon-600 hover:text-zinc-100 dark:text-white text-xs leading-none transition-colors">
-            <HeartPlus className="size-5 text-inherit" strokeWidth={1.48} />
-          </Button>
+          <WishlistButton product={product} />
 
           {/* New  badge */}
           {isNewProduct && <Badge variant="subtle">new</Badge>}
