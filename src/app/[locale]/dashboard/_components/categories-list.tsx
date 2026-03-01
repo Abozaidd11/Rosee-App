@@ -6,10 +6,10 @@ export default async function CategoriesList() {
   const categories = await getCategoryStatistics();
 
   return (
-    <div className="flex flex-col gap-2 max-h-56 overflow-y-auto">
+    <div className="flex flex-col gap-2 max-h-56 overflow-y-auto no-scrollbar">
       {/* Category */}
-      {categories.statistics.map((category, idx) => (
-        <CategoryItem key={idx} category={category} />
+      {categories.statistics.map((category) => (
+        <CategoryItem key={category._id} category={category} />
       ))}
     </div>
   );

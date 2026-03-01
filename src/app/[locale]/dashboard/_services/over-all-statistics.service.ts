@@ -5,6 +5,9 @@ export async function getOverAllStatistics() {
   const token = await getDecodedToken();
 
   const response = await fetch(`${process.env.API}/statistics/overall`, {
+    next: {
+      tags: ["over-all-statistics"],
+    },
     headers: {
       authorization: `Bearer ${token}`,
     },

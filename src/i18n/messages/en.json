@@ -160,5 +160,23 @@
       "email-invalid": "Invalid email address.",
       "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
     }
+  },
+  "dashboard": {
+    "overview": {
+      "1st-row": {
+        "statistics": {
+          "total-over-all": {
+            "products": "total products",
+            "orders": "total orders",
+            "categories": "total categories",
+            "revenue": "total revenue" 
+          },
+          "category": {
+            "heading": "all categories",
+            "products-count": "products"
+          }
+        }
+      }
+    }
   }
 }

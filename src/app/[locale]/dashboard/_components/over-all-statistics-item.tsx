@@ -1,7 +1,7 @@
 import { TStatisticsObject } from "@/lib/types/statistics";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { CircleDollarSign, ClipboardList, Package, ReceiptText } from "lucide-react";
-import { useFormatter } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 
 type OverAllStatisticsItemProps = {
   statistics: {
@@ -13,8 +13,12 @@ type OverAllStatisticsItemProps = {
 export default function OverAllStatisticsItem({
   statistics: { name, value },
 }: OverAllStatisticsItemProps) {
+  //Translation
+  const t = useTranslations("dashboard.overview.1st-row.statistics.total-over-all");
+
   // Hooks
   const format = useFormatter();
+  const locale = useLocale();
 
   // Variables
   const STYLES: Record<keyof TStatisticsObject, string> = {
@@ -49,10 +53,12 @@ export default function OverAllStatisticsItem({
         {name === "totalRevenue"
           ? `${format.number(value, {
               maximumFractionDigits: 0,
-            })} EGP`
+            })} ${locale === "ar" ? "ج.م" : "EGP"}`
           : format.number(value)}
 
-        <p className="font-medium text-zinc-800 mt-1 capitalize text-base leading-none">{`total ${name.slice(5)}`}</p>
+        <p className="font-medium text-zinc-800 mt-1 capitalize text-base leading-none">
+          {t(`${name.slice(5).toLowerCase()}`)}
+        </p>
       </div>
     </div>
   );

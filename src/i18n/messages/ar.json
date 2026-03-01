@@ -110,6 +110,25 @@
       }
     }
   },
+  "dashboard": {
+    "overview": {
+      "1st-row": {
+        "statistics": {
+          "total-over-all": {
+            "products": "إجمالي المنتجات",
+            "orders": "إجمالي الطلبات",
+            "categories": "إجمالي التصنيفات",
+            "revenue": "إجمالي الإيرادات"
+          },
+          "category": {
+            "heading": "جميع التصنيفات",
+            "products-count": "منتجات"
+          }
+        }
+      }
+    }
+  },
+
   "promoCardheroSection": {
     "badge": "ابتداءً من 10.99 ج.م",
     "title": "هدايا مميزة للأشخاص الذين تحبهم",
