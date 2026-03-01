@@ -345,5 +345,18 @@
       "like-head": "Products you may like:",
       "currency": "EGP"
     }
+  },
+
+  "product-listing": {
+    "badge": {
+      "new": "new",
+      "sold-out": "out of stock",
+      "hot": "hot"
+    },
+    "wishlist-button": {
+      "add": "add to wishlist",
+      "remove": "remove from wishlist"
+    },
+    "no-products-message": "no products to display"
   }
 }

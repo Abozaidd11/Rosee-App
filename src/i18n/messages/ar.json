@@ -232,6 +232,20 @@
     "email-invalid": "البريد الإلكتروني غير صحيح.",
     "password-invalid": "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل، وحرف صغير واحد، ورقم واحد، ورمز خاص واحد."
   },
+  
+  "product-listing": {
+    "badge": {
+      "new": "جديد",
+      "sold-out": "غير متوفر",
+      "hot": "الأكثر مبيعًا"
+    },
+    "wishlist-button": {
+      "add": "أضف إلى المفضلة",
+      "remove": "إزالة من المفضلة"
+    },
+    "no-products-message": "لا توجد منتجات للعرض"
+  },
+  
   "user-address": {
     "modal": {
       "addresses-list": {

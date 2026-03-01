@@ -7,10 +7,14 @@ import { TProductCard } from "@/lib/types/product";
 import { cn } from "@/lib/utils/tailwind-merge";
 import { HeartMinus, HeartPlus } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { useTranslations } from "next-intl";
 
 type WishlistButtonProp = { product: TProductCard };
 
 export default function WishlistButton({ product }: WishlistButtonProp) {
+  // Translations
+  const t = useTranslations("product-listing.wishlist-button");
+
   //Context
   const { wishlist, toggleWishlist, setWishlist } = useWishlistContext();
 
@@ -67,7 +71,7 @@ export default function WishlistButton({ product }: WishlistButtonProp) {
       )}
 
       <span className="opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-[150px] whitespace-nowrap transition-all translate-x-[-8px] group-hover:translate-x-0 duration-300 ease-out">
-        {isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        {isWishlisted ? t("remove") : t("add")}
       </span>
     </button>
   );
