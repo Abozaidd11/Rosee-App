@@ -1,10 +1,9 @@
-export default function Page() {
+import TopSection from "./_components/top-section";
+
+export default function DashboardPage() {
   return (
-    <div className="pr-4 pl-4">
-      <section>Dashboard overview Page</section>
-      <section>Dashboard overview Page</section>
-      <section>Dashboard overview Page</section>
-      <section>Dashboard overview Page</section>
-    </div>
+    <main className="bg-zinc-50 h-screen">
+      <TopSection />
+    </main>
   );
 }

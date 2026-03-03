@@ -6,12 +6,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/shared/product-card";
-import { getBestSellingProducts } from "@/lib/services/product.service";
+import { getProducts } from "@/lib/services/product.service";
 import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 export default async function BestSellingCarousel() {
-  // Hooks
-  const { products } = await getBestSellingProducts();
+  // Services
+  const { products } = await getProducts({ limit: "6" });
+
+  // Variables
+  const carouselButtonStyle = "bg-maroon-600 rounded-3xl size-10 text-maroon-50";
 
   return (
     <Carousel
@@ -32,16 +36,10 @@ export default async function BestSellingCarousel() {
       </CarouselContent>
 
       {/* Prev */}
-      <CarouselPrevious
-        variant={"destructive"}
-        className="-left-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
-      />
+      <CarouselPrevious variant={"destructive"} className={cn("-left-5", carouselButtonStyle)} />
 
       {/* Next */}
-      <CarouselNext
-        variant={"destructive"}
-        className="-right-5 bg-maroon-600 rounded-3xl size-10 text-maroon-50"
-      />
+      <CarouselNext variant={"destructive"} className={cn("-right-5", carouselButtonStyle)} />
     </Carousel>
   );
 }
