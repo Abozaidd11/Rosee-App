@@ -113,7 +113,7 @@ export default function ShippingAddress({ selectedAddress, onSelectAddress, onNe
         {/* OR */}
         <div className="flex items-center justify-between gap-2 flex-nowrap">
           <div className="w-1/2 h-[1px] bg-zinc-100"></div>
-          <p className="text-zinc-500 text-lg font-semibold dark:text-zinc-400">Or</p>
+          <p className="text-zinc-500 text-lg font-semibold dark:text-zinc-400">{t("or")}</p>
           <div className="w-1/2 h-[1px] bg-zinc-100"></div>
         </div>
 
@@ -131,7 +131,7 @@ export default function ShippingAddress({ selectedAddress, onSelectAddress, onNe
           onClick={onNext}
           disabled={!selectedAddress}
         >
-          Next
+          {t("next")}
           <MoveRight className="size-4" />
         </Button>
       </div>

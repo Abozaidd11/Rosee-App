@@ -87,8 +87,11 @@
     "coupon-code": "Coupon Code",
     "apply-coupon": "Apply Coupon",
     "no-coupons-applied": "No coupons applied",
-    "subtotal": "Subtotal",
-    "total": "Total"
+    "discount-applied": "- {amount} EGP discount",
+    "currency": "EGP",
+    "next": "Next",
+    "back": "Back",
+    "or": "Or"
   },
   "product-reviews": {
     "header": "Product Reviews",

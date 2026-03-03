@@ -4,26 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TicketPercent } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useSession } from "next-auth/react";
-import { getUserCart } from "@/lib/services/user-cart.service";
-import { useQuery } from "@tanstack/react-query";
+import useUserCart from "@/hooks/cart/use-user-cart";
 
 export default function CartSummary() {
     // Translation
     const t = useTranslations("checkout");
 
-    // Session
-    const { data: session } = useSession();
-
     // Get user cart
-    const { data, isLoading, error } = useQuery({
-        queryKey: ["user-cart", session?.accessToken],
-        queryFn: () => {
-            if (!session?.accessToken) throw new Error("You must be logged in to view your cart");
-            return getUserCart(session.accessToken);
-        },
-        enabled: !!session?.accessToken,
-    });
+    const { data } = useUserCart();
 
     // User cart data
     const userCart = data?.cart ?? null;
@@ -79,7 +67,7 @@ export default function CartSummary() {
             <div className="flex justify-between items-center">
                 <p className="text-lg text-black dark:text-white">{t("subtotal")}</p>
                 <p className="text-lg text-black dark:text-white">
-                    {subtotal.toLocaleString()} EGP
+                    {subtotal.toLocaleString()} {t("currency")}
                 </p>
             </div>
 
@@ -87,7 +75,9 @@ export default function CartSummary() {
             <div className="flex items-center justify-between gap-2 flex-nowrap">
                 <div className="w-1/3 h-[1px] bg-zinc-300"></div>
                 <p className="text-zinc-500 font-semibold dark:text-zinc-400">
-                    {discount > 0 ? `- $${discount.toFixed(2)} Discount` : t("no-coupons-applied")}
+                    {discount > 0
+                        ? t("discount-applied", { amount: discount.toLocaleString() })
+                        : t("no-coupons-applied")}
                 </p>
                 <div className="w-1/3 h-[1px] bg-zinc-300"></div>
             </div>
@@ -96,7 +86,7 @@ export default function CartSummary() {
             <div className="flex justify-between items-center">
                 <p className="text-2xl font-semibold text-black dark:text-white">{t("total")}</p>
                 <p className="text-2xl font-semibold text-black dark:text-white">
-                    {total.toLocaleString()} EGP
+                    {total.toLocaleString()} {t("currency")}
                 </p>
             </div>
 

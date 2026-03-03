@@ -1,11 +1,7 @@
 import { TUserCart } from "../types/cart";
 
-export const getUserCart = async (accessToken: string) => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API}/cart`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+export const getUserCart = async () => {
+  const response = await fetch("/api/cart");
 
   if (!response.ok) throw new Error("Failed to fetch user cart");
 

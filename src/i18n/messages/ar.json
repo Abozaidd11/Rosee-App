@@ -87,8 +87,11 @@
     "coupon-code": "كود الخصم",
     "apply-coupon": "تطبيق الخصم",
     "no-coupons-applied": "لا يوجد خصمات مطبقة",
-    "subtotal": "المجموع الفرعي",
-    "total": "المجموع"
+    "discount-applied": "- {amount} ج.م خصم",
+    "currency": "ج.م",
+    "next": "التالي",
+    "back": "السابق",
+    "or": "أو"
   },
   "product-reviews": {
     "header": "التعليقات",

@@ -11,6 +11,7 @@ import { creditOrderService } from "@/lib/services/credit-order.service";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils/tailwind-merge";
 
 type PaymentMethodProps = {
   selectedAddress: TAddress | null;
@@ -63,7 +64,7 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
         await cashOrderService(session.accessToken, selectedAddress);
         toast.success(t("checkout-success-cash"));
         setCheckoutStatus("success");
-        router.push("/orders");
+        router.push("/allOrders");
       } else {
 
         // Credit Order
@@ -92,7 +93,7 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
           onClick={onBack}
         >
           <MoveLeft className="size-4" />
-          Back
+          {t("back")}
         </Button>
 
         <h2 className="text-3xl font-semibold text-black dark:text-white">{t("payment-method")}</h2>
@@ -119,17 +120,19 @@ export default function PaymentMethod({ selectedAddress, onBack }: PaymentMethod
                   setSelectedPaymentId(paymentMethod.id);
                 }
               }}
-              className={`w-1/2 flex flex-col gap-2.5 justify-center items-center p-4 border rounded-md cursor-pointer transition-colors text-left ${
+              className={cn(
+                "w-1/2 flex flex-col gap-2.5 justify-center items-center p-4 border rounded-md cursor-pointer transition-colors text-left",
                 isSelected
                   ? "bg-zinc-100"
                   : "border-zinc-100 hover:border-zinc-200"
-              }`}
+              )}
             >
               <Image src={paymentMethod.image} alt={paymentMethod.name} width={190} height={190} />
               <h3
-                className={`text-2xl font-semibold transition-colors ${
+                className={cn(
+                  "text-2xl font-semibold transition-colors",
                   isSelected ? "text-primary" : "text-black dark:text-white"
-                }`}
+                )}
               >
                 {paymentMethod.name}
               </h3>
