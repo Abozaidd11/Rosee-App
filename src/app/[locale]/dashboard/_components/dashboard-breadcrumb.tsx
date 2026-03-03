@@ -20,7 +20,7 @@ const BREADCRUMB_KEYS: Record<string, string> = {
 
 export default function DashboardBreadcrumb() {
   // Translations
-  const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard-layout");
   // Variales
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);

@@ -359,7 +359,7 @@
     },
     "no-products-message": "no products to display"
   },
-  "dashboard": {
+  "dashboard-layout": {
     "home-button": "Preview website",
     "breadcrumb-segmentone": "Dashboard",
     "breadcrumb-categories": "Categories",

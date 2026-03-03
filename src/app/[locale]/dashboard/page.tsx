@@ -2,8 +2,8 @@ import TopSection from "./_components/top-section";
 
 export default function DashboardPage() {
   return (
-    <main className="bg-zinc-50 h-screen">
+    <div className="pr-4 pl-4">
       <TopSection />
-    </main>
+    </div>
   );
 }

@@ -297,5 +297,18 @@
       "like-head": "المنتجات التي قد تعجبك:",
       "currency": "ج.م"
     }
+  },
+
+  "dashboard-layout": {
+    "home-button": "الصفحه الرئيسية",
+    "breadcrumb-segmentone": "لوحة التحكم",
+    "breadcrumb-categories": "التصنيفات",
+    "breadcrumb-occasions": "المناسبات",
+    "breadcrumb-products": "المنتجات",
+    "breadcrumb-account": "الحساب",
+    "nav-overview": "المعاينة",
+    "nav-categories": "التصنيفات",
+    "nav-occasions": "المناسبات",
+    "nav-products": "المنتجات"
   }
 }

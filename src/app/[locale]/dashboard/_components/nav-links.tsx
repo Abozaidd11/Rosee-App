@@ -30,7 +30,7 @@ export const links = [
 
 export default function DashboardNavLinks() {
   // Translations
-  const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard-layout");
 
   // Hooks
   const pathName = usePathname();

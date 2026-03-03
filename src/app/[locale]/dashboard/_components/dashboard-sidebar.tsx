@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 
 export default function DashboardSidebar() {
   // Translation
-  const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard-layout");
 
   return (
     <>

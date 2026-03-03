@@ -15,7 +15,7 @@ import { useTranslations } from "next-intl";
 
 export default function MobileNavLinks() {
   // Translations
-  const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard-layout");
 
   return (
     <DropdownMenu>
