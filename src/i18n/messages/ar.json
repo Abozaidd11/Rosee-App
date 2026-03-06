@@ -172,8 +172,33 @@
           }
         }
       }
+    },
+
+    "products": {
+      "header": "كل المنتجات",
+      "search-placeholder": "ابحث...",
+      "no-products-message": "لا توجد منتجات بهذا الاسم",
+      "table-columns": {
+        "name": "الاسم",
+        "price": "السعر",
+        "stock": "المخزون",
+        "sales": "المبيعات",
+        "ratings": "التقييمات"
+      },
+      "button": {
+        "add": "إضافة منتج جديد",
+        "edit": "تعديل",
+        "delete": "حذف"
+      },
+      "modal": {
+        "cancel": "إلغاء",
+        "confirm": "تأكيد",
+        "confirm-message": "هل أنت متأكد أنك تريد حذف هذا المنتج؟",
+        "success-message": "تم حذف المنتج بنجاح"
+      }
     }
   },
+
   "promoCardheroSection": {
     "badge": "ابتداءً من 10.99 ج.م",
     "title": "هدايا مميزة للأشخاص الذين تحبهم",
@@ -232,7 +257,7 @@
     "email-invalid": "البريد الإلكتروني غير صحيح.",
     "password-invalid": "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل، وحرف صغير واحد، ورقم واحد، ورمز خاص واحد."
   },
-  
+
   "product-listing": {
     "badge": {
       "new": "جديد",
@@ -245,7 +270,7 @@
     },
     "no-products-message": "لا توجد منتجات للعرض"
   },
-  
+
   "user-address": {
     "modal": {
       "addresses-list": {
