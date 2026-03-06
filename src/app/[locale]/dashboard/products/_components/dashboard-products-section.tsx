@@ -54,7 +54,7 @@ export default async function DashboardProductsSection({
       </section>
 
       {/* No data to display.  */}
-      <div className="h-full flex flex-col justify-between">
+      <div className="h-full flex flex-col justify-end">
         {!payload.products.length && (
           <div
             className={cn(
