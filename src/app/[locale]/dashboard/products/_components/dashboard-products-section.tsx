@@ -25,7 +25,7 @@ export default async function DashboardProductsSection({
   const locale = await getLocale();
 
   return (
-    <section className="flex flex-col justify-between gap-4 h-screen">
+    <section className="flex flex-col justify-between h-screen">
       {/* Products list  */}
       <section
         className={cn(
