@@ -384,5 +384,17 @@
       "remove": "remove from wishlist"
     },
     "no-products-message": "no products to display"
+  },
+  "dashboard-layout": {
+    "home-button": "Preview website",
+    "breadcrumb-segmentone": "Dashboard",
+    "breadcrumb-categories": "Categories",
+    "breadcrumb-occasions": "Occasions",
+    "breadcrumb-products": "Products",
+    "breadcrumb-account": "Account",
+    "nav-overview": "Overview",
+    "nav-categories": "Categories",
+    "nav-occasions": "Occasions",
+    "nav-products": "Products"
   }
 }
