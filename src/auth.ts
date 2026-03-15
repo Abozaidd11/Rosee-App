@@ -1,7 +1,6 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { loginResponse } from "./lib/types/auth";
-
 // NextAuth configuration options
 export const authOptions: NextAuthOptions = {
   // Custom pages for authentication flow
