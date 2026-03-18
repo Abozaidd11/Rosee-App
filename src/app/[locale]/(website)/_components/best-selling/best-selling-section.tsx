@@ -2,7 +2,6 @@ import BestSellingCarousel from "@/components/features/best-selling/best-selling
 import BestSellingHeading from "./best-selling-heading";
 import { Suspense } from "react";
 import CarouselFallback from "@/components/shared/carousel-fallback";
-import BestSellingPagination from "./best-selling-pagination";
 
 export default function BestSellingSection() {
   return (
@@ -14,9 +13,6 @@ export default function BestSellingSection() {
       <Suspense fallback={<CarouselFallback />}>
         <BestSellingCarousel />
       </Suspense>
-
-      {/* Pagination (temporary for testing) */}
-      <BestSellingPagination />
     </section>
   );
 }
