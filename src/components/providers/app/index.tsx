@@ -1,9 +1,8 @@
-import ReactQueryProvider from "../components/react-query.provider";
+import ReactQueryProvider from "./components/react-query.provider";
 
-type ProvidersProps = {
+type AppProvidersProps = {
   children: React.ReactNode;
 };
-
-export default function Providers({ children }: ProvidersProps) {
+export default function AppProviders({ children }: AppProvidersProps) {
   return <ReactQueryProvider>{children}</ReactQueryProvider>;
 }
