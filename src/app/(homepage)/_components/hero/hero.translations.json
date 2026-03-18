@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "banner": {
+      "badge": {
+        "en": "Staring from 10.99 EGP",
+        "ar": "ابتداءً من 10.99 جنيه مصري"
+      },
+      "title": {
+        "en": "Special Gifts For The People You Love",
+        "ar": "هدايا مميزة للأشخاص الذين تحبهم"
+      },
+      "buttonLabel": {
+        "en": "Shop Now",
+        "ar": "تسوّق الآن"
+      }
+    },
+    "carousel": {
+      "title": {
+        "en": "Say It with Flowers",
+        "ar": "عبّر بالزهور"
+      },
+      "subtitle": {
+        "en": "Elegant gifts for every special moment.",
+        "ar": "هدايا أنيقة لكل لحظة مميزة."
+      },
+      "primaryCtaLabel": {
+        "en": "I’m buying!",
+        "ar": "سأشتري الآن!"
+      }
+    },
+    "occasions": {
+      "wedding": {
+        "category": {
+          "en": "Wedding",
+          "ar": "زفاف"
+        },
+        "title": {
+          "en": "Celebrate Her Forever with a Gift She’ll Always Remember",
+          "ar": "احتفل بها إلى الأبد بهدية لا تُنسى"
+        }
+      },
+      "engagement": {
+        "category": {
+          "en": "Engagement",
+          "ar": "خطوبة"
+        },
+        "title": {
+          "en": "Honor the Beginning of a Beautiful Journey Together",
+          "ar": "احتفِل ببداية رحلة جميلة معًا"
+        }
+      },
+      "anniversary": {
+        "category": {
+          "en": "Anniversary",
+          "ar": "ذكرى سنوية"
+        },
+        "title": {
+          "en": "Mark Every Year of Love with a Meaningful Surprise",
+          "ar": "اجعل كل عام من الحب مفاجأة ذات معنى"
+        }
+      }
+    },
+    "features": {
+      "freeDelivery": {
+        "title": {
+          "en": "Free Delivery",
+          "ar": "توصيل مجاني"
+        },
+        "description": {
+          "en": "For orders above 120 EGP",
+          "ar": "للطلبيات التي تزيد عن 120 جنيهًا مصريًا"
+        }
+      },
+      "refund": {
+        "title": {
+          "en": "Get Refund",
+          "ar": "استرجاع الأموال"
+        },
+        "description": {
+          "en": "Refunds within 30 days",
+          "ar": "استرجاع خلال 30 يومًا"
+        }
+      },
+      "safePayment": {
+        "title": {
+          "en": "Safe Payment",
+          "ar": "دفع آمن"
+        },
+        "description": {
+          "en": "100% Secure Payment",
+          "ar": "دفع آمن بنسبة 100٪"
+        }
+      },
+      "support": {
+        "title": {
+          "en": "24/7 Support",
+          "ar": "دعم على مدار 24/7"
+        },
+        "description": {
+          "en": "Contact us at any time",
+          "ar": "تواصل معنا في أي وقت"
+        }
+      }
+    }
+  }
+}
+
