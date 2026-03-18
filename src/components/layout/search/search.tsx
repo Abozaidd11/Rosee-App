@@ -75,7 +75,7 @@ export default function Search() {
 
   // Return Search input & Modal UI
   return (
-    <div className="relative bg-white p-0 w-full" ref={refSearch}>
+    <div className="relative bg-white p-0 w-full rounded-lg" ref={refSearch}>
       {/* Search Input */}
       <Form {...form}>
         <form>

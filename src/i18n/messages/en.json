@@ -217,6 +217,7 @@
     "email-invalid": "Invalid email address.",
     "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   },
+
   "dashboard": {
     "overview": {
       "1st-row": {
@@ -233,8 +234,33 @@
           }
         }
       }
+    },
+
+    "products": {
+      "header": "all products",
+      "search-placeholder": "Search...",
+      "no-products-message": "No products found with this name",
+      "table-columns": {
+        "name": "name",
+        "price": "price",
+        "stock": "stock",
+        "sales": "sales",
+        "ratings": "ratings"
+      },
+      "button": {
+        "add": "add a new product",
+        "edit": "edit",
+        "delete": "delete"
+      },
+      "modal": {
+        "cancel": "cancel",
+        "confirm": "confirm",
+        "confirm-message": "are you sure you want to delete this product?",
+        "success-message": "product deleted successfully"
+      }
     }
   },
+
   "user-address": {
     "modal": {
       "addresses-list": {
@@ -294,60 +320,81 @@
         "required": "Please enter your mobile number",
         "invalid": "Please enter a valid mobile number"
       }
-    },
-    "related-products": {
-      "header": "Related Products"
-    },
-    "product-reviews": {
-      "header": "Product Reviews",
-      "second-head": "General rating:",
-      "general-rate": "{rate} <span>({count} rating)</span>",
-      "title-field": "Please Enter review title",
-      "login-need": "Please login to be able to review the product",
-      "form-rate-label": "Your rating:",
-      "title-field-label": "Title",
-      "review-comment": "Review",
-      "text-area-placholder": "What do you think of this product?",
-      "title-field-placholder": "Enter review title",
-      "review-form-button": "Add Review",
-      "add-review-toast": "You Review Added Successfully"
-    },
-    "orders": {
-      "title": "Orders",
-      "no-orders": "You haven't placed any orders yet!",
-      "no-orders-desc": "Start shopping and your orders will appear here.",
-      "go-home": "Go to Home",
-      "order-header": "Order",
-      "created-in": "Created in:",
-      "total-price": "Total price:",
-      "payment-status": "Payment status",
-      "paid": "Paid",
-      "not-paid": "Not Paid",
-      "status": "Status",
-      "payment-method": "Payment Method:",
-      "delivery-status": "Delivery Status:",
-      "cash": "Cash",
-      "credit-card": "Credit Card",
-      "pending": "Pending",
-      "processing": "Processing",
-      "delivered": "Delivered",
-      "cancelled": "Cancelled",
-      "order-items": "Order Items:",
-      "show-all": "Show All",
-      "show-less": "Show Less",
-      "rating": "Rating:",
-      "quantity": "Quantity:",
-      "failed-to-load": "Failed to load orders",
-      "try-again": "Something went wrong. Please try again later.",
-      "retry": "Retry"
-    },
-    "search-input": {
-      "placeholder": "What awesome gift are you looking for?",
-      "rate-count": "ratings",
-      "general-rate": "Rating",
-      "like-head": "Products you may like:",
-      "currency": "EGP"
     }
+  },
+  "related-products": {
+    "header": "Related Products"
+  },
+  "checkout": {
+    "shipping-address": "Shipping Address",
+    "summary": "Summary",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "add-address": "Add a New Address",
+    "payment-method": "Payment Method",
+    "checkout-success-cash": "Cash order created successfully",
+    "checkout-success-credit": "Credit order created successfully",
+    "checkout-error": "Failed to create order",
+    "checkout-button": "Checkout",
+    "checkout-loading": "Loading...",
+    "coupon-code": "Coupon Code",
+    "apply-coupon": "Apply Coupon",
+    "no-coupons-applied": "No coupons applied",
+    "discount-applied": "- {amount} EGP discount",
+    "currency": "EGP",
+    "next": "Next",
+    "back": "Back",
+    "or": "Or"
+  },
+  "product-reviews": {
+    "header": "Product Reviews",
+    "second-head": "General rating:",
+    "general-rate": "{rate} <span>({count} rating)</span>",
+    "title-field": "Please Enter review title",
+    "login-need": "Please login to be able to review the product",
+    "form-rate-label": "Your rating:",
+    "title-field-label": "Title",
+    "review-comment": "Review",
+    "text-area-placholder": "What do you think of this product?",
+    "title-field-placholder": "Enter review title",
+    "review-form-button": "Add Review",
+    "add-review-toast": "You Review Added Successfully"
+  },
+  "orders": {
+    "title": "Orders",
+    "no-orders": "You haven't placed any orders yet!",
+    "no-orders-desc": "Start shopping and your orders will appear here.",
+    "go-home": "Go to Home",
+    "order-header": "Order",
+    "created-in": "Created in:",
+    "total-price": "Total price:",
+    "payment-status": "Payment status",
+    "paid": "Paid",
+    "not-paid": "Not Paid",
+    "status": "Status",
+    "payment-method": "Payment Method:",
+    "delivery-status": "Delivery Status:",
+    "cash": "Cash",
+    "credit-card": "Credit Card",
+    "pending": "Pending",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "order-items": "Order Items:",
+    "show-all": "Show All",
+    "show-less": "Show Less",
+    "rating": "Rating:",
+    "quantity": "Quantity:",
+    "failed-to-load": "Failed to load orders",
+    "try-again": "Something went wrong. Please try again later.",
+    "retry": "Retry"
+  },
+  "search-input": {
+    "placeholder": "What awesome gift are you looking for?",
+    "rate-count": "ratings",
+    "general-rate": "Rating",
+    "like-head": "Products you may like:",
+    "currency": "EGP"
   },
 
   "product-listing": {
@@ -361,5 +408,17 @@
       "remove": "remove from wishlist"
     },
     "no-products-message": "no products to display"
+  },
+  "dashboard-layout": {
+    "home-button": "Preview website",
+    "breadcrumb-segmentone": "Dashboard",
+    "breadcrumb-categories": "Categories",
+    "breadcrumb-occasions": "Occasions",
+    "breadcrumb-products": "Products",
+    "breadcrumb-account": "Account",
+    "nav-overview": "Overview",
+    "nav-categories": "Categories",
+    "nav-occasions": "Occasions",
+    "nav-products": "Products"
   }
 }

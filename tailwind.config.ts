@@ -168,6 +168,7 @@ const config: Config = {
         inter: ["var(--font-inter)", "sans-serif"],
         en: ["var(--font-sarabun)", "sans-serif"],
         ar: ["var(--font-tajawal)", "sans-serif"],
+        nunitoSans: ["var(--font-nunitoSans)", "sans-serif"],
       },
     },
   },

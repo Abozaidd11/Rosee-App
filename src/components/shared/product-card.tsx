@@ -4,16 +4,17 @@ import { Badge } from "@/components/ui/badge";
 import { TProductCard } from "@/lib/types/product";
 import { Button } from "../ui/button";
 import WishlistButton from "../features/wishlist/wishlist-button";
-import { useLocale, useTranslations } from "next-intl";
+import { cn } from "@/lib/utils/tailwind-merge";
+import { getLocale, getTranslations } from "next-intl/server";
 
 type ProductCardProps = { product: TProductCard };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default async function ProductCard({ product }: ProductCardProps) {
   // Translations
-  const t = useTranslations("product-listing.badge");
+  const t = await getTranslations("product-listing.badge");
 
   // Hooks
-  const locale = useLocale();
+  const locale = await getLocale();
 
   // Variables
   const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold, _id } =
@@ -28,7 +29,12 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* Cover  */}
       <section className="relative h-[17rem]">
         {/* Header  */}
-        <header className="top-3 z-10 absolute flex justify-between px-3 w-full">
+        <header
+          className={cn(
+            locale === "ar" && "font-tajawal",
+            "top-3 z-10 absolute flex justify-between px-3 w-full"
+          )}
+        >
           {/* Add to wishlist */}
           <WishlistButton product={product} />
 
