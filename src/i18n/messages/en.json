@@ -16,6 +16,15 @@
     "delete-notification": "Delete notification",
     "no-notifications": "No notifications to display."
   },
+  "header": {
+    "login": "Login",
+    "register": "Register",
+    "myProfile": "My Profile",
+    "myAddresses": "My Addresses",
+    "myOrders": "My Orders",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
   "best-selling": {
     "header": "best selling",
     "title": {
