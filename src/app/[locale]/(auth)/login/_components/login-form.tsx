@@ -34,7 +34,6 @@ export function LoginForm() {
   const router = useRouter();
 
   // State
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -117,26 +116,14 @@ export function LoginForm() {
             <Field className="relative gap-1.5" data-invalid={fieldState.invalid}>
               <FieldLabel htmlFor="password">{t("password.label")}</FieldLabel>
 
-              <div className="relative">
-                <Input
-                  {...field}
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  autoComplete="current-password"
-                  className="pe-8"
-                  aria-invalid={fieldState.invalid}
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((prev) => !prev)}
-                  aria-pressed={showPassword}
-                  className="absolute inset-y-0 flex items-center text-muted-foreground hover:text-foreground end-2"
-                >
-                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                </button>
-              </div>
+              <Input
+                type="password"
+                {...field}
+                id="password"
+                placeholder="••••••••"
+                autoComplete="current-password"
+                aria-invalid={fieldState.invalid}
+              />
 
               {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
             </Field>

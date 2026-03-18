@@ -1,6 +1,3 @@
-import Footer from "@/components/layout/footer/footer";
-import Header from "@/components/layout/header/header";
-
 type LocaleProps = {
   children: React.ReactNode;
 };
@@ -8,14 +5,8 @@ type LocaleProps = {
 export default function LocaleLayout({ children }: LocaleProps) {
   return (
     <div className="max-w-screen overflow-x-hidden">
-      {/* Header */}
-      <Header />
-
       {/* Children */}
       {children}
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

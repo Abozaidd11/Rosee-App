@@ -1,14 +1,16 @@
+import { productDetailsServices } from "@/lib/services/product-details.service";
 import { setRequestLocale } from "next-intl/server";
 
-import { productDetailsServices } from "@/lib/services/product-details.service";
 import ProductReviews from "./_components/products-reviews/product-reviews";
 import RelatedProducts from "./_components/related-products/related-products";
+import ProductGallery from "./_components/product-gallery";
+import ProductInfo from "./_components/product-info";
 
 type LocaleProps = {
   params: { locale: string; id: string };
 };
 
-export default async function Page({ params: { locale, id } }: LocaleProps) {
+export default async function ProductPage({ params: { locale, id } }: LocaleProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
@@ -16,9 +18,23 @@ export default async function Page({ params: { locale, id } }: LocaleProps) {
   const productDetials = await productDetailsServices(id);
 
   return (
-    <main className="space-y-12 mx-auto container">
-      <ProductReviews productDetials={productDetials} />
-      <RelatedProducts id={productDetials.product.category} />
+    <main className="px-3 lg:px-20 lg:pt-16 space-y-12 mx-auto">
+      {/* product details */}
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-[50px]">
+        {/* Product gallery */}
+        <ProductGallery
+          title={productDetials?.product?.title}
+          imgCover={productDetials?.product?.imgCover}
+          images={productDetials?.product?.images}
+        />
+
+        {/* Product info */}
+        <ProductInfo {...productDetials?.product} />
+      </section>
+      <section>
+        <ProductReviews productDetials={productDetials} />
+        <RelatedProducts id={productDetials.product.category} />
+      </section>
     </main>
   );
 }

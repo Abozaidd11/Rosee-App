@@ -1,3 +1,4 @@
+import { TProduct } from "./product.d";
 export type TProductCard = {
   _id: string;
   title: string;
