@@ -2,6 +2,14 @@
   "Metadata": {
     "app-title": "محل الورد"
   },
+  "Products": {
+    "occasion": "المناسبة",
+    "price": "السعر",
+    "from": "من",
+    "to": "إلى",
+    "reset": "مسح",
+    "loading-more": "جاري تحميل المزيد…"
+  },
   "testimonials": {
     "title": "التعليقات",
     "description": "كلمات حقيقية من عملاء سعداء",
@@ -15,6 +23,15 @@
     "mark-as-read": "علم كمقروءة",
     "delete-notification": "حذف الإشعار",
     "no-notifications": "لا يوجد إشعارات لعرضها."
+  },
+  "header": {
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "myProfile": "ملفي الشخصي",
+    "myAddresses": "عناويني",
+    "myOrders": "طلباتي",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
   },
   "best-selling": {
     "header": "الأكثر مبيعًا",
@@ -168,7 +185,18 @@
     "password-confirmPassword": "كلمة المرور وتأكيد كلمة المرور غير متطابقة",
     "strong-password": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل، حرف واحد كبير وحرف صغير وحرف خاص واحد",
     "sendotp-toast": "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
-    "otp-cooldown-error-toast": "لا يمكنك طلب رمز التحقق لمرة واحده أخرى الآن، يرجى الانتظار  {duration}ث"
+    "otp-cooldown-error-toast": "لا يمكنك طلب رمز التحقق لمرة واحده أخرى الآن، يرجى الانتظار  {duration}ث",
+    "otp-title": "أدخل رمز التحقق",
+    "otp-description": "لقد أرسلنا رمزًا مكونًا من 6 أرقام إلى {email} <span>تعديل</span>",
+    "otp-verify": "تأكيد OTP",
+    "otp-time-left": "يمكنك طلب رمز آخر خلال: <span>{time} ث</span>",
+    "otp-resend": "إرسال رمز جديد",
+    "otp-resending": "جارى ارسال رمز جديد",
+    "verify-otp": "تأكيد رمز التحقق",
+    "verifying-otp": "جارى تأكيد رمز التحقق",
+    "otp-need-help": "هل تحتاج مساعدة؟ <a>تواصل معنا</a>",
+    "otp-required": "يرجى إدخال رمز التحقق الصحيح (6 أرقام)",
+    "new-password-success-toast": "تم تغيير كلمة المرور الخاصة بك بنجاح، يرجى تسجيل الدخول"
   },
   "login": {
     "title": "مرحبًا بعودتك!",
@@ -186,13 +214,57 @@
     "email-invalid": "البريد الإلكتروني غير صحيح.",
     "password-invalid": "كلمة المرور يجب أن تحتوي على حرف كبير واحد على الأقل، وحرف صغير واحد، ورقم واحد، ورمز خاص واحد."
   },
-  "header": {
-    "login": "تسجيل الدخول",
-    "register": "إنشاء حساب",
-    "myProfile": "ملفي الشخصي",
-    "myAddresses": "عناويني",
-    "myOrders": "طلباتي",
-    "dashboard": "لوحة التحكم",
-    "logout": "تسجيل الخروج"
+  "related-products": {
+    "header": "منتجات ذات الصلة"
+  },
+  "product-reviews": {
+    "header": "التعليقات",
+    "second-head": "التقييم العام:",
+    "title-field": "الرجاء إدخال عنوان المراجعة",
+    "general-rate": "{rate} <span>({count} تعليق)</span>",
+    "login-need": "الرجاء تسجيل الدخول لتتمكن من مراجعة المنتج",
+    "form-rate-label": "تقييمك:",
+    "title-field-label": "العنوان",
+    "review-comment": "رايك",
+    "text-area-placholder": "ما رأيك في هذا المنتج؟",
+    "title-field-placholder": "أدخل عنوان المراجعة",
+    "review-form-button": "أضف مراجعة",
+    "add-review-toast": "لقد قمت باضافه مراجعة بنجاح"
+  },
+  "orders": {
+    "title": "الطلبات",
+    "no-orders": "لم تقم بأي طلبيات حتى الآن!",
+    "no-orders-desc": "ابدأ بالتسوق وستظهر طلبياتك هنا.",
+    "go-home": "اذهب للرئيسية",
+    "order-header": "الطلب",
+    "created-in": "تم الإنشاء في:",
+    "total-price": "السعر الإجمالي:",
+    "payment-status": "حالة الدفع",
+    "paid": "مدفوعة",
+    "not-paid": "غير مدفوعة",
+    "status": "الحالة",
+    "payment-method": "طريقة الدفع:",
+    "delivery-status": "حالة التوصيل:",
+    "cash": "نقد",
+    "credit-card": "بطاقة ائتمان",
+    "pending": "قيد الانتظار",
+    "processing": "قيد المعالجة",
+    "delivered": "تم التسليم",
+    "cancelled": "ملغى",
+    "order-items": "عناصر الطلب:",
+    "show-all": "عرض الكل",
+    "show-less": "عرض أقل",
+    "rating": "التقييم:",
+    "quantity": "الكمية:",
+    "failed-to-load": "فشل تحميل الطلبيات",
+    "try-again": "حدث خطأ ما. يرجى المحاولة لاحقاً.",
+    "retry": "إعادة محاولة"
+  },
+  "search-input": {
+    "placeholder": "ما هي الهدية الرائعة التي تبحث عنها؟",
+    "rate-count": "تقييمات",
+    "general-rate": "تصنيف",
+    "like-head": "المنتجات التي قد تعجبك:",
+    "currency": "ج.م"
   }
 }

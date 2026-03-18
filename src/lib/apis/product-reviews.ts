@@ -1,4 +1,4 @@
-import { TReview, TReviews } from "../types/reviews";
+import { TReviews } from "../types/reviews";
 
 export async function getProductReviews() {
   const response = await fetch(

@@ -14,6 +14,10 @@ export default function LoginPopoverContent({ activeTab, setActiveTab }: LoginPo
   // Translation
   const t = useTranslations("header");
 
+  // Navigation
+
+  // Variables
+
   // Functions
   const handleTabChange = (tab: "login" | "register") => setActiveTab(tab);
 
