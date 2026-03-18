@@ -214,6 +214,24 @@
     "email-invalid": "Invalid email address.",
     "password-invalid": "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
   },
+  "dashboard": {
+    "overview": {
+      "1st-row": {
+        "statistics": {
+          "total-over-all": {
+            "products": "total products",
+            "orders": "total orders",
+            "categories": "total categories",
+            "revenue": "total revenue"
+          },
+          "category": {
+            "heading": "all categories",
+            "products-count": "products"
+          }
+        }
+      }
+    }
+  },
   "user-address": {
     "modal": {
       "addresses-list": {
@@ -239,8 +257,8 @@
         "button-steps": {
           "first": "next",
           "second": {
-            "add":"add Address",
-            "update":"update Address"
+            "add": "add Address",
+            "update": "update Address"
           }
         },
 
@@ -273,58 +291,72 @@
         "required": "Please enter your mobile number",
         "invalid": "Please enter a valid mobile number"
       }
+    },
+    "related-products": {
+      "header": "Related Products"
+    },
+    "product-reviews": {
+      "header": "Product Reviews",
+      "second-head": "General rating:",
+      "general-rate": "{rate} <span>({count} rating)</span>",
+      "title-field": "Please Enter review title",
+      "login-need": "Please login to be able to review the product",
+      "form-rate-label": "Your rating:",
+      "title-field-label": "Title",
+      "review-comment": "Review",
+      "text-area-placholder": "What do you think of this product?",
+      "title-field-placholder": "Enter review title",
+      "review-form-button": "Add Review",
+      "add-review-toast": "You Review Added Successfully"
+    },
+    "orders": {
+      "title": "Orders",
+      "no-orders": "You haven't placed any orders yet!",
+      "no-orders-desc": "Start shopping and your orders will appear here.",
+      "go-home": "Go to Home",
+      "order-header": "Order",
+      "created-in": "Created in:",
+      "total-price": "Total price:",
+      "payment-status": "Payment status",
+      "paid": "Paid",
+      "not-paid": "Not Paid",
+      "status": "Status",
+      "payment-method": "Payment Method:",
+      "delivery-status": "Delivery Status:",
+      "cash": "Cash",
+      "credit-card": "Credit Card",
+      "pending": "Pending",
+      "processing": "Processing",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "order-items": "Order Items:",
+      "show-all": "Show All",
+      "show-less": "Show Less",
+      "rating": "Rating:",
+      "quantity": "Quantity:",
+      "failed-to-load": "Failed to load orders",
+      "try-again": "Something went wrong. Please try again later.",
+      "retry": "Retry"
+    },
+    "search-input": {
+      "placeholder": "What awesome gift are you looking for?",
+      "rate-count": "ratings",
+      "general-rate": "Rating",
+      "like-head": "Products you may like:",
+      "currency": "EGP"
     }
-  "related-products": {
-    "header": "Related Products"
   },
-  "product-reviews": {
-    "header": "Product Reviews",
-    "second-head": "General rating:",
-    "general-rate": "{rate} <span>({count} rating)</span>",
-    "title-field": "Please Enter review title",
-    "login-need": "Please login to be able to review the product",
-    "form-rate-label": "Your rating:",
-    "title-field-label": "Title",
-    "review-comment": "Review",
-    "text-area-placholder": "What do you think of this product?",
-    "title-field-placholder": "Enter review title",
-    "review-form-button": "Add Review",
-    "add-review-toast": "You Review Added Successfully"
-  },
-  "orders": {
-    "title": "Orders",
-    "no-orders": "You haven't placed any orders yet!",
-    "no-orders-desc": "Start shopping and your orders will appear here.",
-    "go-home": "Go to Home",
-    "order-header": "Order",
-    "created-in": "Created in:",
-    "total-price": "Total price:",
-    "payment-status": "Payment status",
-    "paid": "Paid",
-    "not-paid": "Not Paid",
-    "status": "Status",
-    "payment-method": "Payment Method:",
-    "delivery-status": "Delivery Status:",
-    "cash": "Cash",
-    "credit-card": "Credit Card",
-    "pending": "Pending",
-    "processing": "Processing",
-    "delivered": "Delivered",
-    "cancelled": "Cancelled",
-    "order-items": "Order Items:",
-    "show-all": "Show All",
-    "show-less": "Show Less",
-    "rating": "Rating:",
-    "quantity": "Quantity:",
-    "failed-to-load": "Failed to load orders",
-    "try-again": "Something went wrong. Please try again later.",
-    "retry": "Retry"
-  },
-  "search-input": {
-    "placeholder": "What awesome gift are you looking for?",
-    "rate-count": "ratings",
-    "general-rate": "Rating",
-    "like-head": "Products you may like:",
-    "currency": "EGP"
+
+  "product-listing": {
+    "badge": {
+      "new": "new",
+      "sold-out": "out of stock",
+      "hot": "hot"
+    },
+    "wishlist-button": {
+      "add": "add to wishlist",
+      "remove": "remove from wishlist"
+    },
+    "no-products-message": "no products to display"
   }
 }

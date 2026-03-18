@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils/tailwind-merge";
 
 const badgeVariants = cva(
-  "inline-flex items-center px-2 py-0.5 rounded-full font-medium text-xs uppercase transition-colors",
+  "inline-flex items-center px-2 py-0.5 rounded-full font-medium text-xs uppercase leading-none transition-colors",
   {
     variants: {
       variant: {
         default:
-          "bg-maroon-600 hover:bg-maroon-700 text-white dark:bg-red-300 dark:hover:bg-red-400 dark:text-zinc-800",
+          "bg-maroon-600 hover:bg-maroon-700 text-white dark:bg-softPink-300 dark:hover:bg-softPink-400 dark:text-zinc-800",
         secondary:
           "bg-maroon-50 hover:bg-maroon-100 text-maroon-600 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:text-softPink-300",
         subtle:

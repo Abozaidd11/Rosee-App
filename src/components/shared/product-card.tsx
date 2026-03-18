@@ -1,38 +1,45 @@
 import Image from "next/image";
-import { HeartPlus, ShoppingCart, Star } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TProductCard } from "@/lib/types/product";
 import { Button } from "../ui/button";
+import WishlistButton from "../features/wishlist/wishlist-button";
+import { useLocale, useTranslations } from "next-intl";
 
 type ProductCardProps = { product: TProductCard };
 
 export default function ProductCard({ product }: ProductCardProps) {
+  // Translations
+  const t = useTranslations("product-listing.badge");
+
+  // Hooks
+  const locale = useLocale();
+
   // Variables
-  const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold } =
+  const { imgCover, title, rateAvg, price, priceAfterDiscount, createdAt, quantity, sold, _id } =
     product;
   const productLifeTime =
     (new Date().getTime() - new Date(createdAt).getTime()) / (1000 * 60 * 60 * 24);
   const isNewProduct = productLifeTime < 7;
   const isHotProduct = sold > 150;
+
   return (
     <section className="flex flex-col justify-between h-[22.75rem]">
       {/* Cover  */}
-      <section className="group relative h-[17rem]">
+      <section className="relative h-[17rem]">
         {/* Header  */}
         <header className="top-3 z-10 absolute flex justify-between px-3 w-full">
           {/* Add to wishlist */}
-          <Button className="bg-white hover:bg-zinc-800 opacity-0 group-hover:opacity-100 p-0 rounded-full size-8 font-medium text-maroon-600 hover:text-zinc-100 dark:text-white text-xs leading-none transition-colors">
-            <HeartPlus className="size-5 text-inherit" strokeWidth={1.48} />
-          </Button>
+          <WishlistButton product={product} />
 
           {/* New  badge */}
-          {isNewProduct && <Badge variant="subtle">new</Badge>}
+          {isNewProduct && <Badge variant="subtle">{t("new")}</Badge>}
 
           {/* Sold out badge */}
-          {!quantity && <Badge>out of stock</Badge>}
+          {!quantity && <Badge>{t("sold-out")}</Badge>}
 
           {/* Hot badge */}
-          {isHotProduct && <Badge variant="secondary">hot</Badge>}
+          {isHotProduct && <Badge variant="secondary">{t("hot")}</Badge>}
         </header>
 
         {/* Cover  */}
@@ -70,13 +77,13 @@ export default function ProductCard({ product }: ProductCardProps) {
               ))}
             </div>
 
-            {/* Price */}
-            {`${priceAfterDiscount?.toFixed(2)} EGP`}
-
             {/* PriceAfterDiscount */}
+            {`${priceAfterDiscount?.toFixed(2)} ${locale === "ar" ? "ج.م" : "EGP"}`}
+
+            {/* Price */}
             {price && (
-              <span className="pl-1 font-medium text-zinc-400 dark:text-zinc-500 line-through">
-                {`${price?.toFixed(2)} EGP`}
+              <span className="ps-2 font-medium text-zinc-400 dark:text-zinc-500 line-through">
+                {`${price?.toFixed(2)} ${locale === "ar" ? "ج.م" : "EGP"}`}
               </span>
             )}
           </div>

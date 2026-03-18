@@ -1,16 +1,19 @@
-"use client";
-
 import { Link } from "@/i18n/navigation";
+import { SearchParams } from "@/lib/types/global";
 import { TOccasion } from "@/lib/types/occasion";
 import { cn } from "@/lib/utils/tailwind-merge";
-import { useSearchParams } from "next/navigation";
 
-type OccasionsFilterProps = { occasions: TOccasion[] };
+type OccasionsFilterLinksProps = {
+  searchParams: SearchParams;
+  occasions: TOccasion[];
+};
 
-export default function OccasionsFilterLinks({ occasions }: OccasionsFilterProps) {
-  // Hooks
-  const searchParams = useSearchParams();
-  const activeOccasionId = searchParams.get("occasionId");
+export default function OccasionsFilterLinks({
+  occasions,
+  searchParams,
+}: OccasionsFilterLinksProps) {
+  // Variables
+  const activeOccasionId = searchParams.occasionId;
 
   return (
     // Occasions Filter
